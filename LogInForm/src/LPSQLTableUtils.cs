@@ -28,6 +28,7 @@ namespace LogInForm
             catch (Exception exc)
             {
                 MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
             return isExists;
         }
@@ -65,6 +66,7 @@ namespace LogInForm
             catch (Exception exc)
             {
                 MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
 
             return 0;
@@ -105,7 +107,8 @@ namespace LogInForm
             }
             catch (Exception exc)
             {
-                MessageBox.Show("LPError: " + exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("LPError: " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
             return 0;
         }

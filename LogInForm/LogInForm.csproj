@@ -181,7 +181,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>move ..\..\LPMilkDairyFirm\LogInForm\obj ..\BUILD_LPMilkDairyFirm_VC14</PostBuildEvent>
+    <PostBuildEvent>rem move ..\..\LPMilkDairyFirm\LogInForm\obj ..\BUILD_LPMilkDairyFirm_VC14</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

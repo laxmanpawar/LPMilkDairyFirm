@@ -23,7 +23,22 @@ namespace LogInForm
 
         private void RateChartForm_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
+                {
+                    SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                    string query = "SELECT * FROM MILK_RATE_CHART";
+                    SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    this.RateChartDataGridView.DataSource = dt;
+                }
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show("LPERROR : " + exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
@@ -64,7 +79,7 @@ namespace LogInForm
             }
             catch (Exception exc)
             {
-                MessageBox.Show("LPError : " + exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

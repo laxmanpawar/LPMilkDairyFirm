@@ -33,6 +33,11 @@ namespace LogInForm
 
         private void CustCodeTextBox_Leave(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(CustCodeTextBox.Text))
+            {
+                CustCodeTextBox.Focus();
+                return;
+            }
             if (LPSQLTableUtils.IsTableExists(this.m_sCustMilkDataTableName) == 1 && LPSQLTableUtils.IsColumnPresent(this.m_sCustMilkDataTableName, "CUST_CODE", this.CustCodeTextBox.Text) == 1)
             {
                 DialogResult res = MessageBox.Show("ग्राहक डेटा आधीच अस्तित्त्वात आहे. आपण सुधारित करू इच्छिता?", "LPInfo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -97,6 +102,9 @@ namespace LogInForm
 
             m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + DateTimePicker.Value.ToString("dd_MM_yyyy");
             MainLabel.Text = m_sMilkCollTime + " दूध संकलन";
+
+            // Update Total MilkData
+            UpdateTotalMilkDetailsTable();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -153,12 +161,12 @@ namespace LogInForm
                     }
                     else if (iMilkType == 1)
                     {
-                        weight = double.Parse(CowWeightTextBox.Text);
-                        fat = double.Parse(CowFatTextBox.Text);
-                        SNF = double.Parse(CowSNFTextBox.Text);
-                        degree = double.Parse(CowDegreeTextBox.Text);
-                        milkRate = double.Parse(CowMilkRateTextBox.Text);
-                        amount = double.Parse(CowAmountTextBox.Text);
+                        weight = double.Parse(BuffWeightTextBox.Text);
+                        fat = double.Parse(BuffFatTextBox.Text);
+                        SNF = double.Parse(BuffSNFTextBox.Text);
+                        degree = double.Parse(BuffDegreeTextBox.Text);
+                        milkRate = double.Parse(BuffMilkRateTextBox.Text);
+                        amount = double.Parse(BuffAmountTextBox.Text);
                     }
 
                     // Save data to sql Server.
@@ -186,6 +194,8 @@ namespace LogInForm
                     {
                         BindDataGridView();
                         ResetAllCustMilkDataFields();
+                        // Update Total MilkData
+                        UpdateTotalMilkDetailsTable();
                         MessageBox.Show("Milk added successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -238,9 +248,10 @@ namespace LogInForm
                     con.Close();
                 }
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
             return 0;
         }
@@ -295,8 +306,8 @@ namespace LogInForm
             {
                 MessageBox.Show("LPERROR : " + exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        } 
-        
+        }
+
 
         private void ViewButton_Click(object sender, EventArgs e)
         {
@@ -468,9 +479,10 @@ namespace LogInForm
                     BuffAmountTextBox.Text = milkAmount.ToString();
                 }
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
             return 0;
         }
@@ -478,13 +490,14 @@ namespace LogInForm
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + DateTimePicker.Value.ToString("dd_MM_yyyy");
-            MessageBox.Show("Date is : " + m_sCustMilkDataTableName);
+            // Update Total MilkData
+            UpdateTotalMilkDetailsTable();
         }
 
         private void MilkTypeComboBox_TextChanged(object sender, EventArgs e)
         {
             int iMilkType = MilkTypeComboBox.SelectedIndex;
-            if(iMilkType == 0)
+            if (iMilkType == 0)
             {
                 CowWeightTextBox.Focus();
                 CowWeightTextBox.TabIndex = 0;
@@ -604,5 +617,101 @@ namespace LogInForm
             ResetAllCustMilkDataFields();
         }
 
+        private int UpdateTotalMilkDetailsTable()
+        {
+            if (LPSQLTableUtils.IsTableExists(this.m_sCustMilkDataTableName) == 0) return 0;
+            // For Cow
+            int iCowMilkCount = 0;
+            float fCowTotalMilkWeight = 0;
+            float fCowAvgMilkFat = 0;
+            float fCowAvgMilkSNF = 0;
+            float fCowAvgMilkDegree = 0;
+            float fCowAvgMilkRate = 0;
+            float fCowTotalMilkAmount = 0;
+
+            // For Buffalo
+            int iBuffMilkCount = 0;
+            float fBuffTotalMilkWeight = 0;
+            float fBuffAvgMilkFat = 0;
+            float fBuffAvgMilkSNF = 0;
+            float fBuffAvgMilkDegree = 0;
+            float fBuffAvgMilkRate = 0;
+            float fBuffTotalMilkAmount = 0;
+
+            SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+            string query = "SELECT [MILK_TYPE], [MILK_WEIGHT], [MILK_FAT], [MILK_SNF], [MILK_DEGREE], [MILK_RATE], [MILK_AMOUNT] FROM " + this.m_sCustMilkDataTableName;
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            con.Open();
+            try
+            {
+                int cowCounter = 0;
+                int buffCounter = 0;
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    int milkType = int.Parse(dr.GetValue(0).ToString());
+                    if (milkType == 0)
+                    {
+                        ++iCowMilkCount;
+                        fCowTotalMilkWeight += dr.GetFloat(1);
+                        if (cowCounter == 0) fCowAvgMilkFat = dr.GetFloat(2);
+                        else fCowAvgMilkFat = (fCowAvgMilkFat + dr.GetFloat(2)) / 2;
+                        if (cowCounter == 0) fCowAvgMilkSNF = dr.GetFloat(3);
+                        else fCowAvgMilkSNF = (fCowAvgMilkSNF + dr.GetFloat(3) / 2);
+                        if (cowCounter == 0) fCowAvgMilkDegree = dr.GetFloat(4);
+                        else fCowAvgMilkDegree = (fCowAvgMilkDegree + dr.GetFloat(4) / 2);
+                        if (cowCounter == 0) fCowAvgMilkRate = dr.GetFloat(5);
+                        else fCowAvgMilkRate = (fCowAvgMilkRate + dr.GetFloat(5) / 2);
+                        fCowTotalMilkAmount += dr.GetFloat(6);
+                        ++cowCounter;
+                    }
+                    else if (milkType == 1)
+                    {
+                        ++iBuffMilkCount;
+                        fBuffTotalMilkWeight += dr.GetFloat(1);
+                        if (buffCounter == 0) fBuffAvgMilkFat = dr.GetFloat(2);
+                        else fBuffAvgMilkFat = (fBuffAvgMilkFat + dr.GetFloat(2)) / 2;
+                        if (buffCounter == 0) fBuffAvgMilkSNF = dr.GetFloat(3);
+                        else fBuffAvgMilkSNF = (fBuffAvgMilkSNF + dr.GetFloat(3) / 2);
+                        if (buffCounter == 0) fBuffAvgMilkDegree = dr.GetFloat(4);
+                        else fBuffAvgMilkDegree = (fBuffAvgMilkDegree + dr.GetFloat(4) / 2);
+                        if (buffCounter == 0) fBuffAvgMilkRate = dr.GetFloat(5);
+                        else fBuffAvgMilkRate = (fBuffAvgMilkRate + dr.GetFloat(5) / 2);
+                        fBuffTotalMilkAmount += dr.GetFloat(6);
+                        ++buffCounter;
+                    }
+                }
+                con.Close();
+
+                // Set data for ***COW***
+                this.CowNumCustTextBox.Text = iCowMilkCount.ToString();
+                this.CowTotMilkTextBox.Text = Math.Round(fCowTotalMilkWeight, 1).ToString();
+                this.CowAverageFatTextBox.Text = Math.Round(fCowAvgMilkFat, 1).ToString();
+                this.CowAverageSNFTextBox.Text = Math.Round(fCowAvgMilkSNF, 1).ToString();
+                this.CowAverageDegreeTextBox.Text = Math.Round(fCowAvgMilkDegree, 1).ToString();
+                this.m_pCowAvgMilkRate.Text = Math.Round(fCowAvgMilkRate, 1).ToString();
+                this.m_pCowTotAmountTextBox.Text = Math.Round(fCowTotalMilkAmount, 1).ToString();
+                // Set data for ***BUFFALLO***
+                this.BuffNumCustTextBox.Text = iBuffMilkCount.ToString();
+                this.BuffTotMilkTextBox.Text = Math.Round(fBuffTotalMilkWeight, 1).ToString();
+                this.BuffAverageFatTextBox.Text = Math.Round(fBuffAvgMilkFat, 1).ToString();
+                this.BuffAverageSNFTextBox.Text = Math.Round(fBuffAvgMilkSNF, 1).ToString();
+                this.BuffAverageDegreeTextBox.Text = Math.Round(fBuffAvgMilkDegree, 1).ToString();
+                this.m_pBuffAvgMilkRate.Text = Math.Round(fBuffAvgMilkRate, 1).ToString();
+                this.m_pBuffTotAmountTextBox.Text = Math.Round(fBuffTotalMilkAmount, 1).ToString();
+
+                this.m_pTotalMilkTB.Text = (fCowTotalMilkWeight + fBuffTotalMilkWeight).ToString();
+                this.m_pTotalMilkAmountTB.Text = (fCowTotalMilkAmount + fBuffTotalMilkAmount).ToString();
+            }
+
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show("LPError : " + ex.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+            return 0;
+        }
     }
 }
