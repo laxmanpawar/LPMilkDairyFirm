@@ -563,7 +563,11 @@ namespace LogInForm
             if (!string.IsNullOrEmpty(this.CowFatTextBox.Text) && !string.IsNullOrEmpty(this.CowDegreeTextBox.Text))
             {
                 CalculateSNFMilkRate();
-                if (!string.IsNullOrEmpty(CowWeightTextBox.Text)) CalculateMilkRateAndAmount(this.CowSNFTextBox.Text, this.CowFatTextBox.Text);
+                if (!string.IsNullOrEmpty(CowWeightTextBox.Text))
+                {
+                    int isSuccess = CalculateMilkRateAndAmount(this.CowSNFTextBox.Text, this.CowFatTextBox.Text);
+                    if (isSuccess == 1) CowWeightTextBox.Focus();
+                }
             }
         }
 
@@ -572,7 +576,11 @@ namespace LogInForm
             if (!string.IsNullOrEmpty(this.CowFatTextBox.Text) && !string.IsNullOrEmpty(this.CowDegreeTextBox.Text))
             {
                 CalculateSNFMilkRate();
-                if (!string.IsNullOrEmpty(CowWeightTextBox.Text)) CalculateMilkRateAndAmount(this.CowSNFTextBox.Text, this.CowFatTextBox.Text);
+                if (!string.IsNullOrEmpty(CowWeightTextBox.Text))
+                {
+                    int isSuccess = CalculateMilkRateAndAmount(this.CowSNFTextBox.Text, this.CowFatTextBox.Text);
+                    if (isSuccess == 1) CowFatTextBox.Focus();
+                }
             }
         }
 
@@ -581,7 +589,11 @@ namespace LogInForm
             if (!string.IsNullOrEmpty(this.CowFatTextBox.Text) && !string.IsNullOrEmpty(this.CowDegreeTextBox.Text))
             {
                 CalculateSNFMilkRate();
-                if (!string.IsNullOrEmpty(CowWeightTextBox.Text)) CalculateMilkRateAndAmount(this.CowSNFTextBox.Text, this.CowFatTextBox.Text);
+                if (!string.IsNullOrEmpty(CowWeightTextBox.Text))
+                {
+                    int isSuccess = CalculateMilkRateAndAmount(this.CowSNFTextBox.Text, this.CowFatTextBox.Text);
+                    if (isSuccess == 1) CowDegreeTextBox.Focus();
+                }
             }
         }
 
@@ -590,7 +602,10 @@ namespace LogInForm
             if (!string.IsNullOrEmpty(this.BuffFatTextBox.Text) && !string.IsNullOrEmpty(this.BuffDegreeTextBox.Text))
             {
                 CalculateSNFMilkRate();
-                if (!string.IsNullOrEmpty(BuffWeightTextBox.Text)) CalculateMilkRateAndAmount(this.BuffSNFTextBox.Text, this.BuffFatTextBox.Text);
+                if (!string.IsNullOrEmpty(BuffWeightTextBox.Text))
+                {
+                    int isSuccess = CalculateMilkRateAndAmount(this.BuffSNFTextBox.Text, this.BuffFatTextBox.Text);
+                }
             }
         }
 
@@ -599,7 +614,10 @@ namespace LogInForm
             if (!string.IsNullOrEmpty(this.BuffFatTextBox.Text) && !string.IsNullOrEmpty(this.BuffDegreeTextBox.Text))
             {
                 CalculateSNFMilkRate();
-                if (!string.IsNullOrEmpty(BuffWeightTextBox.Text)) CalculateMilkRateAndAmount(this.BuffSNFTextBox.Text, this.BuffFatTextBox.Text);
+                if (!string.IsNullOrEmpty(BuffWeightTextBox.Text))
+                {
+                    int isSuccess = CalculateMilkRateAndAmount(this.BuffSNFTextBox.Text, this.BuffFatTextBox.Text);
+                }
             }
         }
 
@@ -608,7 +626,10 @@ namespace LogInForm
             if (!string.IsNullOrEmpty(this.BuffFatTextBox.Text) && !string.IsNullOrEmpty(this.BuffDegreeTextBox.Text))
             {
                 CalculateSNFMilkRate();
-                if (!string.IsNullOrEmpty(BuffWeightTextBox.Text)) CalculateMilkRateAndAmount(this.BuffSNFTextBox.Text, this.BuffFatTextBox.Text);
+                if (!string.IsNullOrEmpty(BuffWeightTextBox.Text))
+                {
+                    int isSuccess = CalculateMilkRateAndAmount(this.BuffSNFTextBox.Text, this.BuffFatTextBox.Text);
+                }
             }
         }
 
