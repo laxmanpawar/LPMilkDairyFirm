@@ -25,15 +25,7 @@ namespace LogInForm
         {
             try
             {
-                if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
-                {
-                    SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                    string query = "SELECT * FROM MILK_RATE_CHART";
-                    SqlDataAdapter sda = new SqlDataAdapter(query, con);
-                    DataTable dt = new DataTable();
-                    sda.Fill(dt);
-                    this.RateChartDataGridView.DataSource = dt;
-                }
+                FatFromTextBox.Focus();
             }
             catch(Exception exc)
             {
@@ -108,7 +100,8 @@ namespace LogInForm
             if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
             {
                 // TODO : Laxman 
-                //MessageBox.Show("LPInfo : Old Rate chart is present. Do yo want to overwrite")
+                DialogResult res = MessageBox.Show("LPInfo : जुना दर पत्रक उपस्थित आहे. आपण ते हटवू इच्छिता?", "LPInfo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (res == DialogResult.No) return;
                 LPSQLTableUtils.DeleteSQLTableFromDB("MILK_RATE_CHART");
             }
 
@@ -117,8 +110,14 @@ namespace LogInForm
 
             for (int i = 0; i < this.RateChartDataGridView.Columns.Count; ++i)
             {
+                if (i == 0)
+                {
+                    columnNames.Add("FAT");
+                    columnTypes.Add("FLOAT");
+                    continue;
+                }
                 columnNames.Add(RateChartDataGridView.Columns[i].HeaderText);
-                columnTypes.Add("INT");
+                columnTypes.Add("FLOAT");
             }
 
             // Create new SQL Table for RateChart
@@ -131,14 +130,17 @@ namespace LogInForm
             query.Append("Insert into ");
             query.Append("MILK_RATE_CHART values");
 
+            int rowCounter = 0;
             foreach(DataGridViewRow dgvr in RateChartDataGridView.Rows)
             {
                 for (int i = 0; i < columnNames.Count; ++i)
                 {
-                    if (i == 0) query.Append("(" + dgvr.Cells[i].Value.ToString());
+                    if (i%columnNames.Count == 0) query.Append("(" + this.RateChartDataGridView.Rows[rowCounter].HeaderCell.Value.ToString());
                     else query.Append(", " + dgvr.Cells[i].Value.ToString());
                 }
-                query.Append(");");
+                ++rowCounter; 
+                if (rowCounter == RateChartDataGridView.Rows.Count) query.Append(")");
+                else query.Append("),");
             }
 
             SqlCommand cmd = new SqlCommand(query.ToString(), con);
@@ -154,5 +156,59 @@ namespace LogInForm
             con.Close();
         }
 
+        private void m_pLoadExistingButton_Click(object sender, EventArgs e)
+        {
+            if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
+                {
+                    SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                    string query = "SELECT * FROM MILK_RATE_CHART";
+                    SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    this.RateChartDataGridView.DataSource = dt;
+                }
+        }
+
+        private void m_pResetButton_Click(object sender, EventArgs e)
+        {
+            this.RateChartDataGridView.Rows.Clear();
+            this.RateChartDataGridView.Columns.Clear();
+            
+        }
+
+        private void m_pPasteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RateChartDataGridView.Focus();
+                RateChartDataGridView.CurrentCell = RateChartDataGridView[1, 1];
+                string copiedText = Clipboard.GetText();
+                string[] lines = copiedText.Replace("\n", "").Split('\r');
+                string[] fields;
+                int row = 0;
+                int column = 0;
+                foreach (string line in lines)
+                {
+                    fields = line.Split('\t');
+                    foreach (string f in fields)
+                        RateChartDataGridView[column++, row].Value = f;
+                    row++;
+                    column = 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
