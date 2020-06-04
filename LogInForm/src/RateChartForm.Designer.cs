@@ -46,7 +46,6 @@
             this.m_pSaveButton = new System.Windows.Forms.Button();
             this.m_pResetButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.m_pLoadExistingButton = new System.Windows.Forms.Button();
             this.m_pPasteButton = new System.Windows.Forms.Button();
             this.BranchGroupBox.SuspendLayout();
@@ -323,7 +322,6 @@
         private System.Windows.Forms.Button m_pSaveButton;
         private System.Windows.Forms.Button m_pResetButton;
         private System.Windows.Forms.Button CancelButton;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button m_pLoadExistingButton;
         private System.Windows.Forms.Button m_pPasteButton;
     }
