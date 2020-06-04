@@ -36,7 +36,7 @@ namespace LogInForm
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             try
-            {
+            { 
                 if (!string.IsNullOrEmpty(FatFromTextBox.Text) && !string.IsNullOrEmpty(FatToTextBox.Text) && !string.IsNullOrEmpty(SNFFromTextBox.Text) && !string.IsNullOrEmpty(SNFToTextBox.Text))
                 {
                     RateChartDataGridView.Rows.Clear();
