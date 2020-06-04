@@ -7,6 +7,7 @@ D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.csprojAssemblyReferenc
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.csproj.ResolveComReference.cache
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.AddCustDataForm.resources
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.LogInForm.resources
+D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.LPMainWindow.resources
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.MilkCollectionForm.resources
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.Properties.Resources.resources
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.RateChartForm.resources
@@ -18,4 +19,3 @@ D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\mr\LogInForm.resources.dll
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\mr-IN\LogInForm.resources.dll
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.exe
 D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.pdb
-D:\Products\LPMilkDairyFirm\LogInForm\obj\Debug\LogInForm.LPMainWindow.resources
