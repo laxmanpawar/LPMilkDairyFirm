@@ -99,7 +99,6 @@ namespace LogInForm
         {
             if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
             {
-                // TODO : Laxman 
                 DialogResult res = MessageBox.Show("LPInfo : जुना दर पत्रक उपस्थित आहे. आपण ते हटवू इच्छिता?", "LPInfo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (res == DialogResult.No) return;
                 LPSQLTableUtils.DeleteSQLTableFromDB("MILK_RATE_CHART");
