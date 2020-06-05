@@ -137,7 +137,7 @@ namespace LogInForm
                 {
                     SaveDailyCustMilkDataButton.Focus();
                     DialogResult result = MessageBox.Show("LPInfo : Customer id already present.\nDo you want to still continue?", "LPInfo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
+                    if (result == DialogResult.Yes) UpdateDailyCustomerData();
                     sqlCon.Close();
                 }
                 else
@@ -261,7 +261,7 @@ namespace LogInForm
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                string query = "Select CUST_CODE, CUST_NAME, MILK_TYPE, MILK_WEIGHT, MILK_FAT, MILK_SNF, MILK_DEGREE, MILK_RATE, MILK_AMOUNT from " + m_sCustMilkDataTableName + "";
+                string query = "Select CUST_CODE, CUST_NAME, MILK_WEIGHT, MILK_FAT, MILK_SNF, MILK_DEGREE, MILK_RATE, MILK_AMOUNT from " + m_sCustMilkDataTableName + "";
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
                 DataTable dataTable = new DataTable();
@@ -316,10 +316,15 @@ namespace LogInForm
 
         private void UpdateDailyCustMilkDataButton_Click(object sender, EventArgs e)
         {
+            UpdateDailyCustomerData();
+        }
+
+        private int UpdateDailyCustomerData()
+        {
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                string query = "Update " + m_sCustMilkDataTableName + " set CUST_CODE = @ccode, CUST_NAME = @cname, DATE = @datetime, MILK_TYPE = @milkType, MILK_WEIGHT = @weight, MILK_FAT = @fat, MILK_SNF = @SNF, MILK_DEGREE = @degree, MILK_RATE = @milkRate, MILK_AMOUNT =  @amount Where CUST_CODE = @ccode";
+                string query = "Update " + m_sCustMilkDataTableName + " set CUST_CODE = @ccode, CUST_NAME = @cname, MILK_DATE = @datetime, MILK_TYPE = @milkType, MILK_WEIGHT = @weight, MILK_FAT = @fat, MILK_SNF = @SNF, MILK_DEGREE = @degree, MILK_RATE = @milkRate, MILK_AMOUNT =  @amount Where CUST_CODE = @ccode";
                 SqlCommand cmd = new SqlCommand(query, sqlConnection);
 
                 // Add data
@@ -346,13 +351,16 @@ namespace LogInForm
                 else
                 {
                     MessageBox.Show("Failed to update Customer Milk data.", "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
                 }
                 sqlConnection.Close();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
+            return 0;
         }
 
         private void CustMilkDataGridView_MouseDoubleClick(object sender, MouseEventArgs e)
