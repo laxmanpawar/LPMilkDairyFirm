@@ -59,7 +59,7 @@ namespace LogInForm
 
                 SqlConnection sqlCon = new SqlConnection(strConnectionString);
 
-                string isCustExistsQuery = "select * from CUSTOMER_DATA_TABLE where CUST_ID = @custid";
+                string isCustExistsQuery = "select * from " + LPGlobalVariables.m_sCustomerDataTable + " where CUST_ID = @custid";
                 SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
                 isCustExistsCmd.Parameters.AddWithValue("@custid", CustIdTextBox.Text);
 
@@ -75,7 +75,7 @@ namespace LogInForm
                 else
                 {
                     sqlCon.Close();
-                    string query = "insert into CUSTOMER_DATA_TABLE values(@custid, @custname, @custmilktype, @custmob)";
+                    string query = "insert into " + LPGlobalVariables.m_sCustomerDataTable + " values(@custid, @custname, @custmilktype, @custmob)";
 
                     SqlCommand cmd = new SqlCommand(query, sqlCon);
                     cmd.Parameters.AddWithValue("@custid", CustIdTextBox.Text);

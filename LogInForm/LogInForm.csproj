@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\BillReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\BillReportForm.Designer.cs">
+      <DependentUpon>BillReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\AddCustDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,7 @@
     <Compile Include="src\LogInForm.Designer.cs">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\LPGlobalVariables.cs" />
     <Compile Include="src\LPMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +114,9 @@
     <Compile Include="src\RateChartForm.Designer.cs">
       <DependentUpon>RateChartForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="src\BillReportForm.resx">
+      <DependentUpon>BillReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\AddCustDataForm.mr.resx">
       <DependentUpon>AddCustDataForm.cs</DependentUpon>
     </EmbeddedResource>

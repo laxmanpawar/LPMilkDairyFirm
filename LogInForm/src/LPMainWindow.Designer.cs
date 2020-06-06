@@ -48,6 +48,7 @@ namespace LogInForm
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddCustDataButton = new System.Windows.Forms.Button();
             this.RateChartFeedButton = new System.Windows.Forms.Button();
+            this.m_pBillReportButton = new System.Windows.Forms.Button();
             this.CollectionGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LordPictureBox)).BeginInit();
             this.MenuBar.SuspendLayout();
@@ -211,11 +212,24 @@ namespace LogInForm
             this.RateChartFeedButton.UseVisualStyleBackColor = true;
             this.RateChartFeedButton.Click += new System.EventHandler(this.RateChartFeedButton_Click);
             // 
+            // m_pBillReportButton
+            // 
+            this.m_pBillReportButton.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m_pBillReportButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.m_pBillReportButton.Location = new System.Drawing.Point(13, 158);
+            this.m_pBillReportButton.Name = "m_pBillReportButton";
+            this.m_pBillReportButton.Size = new System.Drawing.Size(108, 44);
+            this.m_pBillReportButton.TabIndex = 5;
+            this.m_pBillReportButton.Text = "बिल रीपोर्ट";
+            this.m_pBillReportButton.UseVisualStyleBackColor = true;
+            this.m_pBillReportButton.Click += new System.EventHandler(this.m_pBillReportButton_Click);
+            // 
             // LPMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 611);
+            this.Controls.Add(this.m_pBillReportButton);
             this.Controls.Add(this.RateChartFeedButton);
             this.Controls.Add(this.AddCustDataButton);
             this.Controls.Add(this.LordPictureBox);
@@ -254,5 +268,6 @@ namespace LogInForm
         private ToolStripMenuItem quiteToolStripMenuItem2;
         private Button AddCustDataButton;
         private Button RateChartFeedButton;
+        private Button m_pBillReportButton;
     }
 }

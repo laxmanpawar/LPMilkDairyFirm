@@ -15,10 +15,10 @@ namespace LogInForm
         public static string m_sSqlConnectionString = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
         public static int IsTableExists(string tableName)
         {
+            SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
             int isExists = 0;
             try
             {
-                SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
                 string isTablePresentQuery = "SELECT CASE WHEN OBJECT_ID('" + tableName + "', 'U') IS NOT NULL THEN 1 ELSE 0 END";
                 SqlCommand isTableExistsCmd = new SqlCommand(isTablePresentQuery, sqlCon);
                 sqlCon.Open();
@@ -27,6 +27,7 @@ namespace LogInForm
             }
             catch (Exception exc)
             {
+                sqlCon.Close();
                 MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
@@ -51,9 +52,9 @@ namespace LogInForm
 
         public static int DeleteSQLTableFromDB(string tableName)
         {
+            SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
             try
             {
-                SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
                 if (LPSQLTableUtils.IsTableExists(tableName) == 1)
                 {
                     string query = "DROP TABLE " + tableName;
@@ -65,6 +66,7 @@ namespace LogInForm
             }
             catch (Exception exc)
             {
+                sqlCon.Close();
                 MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
             }

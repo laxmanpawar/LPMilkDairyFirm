@@ -46,5 +46,11 @@ namespace LogInForm
         {
             Program.m_pLogInForm.Close();
         }
+
+        private void m_pBillReportButton_Click(object sender, EventArgs e)
+        {
+            BillReportForm billReport = new BillReportForm();
+            billReport.Show();
+        }
     }
 }

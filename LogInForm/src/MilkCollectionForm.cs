@@ -50,7 +50,7 @@ namespace LogInForm
             }
             SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
-            string isCustExistsQuery = "Select * from CUSTOMER_DATA_TABLE Where CUST_ID = @custid";
+            string isCustExistsQuery = "Select * from " + LPGlobalVariables.m_sCustomerDataTable + " Where CUST_ID = @custid";
             SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
             isCustExistsCmd.Parameters.AddWithValue("@custid", CustCodeTextBox.Text);
 
@@ -256,8 +256,9 @@ namespace LogInForm
             return 0;
         }
 
-        void BindDataGridView()
+        public int BindDataGridView()
         {
+            if (LPSQLTableUtils.IsTableExists(m_sCustMilkDataTableName) == 0) return 0;
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
@@ -272,7 +273,9 @@ namespace LogInForm
             catch (Exception exc)
             {
                 MessageBox.Show("LPERROR : " + exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
+            return 0;
         }
 
         void ResetAllCustMilkDataFields()
@@ -368,16 +371,6 @@ namespace LogInForm
             try
             {
                 ShowSelectedUserData(CustCodeTextBox.Text);
-                /*CustCodeTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                CustNameTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[1].Value.ToString();
-                // TODO : Laxman Update Milk type
-                //MilkTypeComboBox.Text = MilkTypeComboBox.;
-                CowWeightTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[2].Value.ToString();
-                CowFatTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[3].Value.ToString();
-                CowSNFTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[4].Value.ToString();
-                CowDegreeTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[5].Value.ToString();
-                CowMilkRateTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[6].Value.ToString();
-                CowAmountTextBox.Text = CustMilkDataGridView.SelectedRows[0].Cells[7].Value.ToString();*/
             }
             catch (Exception exc)
             {
@@ -453,15 +446,15 @@ namespace LogInForm
 
         private int CalculateMilkRateAndAmount(string snfVal, string fatVal)
         {
+            float milkRate = 0;
+            float milkAmount = 0;
+
+            SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
             try
             {
-                SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
                 string query = "SELECT [" + snfVal + "] FROM MILK_RATE_CHART WHERE [FAT] = @cfat";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@cfat", fatVal);
-
-                float milkRate = 0;
-                float milkAmount = 0;
 
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -469,10 +462,49 @@ namespace LogInForm
                 {
                     object pMilkRate = dr.GetValue(0);
                     milkRate = float.Parse(pMilkRate.ToString());
+                    con.Close();
+                }
+                else 
+                { 
+                    con.Close();
+                    query = "SELECT [" + snfVal + "] FROM DEFAULT_MILK_RATE_CHART WHERE [FAT] = @cfat";
+                    SqlCommand cmd1 = new SqlCommand(query, con);
+                    cmd1.Parameters.AddWithValue("@cfat", fatVal);
 
+                    con.Open();
+                    SqlDataReader dr1 = cmd1.ExecuteReader();
+                    if (dr1.Read())
+                    {
+                        object pMilkRate = dr1.GetValue(0);
+                        milkRate = float.Parse(pMilkRate.ToString());
+                    }
+                    con.Close();
+                }
+            }
+            catch(SqlException sqlExc)
+            {
+                con.Close();
+                string query = "SELECT [" + snfVal + "] FROM DEFAULT_MILK_RATE_CHART WHERE [FAT] = @cfat";
+                SqlCommand cmd1 = new SqlCommand(query, con);
+                cmd1.Parameters.AddWithValue("@cfat", fatVal);
+
+                con.Open();
+                SqlDataReader dr1 = cmd1.ExecuteReader();
+                if (dr1.Read())
+                {
+                    object pMilkRate = dr1.GetValue(0);
+                    milkRate = float.Parse(pMilkRate.ToString());
                 }
                 con.Close();
-
+                return 0;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+            finally
+            {
                 // Set Values 
                 if (this.MilkTypeComboBox.SelectedIndex == 0)
                 {
@@ -486,11 +518,6 @@ namespace LogInForm
                     milkAmount = float.Parse(BuffWeightTextBox.Text) * float.Parse(milkRate.ToString());
                     BuffAmountTextBox.Text = milkAmount.ToString();
                 }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
             }
             return 0;
         }

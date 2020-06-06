@@ -97,11 +97,19 @@ namespace LogInForm
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
+            if(LPSQLTableUtils.IsTableExists(LPGlobalVariables.m_sDefMilkRateChartTable) == 1)
+            {
+                LPSQLTableUtils.DeleteSQLTableFromDB(LPGlobalVariables.m_sDefMilkRateChartTable);
+            }
+            
+            // Create Default Rate Chart Table 
+            CreateDefaultRateChart();
+
+            if (LPSQLTableUtils.IsTableExists(LPGlobalVariables.m_sMilkRateChartTable) == 1)
             {
                 DialogResult res = MessageBox.Show("LPInfo : जुना दर पत्रक उपस्थित आहे. आपण ते हटवू इच्छिता?", "LPInfo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (res == DialogResult.No) return;
-                LPSQLTableUtils.DeleteSQLTableFromDB("MILK_RATE_CHART");
+                LPSQLTableUtils.DeleteSQLTableFromDB(LPGlobalVariables.m_sMilkRateChartTable);
             }
 
             List<string> columnTypes = new List<string>();
@@ -120,7 +128,7 @@ namespace LogInForm
             }
 
             // Create new SQL Table for RateChart
-            LPSQLTableUtils.CreateSQLTableInDB("MILK_RATE_CHART", columnNames, columnTypes);
+            LPSQLTableUtils.CreateSQLTableInDB(LPGlobalVariables.m_sMilkRateChartTable, columnNames, columnTypes);
 
             // Add Rows to SQL Table
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
@@ -157,7 +165,7 @@ namespace LogInForm
 
         private void m_pLoadExistingButton_Click(object sender, EventArgs e)
         {
-            if (LPSQLTableUtils.IsTableExists("MILK_RATE_CHART") == 1)
+            if (LPSQLTableUtils.IsTableExists(LPGlobalVariables.m_sMilkRateChartTable) == 1)
                 {
                     SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
                     string query = "SELECT * FROM MILK_RATE_CHART";
@@ -208,6 +216,90 @@ namespace LogInForm
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private int CreateDefaultRateChart()
+        {
+            try
+            {
+                List<string> columnNames = new List<string>();
+                List<string> columnTypes = new List<string>();
+
+                double dMinSNFVal = 7.0;
+                double dMinFatVal = 2.0;
+
+                for (double i = dMinSNFVal - 0.1; i <= Convert.ToDouble(SNFToTextBox.Text); i += 0.1)
+                {
+                    i = Math.Round(i, 1);
+                    if (i == dMinSNFVal - 0.1)
+                    {
+                        columnNames.Add("FAT");
+                        columnTypes.Add("FLOAT");
+                        continue;
+                    }
+                    columnNames.Add(i.ToString());
+                    columnTypes.Add("FLOAT");
+                }
+                LPSQLTableUtils.CreateSQLTableInDB(LPGlobalVariables.m_sDefMilkRateChartTable, columnNames, columnTypes);
+
+                // Add Rows to SQL Table
+                SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                StringBuilder query = new StringBuilder();
+                query.Append("INSERT INTO " + LPGlobalVariables.m_sDefMilkRateChartTable + " VALUES");
+
+                double dMinMilkRateVal = 10.5;
+                double dStartMilkRate = dMinMilkRateVal;
+                for (double rowVal = dMinFatVal; rowVal <= Convert.ToDouble(FatToTextBox.Text); rowVal += 0.1)
+                {
+                    rowVal = Math.Round(rowVal, 1);
+                    double dMilkRate = dMinMilkRateVal;
+                    if (rowVal <= 2.5)
+                    {
+                        dStartMilkRate = 10.5;
+                        dMilkRate = dStartMilkRate;
+                    }
+                    else if (rowVal > 2.5 && rowVal <= 3.5)
+                    {
+                        dStartMilkRate = dStartMilkRate + 0.5;
+                        dMilkRate = dStartMilkRate;
+                    }
+                    else if (rowVal > 3.5)
+                    {
+                        dStartMilkRate = dStartMilkRate + 0.2;
+                        dMilkRate = dStartMilkRate;
+                    }
+                    for (int i = 0; i < columnNames.Count; ++i)
+                    {
+                        if (i % columnNames.Count == 0)
+                        {
+                            query.Append("(" + rowVal.ToString());
+                            continue;
+                        }
+                        else query.Append(", " + dMilkRate.ToString());
+                        dMilkRate += 0.3;
+                    }
+                    if (rowVal == Convert.ToDouble(FatToTextBox.Text)) query.Append(")");
+                    else query.Append("),");
+                }
+
+                SqlCommand cmd = new SqlCommand(query.ToString(), con);
+
+                con.Open();
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("LPInfo : New default Rate chart is updated Successfully.", "LPINFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else MessageBox.Show("LPInfo : New default Rate chart is upadatoin failed.", "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                con.Close();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return 0;
         }
     }
 }

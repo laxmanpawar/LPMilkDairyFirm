@@ -26,7 +26,7 @@ namespace LogInForm
             //Application.Run(Program.m_pLogInForm);
             
             // Temp Function.
-            Application.Run(new LPMainWindow());
+            Application.Run(new BillReportForm());
         }
     }
 }
