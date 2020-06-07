@@ -16,5 +16,10 @@ namespace LogInForm.src
         {
             InitializeComponent();
         }
+
+        private void LPBillReportViewerForm_Load(object sender, EventArgs e)
+        {
+            this.m_pBillReportViewer.RefreshReport();
+        }
     }
 }
