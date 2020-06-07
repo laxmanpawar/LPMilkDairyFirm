@@ -35,6 +35,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\BUILD_LPMilkDairyFirm_VC14\bin\Debug</OutputPath>
+		<BaseIntermediateOutputPath >..\..\BUILD_LPMilkDairyFirm_VC14\obj</BaseIntermediateOutputPath >
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -44,6 +45,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\BUILD_LPMilkDairyFirm_VC14\bin\Release</OutputPath>
+    <BaseIntermediateOutputPath >..\..\BUILD_LPMilkDairyFirm_VC14\obj</BaseIntermediateOutputPath >
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
