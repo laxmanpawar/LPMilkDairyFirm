@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CustomerMilkDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMER_MILK_DATA">
+          <Key>
+            <PropertyRef Name="CUST_CODE" />
+            <PropertyRef Name="MILK_DATE" />
+            <PropertyRef Name="MILK_TIME" />
+          </Key>
+          <Property Name="CUST_CODE" Type="int" Nullable="false" />
+          <Property Name="CUST_NAME" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MILK_DATE" Type="date" Nullable="false" />
+          <Property Name="MILK_TIME" Type="int" Nullable="false" />
+          <Property Name="MILK_TYPE" Type="int" Nullable="false" />
+          <Property Name="MILK_WEIGHT" Type="real" Nullable="false" />
+          <Property Name="MILK_FAT" Type="real" Nullable="false" />
+          <Property Name="MILK_SNF" Type="real" Nullable="false" />
+          <Property Name="MILK_DEGREE" Type="real" Nullable="false" />
+          <Property Name="MILK_RATE" Type="real" Nullable="false" />
+          <Property Name="MILK_AMOUNT" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CustomerMilkDataModelStoreContainer">
+          <EntitySet Name="CUSTOMER_MILK_DATA" EntityType="Self.CUSTOMER_MILK_DATA" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CustomerMilkDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CUSTOMER_MILK_DATA">
+          <Key>
+            <PropertyRef Name="CUST_CODE" />
+            <PropertyRef Name="MILK_DATE" />
+            <PropertyRef Name="MILK_TIME" />
+          </Key>
+          <Property Name="CUST_CODE" Type="Int32" Nullable="false" />
+          <Property Name="CUST_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MILK_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MILK_TIME" Type="Int32" Nullable="false" />
+          <Property Name="MILK_TYPE" Type="Int32" Nullable="false" />
+          <Property Name="MILK_WEIGHT" Type="Single" Nullable="false" />
+          <Property Name="MILK_FAT" Type="Single" Nullable="false" />
+          <Property Name="MILK_SNF" Type="Single" Nullable="false" />
+          <Property Name="MILK_DEGREE" Type="Single" Nullable="false" />
+          <Property Name="MILK_RATE" Type="Single" Nullable="false" />
+          <Property Name="MILK_AMOUNT" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CustomerMilkDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUSTOMER_MILK_DATA" EntityType="Self.CUSTOMER_MILK_DATA" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CustomerMilkDataModelStoreContainer" CdmEntityContainer="CustomerMilkDataEntities">
+          <EntitySetMapping Name="CUSTOMER_MILK_DATA">
+            <EntityTypeMapping TypeName="CustomerMilkDataModel.CUSTOMER_MILK_DATA">
+              <MappingFragment StoreEntitySet="CUSTOMER_MILK_DATA">
+                <ScalarProperty Name="CUST_CODE" ColumnName="CUST_CODE" />
+                <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+                <ScalarProperty Name="MILK_DATE" ColumnName="MILK_DATE" />
+                <ScalarProperty Name="MILK_TIME" ColumnName="MILK_TIME" />
+                <ScalarProperty Name="MILK_TYPE" ColumnName="MILK_TYPE" />
+                <ScalarProperty Name="MILK_WEIGHT" ColumnName="MILK_WEIGHT" />
+                <ScalarProperty Name="MILK_FAT" ColumnName="MILK_FAT" />
+                <ScalarProperty Name="MILK_SNF" ColumnName="MILK_SNF" />
+                <ScalarProperty Name="MILK_DEGREE" ColumnName="MILK_DEGREE" />
+                <ScalarProperty Name="MILK_RATE" ColumnName="MILK_RATE" />
+                <ScalarProperty Name="MILK_AMOUNT" ColumnName="MILK_AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
