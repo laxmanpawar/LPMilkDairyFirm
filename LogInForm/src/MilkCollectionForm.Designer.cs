@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainLabel = new System.Windows.Forms.Label();
             this.BranchLabel = new System.Windows.Forms.Label();
             this.BranchNamesComboBox = new System.Windows.Forms.ComboBox();
             this.DateLabel = new System.Windows.Forms.Label();
-            this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.m_pMilkDate = new System.Windows.Forms.DateTimePicker();
             this.CustomerMilkDataTabel = new System.Windows.Forms.TableLayoutPanel();
             this.BuffMilkRateTextBox = new System.Windows.Forms.TextBox();
             this.BuffAmountTextBox = new System.Windows.Forms.TextBox();
@@ -145,19 +145,19 @@
             this.DateLabel.TabIndex = 6;
             this.DateLabel.Text = "दिनांक";
             // 
-            // DateTimePicker
+            // m_pMilkDate
             // 
-            this.DateTimePicker.CustomFormat = "dd-MM-yyyy";
-            this.DateTimePicker.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold);
-            this.DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePicker.Location = new System.Drawing.Point(312, 74);
-            this.DateTimePicker.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
-            this.DateTimePicker.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.DateTimePicker.Name = "DateTimePicker";
-            this.DateTimePicker.Size = new System.Drawing.Size(126, 31);
-            this.DateTimePicker.TabIndex = 7;
-            this.DateTimePicker.TabStop = false;
-            this.DateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
+            this.m_pMilkDate.CustomFormat = "dd-MM-yyyy";
+            this.m_pMilkDate.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold);
+            this.m_pMilkDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.m_pMilkDate.Location = new System.Drawing.Point(312, 74);
+            this.m_pMilkDate.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.m_pMilkDate.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.m_pMilkDate.Name = "m_pMilkDate";
+            this.m_pMilkDate.Size = new System.Drawing.Size(126, 31);
+            this.m_pMilkDate.TabIndex = 7;
+            this.m_pMilkDate.TabStop = false;
+            this.m_pMilkDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
             // 
             // CustomerMilkDataTabel
             // 
@@ -912,14 +912,14 @@
             this.CustMilkDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CustMilkDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustMilkDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CustMilkDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CustMilkDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.CustMilkDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustMilkDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.CustMilkDataGridView.Location = new System.Drawing.Point(26, 458);
@@ -971,7 +971,7 @@
             this.Controls.Add(this.m_pTotalMilkDetailsTableLayoutPanel);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.CustomerMilkDataTabel);
-            this.Controls.Add(this.DateTimePicker);
+            this.Controls.Add(this.m_pMilkDate);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.BranchNamesComboBox);
             this.Controls.Add(this.BranchLabel);
@@ -1002,7 +1002,7 @@
         private System.Windows.Forms.Label BranchLabel;
         private System.Windows.Forms.ComboBox BranchNamesComboBox;
         private System.Windows.Forms.Label DateLabel;
-        private System.Windows.Forms.DateTimePicker DateTimePicker;
+        private System.Windows.Forms.DateTimePicker m_pMilkDate;
         private System.Windows.Forms.TableLayoutPanel CustomerMilkDataTabel;
         private System.Windows.Forms.Label WeightLabel;
         private System.Windows.Forms.Label FatLabel;

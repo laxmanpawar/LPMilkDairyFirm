@@ -12,14 +12,20 @@ using System.Windows.Forms;
 
 using System.Diagnostics;
 using System.Security.Cryptography;
+using System.Data.Entity.Migrations;
 
 namespace LogInForm
 {
     public partial class MilkCollectionForm : Form
     {
+
+        Model.CUSTOMER_MILK_DATA model = new Model.CUSTOMER_MILK_DATA();
+        Model.CustomerMilkDataEntities db = new Model.CustomerMilkDataEntities();
+
         string m_sMilkCollTime = "सकाळ";
-        string m_sEngMilkCollTime = "Morning";
-        string m_sCustMilkDataTableName = "";
+        int m_iMilkTime = 0;
+        //string m_sEngMilkCollTime = "Morning";
+        string m_sCustMilkDataTableName = LPGlobalVariables.m_sCustDailyMilkDataTable;
         public MilkCollectionForm()
         {
             InitializeComponent();
@@ -38,7 +44,7 @@ namespace LogInForm
                 CustCodeTextBox.Focus();
                 return;
             }
-            if (LPSQLTableUtils.IsTableExists(this.m_sCustMilkDataTableName) == 1 && LPSQLTableUtils.IsColumnPresent(this.m_sCustMilkDataTableName, "CUST_CODE", this.CustCodeTextBox.Text) == 1)
+            if (db.CUSTOMER_MILK_DATA.Find(Convert.ToInt32(CustCodeTextBox.Text), m_pMilkDate.Value.Date, m_iMilkTime)  != null)
             {
                 DialogResult res = MessageBox.Show("ग्राहक डेटा आधीच अस्तित्त्वात आहे. आपण सुधारित करू इच्छिता?", "LPInfo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (res == DialogResult.Yes) ShowSelectedUserData(CustCodeTextBox.Text);
@@ -48,6 +54,8 @@ namespace LogInForm
                     return;
                 }
             }
+
+
             SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
             string isCustExistsQuery = "Select * from " + LPGlobalVariables.m_sCustomerDataTable + " Where CUST_ID = @custid";
@@ -93,14 +101,14 @@ namespace LogInForm
 
             if (m_sMilkCollTime == "सकाळ")
             {
-                m_sEngMilkCollTime = "Morning";
+                m_iMilkTime = 0;
             }
             else if (m_sMilkCollTime == "सायंकाळ")
             {
-                m_sEngMilkCollTime = "Evening";
+                m_iMilkTime = 1;
             }
 
-            m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + DateTimePicker.Value.ToString("dd_MM_yyyy");
+            //m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + m_pMilkDate.Value.ToString("dd_MM_yyyy");
             MainLabel.Text = m_sMilkCollTime + " दूध संकलन";
 
             // Update Total MilkData
@@ -109,12 +117,72 @@ namespace LogInForm
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            /*try
+            {
+                model.CUST_CODE = Convert.ToInt32(CustCodeTextBox.Text);
+                model.CUST_NAME = CustNameTextBox.Text;
+                model.MILK_DATE = m_pMilkDate.Value.Date;
+                model.MILK_TIME = m_iMilkTime;
+
+                bool isExists = db.CUSTOMER_MILK_DATA.Any(x => x.CUST_CODE == model.CUST_CODE && x.MILK_DATE == model.MILK_DATE && x.MILK_TIME == m_iMilkTime);
+
+                if (!isExists)
+                {
+                    model.MILK_TYPE = MilkTypeComboBox.SelectedIndex;
+                    if (MilkTypeComboBox.SelectedIndex == 0)
+                    {
+                        model.MILK_WEIGHT = float.Parse(CowWeightTextBox.Text);
+                        model.MILK_FAT = float.Parse(CowFatTextBox.Text);
+                        model.MILK_SNF = float.Parse(CowSNFTextBox.Text);
+                        model.MILK_DEGREE = float.Parse(CowDegreeTextBox.Text);
+                        model.MILK_RATE = float.Parse(CowMilkRateTextBox.Text);
+                        model.MILK_AMOUNT = float.Parse(CowAmountTextBox.Text);
+                    }
+                    else if (MilkTypeComboBox.SelectedIndex == 1)
+                    {
+                        model.MILK_WEIGHT = float.Parse(BuffWeightTextBox.Text);
+                        model.MILK_FAT = float.Parse(BuffFatTextBox.Text);
+                        model.MILK_SNF = float.Parse(BuffSNFTextBox.Text);
+                        model.MILK_DEGREE = float.Parse(BuffDegreeTextBox.Text);
+                        model.MILK_RATE = float.Parse(BuffMilkRateTextBox.Text);
+                        model.MILK_AMOUNT = float.Parse(BuffAmountTextBox.Text);
+                    }
+
+                    db.CUSTOMER_MILK_DATA.Add(model);
+                    int isSuccess = db.SaveChanges();
+
+                    if (isSuccess > 0)
+                    {
+                        BindDataGridView();
+                        ResetAllCustMilkDataFields();
+                        // Update Total MilkData
+                        //UpdateTotalMilkDetailsTable();
+                        MessageBox.Show("Milk added successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    SaveDailyCustMilkDataButton.Focus();
+                    UpdateDailyCustomerData();
+                }
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.ToString(), "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Failed to add Customer Milk data.", "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+
+            //
+            // TODO : REMOVE Below code is commented bcz we implemented Entity framework
+            //
+            
             try
             {
                 SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
+                /*
                 int isTableExists = LPSQLTableUtils.IsTableExists(m_sCustMilkDataTableName);
-
                 if (isTableExists == 0)
                 {
                     MessageBox.Show("LPInfo : Table is not present in dataBase.", "LPINFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -124,11 +192,13 @@ namespace LogInForm
                     List<string> columnTypes = new List<string>() { "INT primary key", "NVARCHAR(MAX) NOT NULL", "DATE NOT NULL", "int NOT NULL", "FLOAT(10) NOT NULL", "FLOAT(5) NOT NULL", "FLOAT(5) NOT NULL", "FLOAT(5) NOT NULL", "FLOAT(5) NOT NULL", "FLOAT(10) NOT NULL" };
                     LPSQLTableUtils.CreateSQLTableInDB(m_sCustMilkDataTableName, columnNames, columnTypes);
                 }
+                */
 
-
-                string isCustExistsQuery = "select * from " + m_sCustMilkDataTableName + " where CUST_CODE = @custcode";
+                string isCustExistsQuery = "select * from " + m_sCustMilkDataTableName + " where CUST_CODE = @custcode AND MILK_DATE = @milkDate AND MILK_TIME = @milkTime";
                 SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
                 isCustExistsCmd.Parameters.AddWithValue("@custcode", CustCodeTextBox.Text);
+                isCustExistsCmd.Parameters.AddWithValue("@milkDate", m_pMilkDate.Value.Date);
+                isCustExistsCmd.Parameters.AddWithValue("@milkTime", m_iMilkTime);
 
                 sqlCon.Open();
                 SqlDataReader sqlDataReader = isCustExistsCmd.ExecuteReader();
@@ -147,7 +217,7 @@ namespace LogInForm
                     int code = int.Parse(CustCodeTextBox.Text);
                     string name = CustNameTextBox.Text;
                     int iMilkType = MilkTypeComboBox.SelectedIndex;
-                    DateTime dateTime = DateTimePicker.Value;
+                    DateTime dateTime = m_pMilkDate.Value.Date;
 
                     double weight = 0, fat = 0, SNF = 0, degree = 0, milkRate = 0, amount = 0;
                     if (iMilkType == 0)
@@ -171,13 +241,14 @@ namespace LogInForm
 
                     // Save data to sql Server.
                     SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                    string query = "Insert into " + m_sCustMilkDataTableName + " values(@ccode, @cname, @datetime, @milkType, @weight, @fat, @SNF, @degree, @milkRate, @amount)";
+                    string query = "Insert into " + m_sCustMilkDataTableName + " values(@ccode, @cname, @datetime, @milkTime, @milkType, @weight, @fat, @SNF, @degree, @milkRate, @amount)";
                     SqlCommand cmd = new SqlCommand(query, sqlConnection);
 
                     // Add data
                     cmd.Parameters.AddWithValue("@ccode", code);
                     cmd.Parameters.AddWithValue("@cname", name);
                     cmd.Parameters.AddWithValue("@datetime", dateTime);
+                    cmd.Parameters.AddWithValue("@milkTime", m_iMilkTime);
                     cmd.Parameters.AddWithValue("@milkType", iMilkType);
                     cmd.Parameters.AddWithValue("@fat", fat);
                     cmd.Parameters.AddWithValue("@weight", weight);
@@ -217,8 +288,11 @@ namespace LogInForm
             {
                 int iCustCode = int.Parse(custCode);
                 SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                string query = "SELECT * FROM " + this.m_sCustMilkDataTableName + " WHERE CUST_CODE = " + custCode;
+                string query = "SELECT * FROM " + this.m_sCustMilkDataTableName + " WHERE CUST_CODE = @ccode AND MILK_DATE = @milkDate AND MILK_TIME = @milkTime";
                 SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@ccode", iCustCode);
+                cmd.Parameters.AddWithValue("@milkDate", m_pMilkDate.Value.Date);
+                cmd.Parameters.AddWithValue("@milkTime", m_iMilkTime);
 
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -258,7 +332,41 @@ namespace LogInForm
 
         public int BindDataGridView()
         {
-            if (LPSQLTableUtils.IsTableExists(m_sCustMilkDataTableName) == 0) return 0;
+            try
+            {
+                CustMilkDataGridView.DataSource = db.CUSTOMER_MILK_DATA.Where(x => x.MILK_DATE == this.m_pMilkDate.Value.Date && x.MILK_TIME == this.m_iMilkTime).ToList<Model.CUSTOMER_MILK_DATA>();
+
+                CustMilkDataGridView.Columns.Remove("MILK_DATE");
+                CustMilkDataGridView.Columns.Remove("MILK_TIME");
+                CustMilkDataGridView.Columns.Remove("MILK_TYPE");
+                CustMilkDataGridView.Columns["CUST_CODE"].Width = 100;
+                CustMilkDataGridView.Columns["MILK_WEIGHT"].Width = 100;
+                CustMilkDataGridView.Columns["MILK_FAT"].Width = 100;
+                CustMilkDataGridView.Columns["MILK_SNF"].Width = 100;
+                CustMilkDataGridView.Columns["MILK_DEGREE"].Width = 100;
+                CustMilkDataGridView.Columns["MILK_RATE"].Width = 100;
+                CustMilkDataGridView.Columns["MILK_AMOUNT"].Width = 100;
+
+                CustMilkDataGridView.Columns["CUST_CODE"].HeaderText = "कोड";
+                CustMilkDataGridView.Columns["CUST_NAME"].HeaderText = "नाव";
+                CustMilkDataGridView.Columns["MILK_WEIGHT"].HeaderText = "दूध";
+                CustMilkDataGridView.Columns["MILK_FAT"].HeaderText = "फॅट";
+                CustMilkDataGridView.Columns["MILK_SNF"].HeaderText = "SNF";
+                CustMilkDataGridView.Columns["MILK_DEGREE"].HeaderText = "डिग्री";
+                CustMilkDataGridView.Columns["MILK_RATE"].HeaderText = "दर";
+                CustMilkDataGridView.Columns["MILK_AMOUNT"].HeaderText = "रक्कम";
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            //CustMilkDataGridView.DataSource = db.CustomerMilkDatas.ToList<Model.CustomerMilkData>();
+
+            // ***************************************************************************************
+            // TODO : Below code is commented bcz we have used Entity framework to do the below work //
+            // ***************************************************************************************
+            /*if (LPSQLTableUtils.IsTableExists(m_sCustMilkDataTableName) == 0) return 0;
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
@@ -274,7 +382,7 @@ namespace LogInForm
             {
                 MessageBox.Show("LPERROR : " + exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
-            }
+            }*/
             return 0;
         }
 
@@ -326,6 +434,45 @@ namespace LogInForm
         {
             try
             {
+                Model.CUSTOMER_MILK_DATA _MILK_DATA = db.CUSTOMER_MILK_DATA.Find(Convert.ToInt32(CustCodeTextBox.Text), m_pMilkDate.Value.Date, m_iMilkTime);
+                if (_MILK_DATA != null)
+                {
+                    _MILK_DATA.MILK_TYPE = MilkTypeComboBox.SelectedIndex;
+                    if (MilkTypeComboBox.SelectedIndex == 0)
+                    {
+                        _MILK_DATA.MILK_WEIGHT = float.Parse(CowWeightTextBox.Text);
+                        _MILK_DATA.MILK_FAT = float.Parse(CowFatTextBox.Text);
+                        _MILK_DATA.MILK_SNF = float.Parse(CowSNFTextBox.Text);
+                        _MILK_DATA.MILK_DEGREE = float.Parse(CowDegreeTextBox.Text);
+                        _MILK_DATA.MILK_RATE = float.Parse(CowMilkRateTextBox.Text);
+                        _MILK_DATA.MILK_AMOUNT = float.Parse(CowAmountTextBox.Text);
+                    }
+                    else if (MilkTypeComboBox.SelectedIndex == 1)
+                    {
+                        _MILK_DATA.MILK_WEIGHT = float.Parse(BuffWeightTextBox.Text);
+                        _MILK_DATA.MILK_FAT = float.Parse(BuffFatTextBox.Text);
+                        _MILK_DATA.MILK_SNF = float.Parse(BuffSNFTextBox.Text);
+                        _MILK_DATA.MILK_DEGREE = float.Parse(BuffDegreeTextBox.Text);
+                        _MILK_DATA.MILK_RATE = float.Parse(BuffMilkRateTextBox.Text);
+                        _MILK_DATA.MILK_AMOUNT = float.Parse(BuffAmountTextBox.Text);
+                    }
+                    BindDataGridView();
+                    ResetAllCustMilkDataFields();
+                    MessageBox.Show("Customer Milk Data Updated Successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+            
+
+            //
+            // TODO : Implemented DataBase First Approach of Entity Framework
+            //
+            /*try
+            {
                 SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
                 string query = "Update " + m_sCustMilkDataTableName + " set CUST_CODE = @ccode, CUST_NAME = @cname, MILK_DATE = @datetime, MILK_TYPE = @milkType, MILK_WEIGHT = @weight, MILK_FAT = @fat, MILK_SNF = @SNF, MILK_DEGREE = @degree, MILK_RATE = @milkRate, MILK_AMOUNT =  @amount Where CUST_CODE = @ccode";
                 SqlCommand cmd = new SqlCommand(query, sqlConnection);
@@ -333,7 +480,7 @@ namespace LogInForm
                 // Add data
                 cmd.Parameters.AddWithValue("@ccode", int.Parse(CustCodeTextBox.Text));
                 cmd.Parameters.AddWithValue("@cname", CustNameTextBox.Text);
-                cmd.Parameters.AddWithValue("@datetime", DateTimePicker.Value);
+                cmd.Parameters.AddWithValue("@datetime", m_pMilkDate.Value);
                 cmd.Parameters.AddWithValue("@milkType", MilkTypeComboBox.SelectedIndex);
                 cmd.Parameters.AddWithValue("@weight", double.Parse(CowWeightTextBox.Text));
                 cmd.Parameters.AddWithValue("@fat", double.Parse(CowFatTextBox.Text));
@@ -362,7 +509,7 @@ namespace LogInForm
             {
                 MessageBox.Show(exc.Message, "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
-            }
+            }*/
             return 0;
         }
 
@@ -484,18 +631,25 @@ namespace LogInForm
             catch(SqlException sqlExc)
             {
                 con.Close();
-                string query = "SELECT [" + snfVal + "] FROM DEFAULT_MILK_RATE_CHART WHERE [FAT] = @cfat";
-                SqlCommand cmd1 = new SqlCommand(query, con);
-                cmd1.Parameters.AddWithValue("@cfat", fatVal);
-
-                con.Open();
-                SqlDataReader dr1 = cmd1.ExecuteReader();
-                if (dr1.Read())
+                try
                 {
-                    object pMilkRate = dr1.GetValue(0);
-                    milkRate = float.Parse(pMilkRate.ToString());
+                    string query = "SELECT [" + snfVal + "] FROM DEFAULT_MILK_RATE_CHART WHERE [FAT] = @cfat";
+                    SqlCommand cmd1 = new SqlCommand(query, con);
+                    cmd1.Parameters.AddWithValue("@cfat", fatVal);
+
+                    con.Open();
+                    SqlDataReader dr1 = cmd1.ExecuteReader();
+                    if (dr1.Read())
+                    {
+                        object pMilkRate = dr1.GetValue(0);
+                        milkRate = float.Parse(pMilkRate.ToString());
+                    }
+                    con.Close();
                 }
-                con.Close();
+                catch(SqlException sqlEx)
+                {
+                    milkRate = 0;
+                }
                 return 0;
             }
             catch (Exception exc)
@@ -524,8 +678,9 @@ namespace LogInForm
 
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + DateTimePicker.Value.ToString("dd_MM_yyyy");
-            // Update Total MilkData
+            //m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + m_pMilkDate.Value.ToString("dd_MM_yyyy");
+            // TODO: Update Total MilkData
+            BindDataGridView();
             UpdateTotalMilkDetailsTable();
         }
 
@@ -695,8 +850,10 @@ namespace LogInForm
             float fBuffTotalMilkAmount = 0;
 
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-            string query = "SELECT [MILK_TYPE], [MILK_WEIGHT], [MILK_FAT], [MILK_SNF], [MILK_DEGREE], [MILK_RATE], [MILK_AMOUNT] FROM " + this.m_sCustMilkDataTableName;
+            string query = "SELECT [MILK_TYPE], [MILK_WEIGHT], [MILK_FAT], [MILK_SNF], [MILK_DEGREE], [MILK_RATE], [MILK_AMOUNT] FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime";
             SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@milkDate", this.m_pMilkDate.Value.Date);
+            cmd.Parameters.AddWithValue("@milkTime", this.m_iMilkTime);
 
             con.Open();
             try
