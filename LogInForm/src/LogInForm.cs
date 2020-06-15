@@ -37,6 +37,7 @@ namespace LogInForm
                 SqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
+                    SaveCredentials();
                     this.Hide();
                     LPMainWindow mainWindow = new LPMainWindow();
                     mainWindow.ShowDialog();
@@ -95,6 +96,39 @@ namespace LogInForm
                 PasswordErrorProvider.SetError(this.PasswordTextBox, "Please specify Password.");
             }
             else PasswordErrorProvider.Clear();
+        }
+
+        private int SaveCredentials()
+        {
+            if (m_pRememberMeCheckBox.Checked)
+            {
+                Properties.Settings.Default.UserName = UserNameTextBox.Text;
+                Properties.Settings.Default.Password = PasswordTextBox.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.UserName = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.Save();
+            }
+            return 0;
+        }
+
+        private int LoadCredentials()
+        {
+            if(!string.IsNullOrEmpty(Properties.Settings.Default.UserName) && !string.IsNullOrEmpty(Properties.Settings.Default.Password))
+            {
+                UserNameTextBox.Text = Properties.Settings.Default.UserName;
+                PasswordTextBox.Text = Properties.Settings.Default.Password;
+                this.m_pRememberMeCheckBox.Checked = true;
+            }
+            return 0;
+        }
+
+        private void LogInForm_Load(object sender, EventArgs e)
+        {
+            LoadCredentials();
         }
     }
 }
