@@ -13,6 +13,7 @@ namespace LogInForm
 
         // Customer data 
         public static string m_sCustomerDataTable = "CUSTOMER_DATA_TABLE";
+        public static string m_sCustDailyMilkDataTable = "CUSTOMER_MILK_DATA";
 
 
         // Rate Chart Vars
