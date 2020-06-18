@@ -44,12 +44,12 @@
             this.m_pReportMoveSelectedButton = new System.Windows.Forms.Button();
             this.m_pSkipReportMoveSelectedButton = new System.Windows.Forms.Button();
             this.m_pTotalCustDGV = new System.Windows.Forms.DataGridView();
+            this.CustCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_pDairyNameLabel = new System.Windows.Forms.Label();
             this.m_pGenerateReportButton = new System.Windows.Forms.Button();
             this.m_pResetCustDataButton = new System.Windows.Forms.Button();
             this.m_pCloseButton = new System.Windows.Forms.Button();
-            this.CustCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.m_pReportCustDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_pTotalCustDGV)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +76,7 @@
             // m_pBillRoprtFromLabel
             // 
             this.m_pBillRoprtFromLabel.AutoSize = true;
-            this.m_pBillRoprtFromLabel.Location = new System.Drawing.Point(243, 74);
+            this.m_pBillRoprtFromLabel.Location = new System.Drawing.Point(243, 75);
             this.m_pBillRoprtFromLabel.Name = "m_pBillRoprtFromLabel";
             this.m_pBillRoprtFromLabel.Size = new System.Drawing.Size(62, 29);
             this.m_pBillRoprtFromLabel.TabIndex = 3;
@@ -88,13 +88,13 @@
             this.m_pBillReportFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.m_pBillReportFromDate.Location = new System.Drawing.Point(311, 74);
             this.m_pBillReportFromDate.Name = "m_pBillReportFromDate";
-            this.m_pBillReportFromDate.Size = new System.Drawing.Size(200, 35);
+            this.m_pBillReportFromDate.Size = new System.Drawing.Size(145, 35);
             this.m_pBillReportFromDate.TabIndex = 4;
             // 
             // m_pToLabel
             // 
             this.m_pToLabel.AutoSize = true;
-            this.m_pToLabel.Location = new System.Drawing.Point(517, 78);
+            this.m_pToLabel.Location = new System.Drawing.Point(462, 79);
             this.m_pToLabel.Name = "m_pToLabel";
             this.m_pToLabel.Size = new System.Drawing.Size(38, 29);
             this.m_pToLabel.TabIndex = 3;
@@ -104,9 +104,9 @@
             // 
             this.m_pBillReportToDate.CustomFormat = "dd-MM-yyyy";
             this.m_pBillReportToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.m_pBillReportToDate.Location = new System.Drawing.Point(561, 74);
+            this.m_pBillReportToDate.Location = new System.Drawing.Point(506, 75);
             this.m_pBillReportToDate.Name = "m_pBillReportToDate";
-            this.m_pBillReportToDate.Size = new System.Drawing.Size(200, 35);
+            this.m_pBillReportToDate.Size = new System.Drawing.Size(146, 35);
             this.m_pBillReportToDate.TabIndex = 4;
             // 
             // dateTimePicker1
@@ -117,13 +117,13 @@
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(990, 74);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 35);
+            this.dateTimePicker1.Size = new System.Drawing.Size(142, 35);
             this.dateTimePicker1.TabIndex = 4;
             // 
             // m_pBillReportDateLabel
             // 
             this.m_pBillReportDateLabel.AutoSize = true;
-            this.m_pBillReportDateLabel.Location = new System.Drawing.Point(857, 80);
+            this.m_pBillReportDateLabel.Location = new System.Drawing.Point(852, 75);
             this.m_pBillReportDateLabel.Name = "m_pBillReportDateLabel";
             this.m_pBillReportDateLabel.Size = new System.Drawing.Size(132, 29);
             this.m_pBillReportDateLabel.TabIndex = 2;
@@ -221,45 +221,6 @@
             this.m_pTotalCustDGV.Size = new System.Drawing.Size(529, 580);
             this.m_pTotalCustDGV.TabIndex = 12;
             // 
-            // m_pDairyNameLabel
-            // 
-            this.m_pDairyNameLabel.AutoSize = true;
-            this.m_pDairyNameLabel.Font = new System.Drawing.Font("Comic Sans MS", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_pDairyNameLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.m_pDairyNameLabel.Location = new System.Drawing.Point(388, 9);
-            this.m_pDairyNameLabel.Name = "m_pDairyNameLabel";
-            this.m_pDairyNameLabel.Size = new System.Drawing.Size(105, 45);
-            this.m_pDairyNameLabel.TabIndex = 13;
-            this.m_pDairyNameLabel.Text = "Dairy";
-            // 
-            // m_pGenerateReportButton
-            // 
-            this.m_pGenerateReportButton.Location = new System.Drawing.Point(273, 749);
-            this.m_pGenerateReportButton.Name = "m_pGenerateReportButton";
-            this.m_pGenerateReportButton.Size = new System.Drawing.Size(106, 45);
-            this.m_pGenerateReportButton.TabIndex = 14;
-            this.m_pGenerateReportButton.Text = "Generate";
-            this.m_pGenerateReportButton.UseVisualStyleBackColor = true;
-            this.m_pGenerateReportButton.Click += new System.EventHandler(this.m_pGenerateReportButton_Click);
-            // 
-            // m_pResetCustDataButton
-            // 
-            this.m_pResetCustDataButton.Location = new System.Drawing.Point(405, 749);
-            this.m_pResetCustDataButton.Name = "m_pResetCustDataButton";
-            this.m_pResetCustDataButton.Size = new System.Drawing.Size(106, 45);
-            this.m_pResetCustDataButton.TabIndex = 14;
-            this.m_pResetCustDataButton.Text = "Reset";
-            this.m_pResetCustDataButton.UseVisualStyleBackColor = true;
-            // 
-            // m_pCloseButton
-            // 
-            this.m_pCloseButton.Location = new System.Drawing.Point(537, 749);
-            this.m_pCloseButton.Name = "m_pCloseButton";
-            this.m_pCloseButton.Size = new System.Drawing.Size(106, 45);
-            this.m_pCloseButton.TabIndex = 14;
-            this.m_pCloseButton.Text = "Close";
-            this.m_pCloseButton.UseVisualStyleBackColor = true;
-            // 
             // CustCodeColumn
             // 
             this.CustCodeColumn.HeaderText = "कोड";
@@ -275,6 +236,46 @@
             this.CustNameColumn.Name = "CustNameColumn";
             this.CustNameColumn.ReadOnly = true;
             this.CustNameColumn.Width = 450;
+            // 
+            // m_pDairyNameLabel
+            // 
+            this.m_pDairyNameLabel.AutoSize = true;
+            this.m_pDairyNameLabel.Font = new System.Drawing.Font("Comic Sans MS", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m_pDairyNameLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.m_pDairyNameLabel.Location = new System.Drawing.Point(388, 9);
+            this.m_pDairyNameLabel.Name = "m_pDairyNameLabel";
+            this.m_pDairyNameLabel.Size = new System.Drawing.Size(105, 45);
+            this.m_pDairyNameLabel.TabIndex = 13;
+            this.m_pDairyNameLabel.Text = "Dairy";
+            // 
+            // m_pGenerateReportButton
+            // 
+            this.m_pGenerateReportButton.Location = new System.Drawing.Point(426, 764);
+            this.m_pGenerateReportButton.Name = "m_pGenerateReportButton";
+            this.m_pGenerateReportButton.Size = new System.Drawing.Size(106, 45);
+            this.m_pGenerateReportButton.TabIndex = 14;
+            this.m_pGenerateReportButton.Text = "&Generate";
+            this.m_pGenerateReportButton.UseVisualStyleBackColor = true;
+            this.m_pGenerateReportButton.Click += new System.EventHandler(this.m_pGenerateReportButton_Click);
+            // 
+            // m_pResetCustDataButton
+            // 
+            this.m_pResetCustDataButton.Location = new System.Drawing.Point(558, 764);
+            this.m_pResetCustDataButton.Name = "m_pResetCustDataButton";
+            this.m_pResetCustDataButton.Size = new System.Drawing.Size(106, 45);
+            this.m_pResetCustDataButton.TabIndex = 14;
+            this.m_pResetCustDataButton.Text = "Reset";
+            this.m_pResetCustDataButton.UseVisualStyleBackColor = true;
+            // 
+            // m_pCloseButton
+            // 
+            this.m_pCloseButton.Location = new System.Drawing.Point(690, 764);
+            this.m_pCloseButton.Name = "m_pCloseButton";
+            this.m_pCloseButton.Size = new System.Drawing.Size(106, 45);
+            this.m_pCloseButton.TabIndex = 14;
+            this.m_pCloseButton.Text = "Close";
+            this.m_pCloseButton.UseVisualStyleBackColor = true;
+            this.m_pCloseButton.Click += new System.EventHandler(this.m_pCloseButton_Click);
             // 
             // BillReportForm
             // 

@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.UserDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.ShowPassCheckBox = new System.Windows.Forms.CheckBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.LogInButton = new System.Windows.Forms.Button();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.UserNameTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.UserNameLabel = new System.Windows.Forms.Label();
-            this.ShowPassCheckBox = new System.Windows.Forms.CheckBox();
             this.UserNameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.PasswordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.m_pRememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.UserDetailsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserNameErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordErrorProvider)).BeginInit();
@@ -46,6 +47,7 @@
             // 
             // UserDetailsGroupBox
             // 
+            this.UserDetailsGroupBox.Controls.Add(this.m_pRememberMeCheckBox);
             this.UserDetailsGroupBox.Controls.Add(this.ShowPassCheckBox);
             this.UserDetailsGroupBox.Controls.Add(this.CloseButton);
             this.UserDetailsGroupBox.Controls.Add(this.LogInButton);
@@ -54,31 +56,45 @@
             this.UserDetailsGroupBox.Controls.Add(this.PasswordLabel);
             this.UserDetailsGroupBox.Controls.Add(this.UserNameLabel);
             this.UserDetailsGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserDetailsGroupBox.Location = new System.Drawing.Point(202, 100);
+            this.UserDetailsGroupBox.Location = new System.Drawing.Point(179, 71);
             this.UserDetailsGroupBox.Name = "UserDetailsGroupBox";
-            this.UserDetailsGroupBox.Size = new System.Drawing.Size(233, 193);
+            this.UserDetailsGroupBox.Size = new System.Drawing.Size(256, 222);
             this.UserDetailsGroupBox.TabIndex = 0;
             this.UserDetailsGroupBox.TabStop = false;
             this.UserDetailsGroupBox.Text = "User Details";
             // 
+            // ShowPassCheckBox
+            // 
+            this.ShowPassCheckBox.AutoSize = true;
+            this.ShowPassCheckBox.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowPassCheckBox.Location = new System.Drawing.Point(47, 111);
+            this.ShowPassCheckBox.Name = "ShowPassCheckBox";
+            this.ShowPassCheckBox.Size = new System.Drawing.Size(157, 29);
+            this.ShowPassCheckBox.TabIndex = 6;
+            this.ShowPassCheckBox.Text = "Show Password";
+            this.ShowPassCheckBox.UseVisualStyleBackColor = true;
+            this.ShowPassCheckBox.CheckedChanged += new System.EventHandler(this.ShowPassCheckBox_CheckedChanged);
+            // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(119, 148);
+            this.CloseButton.BackColor = System.Drawing.Color.DarkRed;
+            this.CloseButton.Location = new System.Drawing.Point(131, 174);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(100, 32);
             this.CloseButton.TabIndex = 5;
             this.CloseButton.Text = "Close";
-            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // LogInButton
             // 
-            this.LogInButton.Location = new System.Drawing.Point(25, 148);
+            this.LogInButton.BackColor = System.Drawing.Color.DarkGreen;
+            this.LogInButton.Location = new System.Drawing.Point(37, 174);
             this.LogInButton.Name = "LogInButton";
             this.LogInButton.Size = new System.Drawing.Size(88, 32);
             this.LogInButton.TabIndex = 4;
             this.LogInButton.Text = "&LogIn";
-            this.LogInButton.UseVisualStyleBackColor = true;
+            this.LogInButton.UseVisualStyleBackColor = false;
             this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
             // 
             // PasswordTextBox
@@ -116,17 +132,6 @@
             this.UserNameLabel.TabIndex = 0;
             this.UserNameLabel.Text = "User Name";
             // 
-            // ShowPassCheckBox
-            // 
-            this.ShowPassCheckBox.AutoSize = true;
-            this.ShowPassCheckBox.Location = new System.Drawing.Point(47, 111);
-            this.ShowPassCheckBox.Name = "ShowPassCheckBox";
-            this.ShowPassCheckBox.Size = new System.Drawing.Size(184, 33);
-            this.ShowPassCheckBox.TabIndex = 6;
-            this.ShowPassCheckBox.Text = "Show Password";
-            this.ShowPassCheckBox.UseVisualStyleBackColor = true;
-            this.ShowPassCheckBox.CheckedChanged += new System.EventHandler(this.ShowPassCheckBox_CheckedChanged);
-            // 
             // UserNameErrorProvider
             // 
             this.UserNameErrorProvider.ContainerControl = this;
@@ -134,6 +139,18 @@
             // PasswordErrorProvider
             // 
             this.PasswordErrorProvider.ContainerControl = this;
+            // 
+            // m_pRememberMeCheckBox
+            // 
+            this.m_pRememberMeCheckBox.AutoSize = true;
+            this.m_pRememberMeCheckBox.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m_pRememberMeCheckBox.Location = new System.Drawing.Point(47, 139);
+            this.m_pRememberMeCheckBox.Name = "m_pRememberMeCheckBox";
+            this.m_pRememberMeCheckBox.Size = new System.Drawing.Size(149, 29);
+            this.m_pRememberMeCheckBox.TabIndex = 6;
+            this.m_pRememberMeCheckBox.Text = "Remember me";
+            this.m_pRememberMeCheckBox.UseVisualStyleBackColor = true;
+            this.m_pRememberMeCheckBox.CheckedChanged += new System.EventHandler(this.ShowPassCheckBox_CheckedChanged);
             // 
             // LogInForm
             // 
@@ -153,6 +170,7 @@
             this.Name = "LogInForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "LogIn";
+            this.Load += new System.EventHandler(this.LogInForm_Load);
             this.UserDetailsGroupBox.ResumeLayout(false);
             this.UserDetailsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserNameErrorProvider)).EndInit();
@@ -173,6 +191,7 @@
         private System.Windows.Forms.CheckBox ShowPassCheckBox;
         private System.Windows.Forms.ErrorProvider UserNameErrorProvider;
         private System.Windows.Forms.ErrorProvider PasswordErrorProvider;
+        private System.Windows.Forms.CheckBox m_pRememberMeCheckBox;
     }
 }
 

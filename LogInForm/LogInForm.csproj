@@ -35,7 +35,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\BUILD_LPMilkDairyFirm_VC14\bin\Debug</OutputPath>
-		<BaseIntermediateOutputPath >..\..\BUILD_LPMilkDairyFirm_VC14\obj</BaseIntermediateOutputPath >
+    <BaseIntermediateOutputPath>..\..\BUILD_LPMilkDairyFirm_VC14\obj</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,7 +45,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\BUILD_LPMilkDairyFirm_VC14\bin\Release</OutputPath>
-    <BaseIntermediateOutputPath >..\..\BUILD_LPMilkDairyFirm_VC14\obj</BaseIntermediateOutputPath >
+    <BaseIntermediateOutputPath>..\..\BUILD_LPMilkDairyFirm_VC14\obj</BaseIntermediateOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -54,6 +54,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -73,8 +79,11 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +95,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CUSTOMER_MILK_DataSet.cs">
+      <DependentUpon>CUSTOMER_MILK_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTOMER_MILK_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CUSTOMER_MILK_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CustomerMilkDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerMilkDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CustomerMilkDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerMilkDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CustomerMilkDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerMilkDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CUSTOMER_MILK_DATA.cs">
+      <DependentUpon>CustomerMilkDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="src\BillReportForm.cs">
       <SubType>Form</SubType>
@@ -141,6 +176,7 @@
     <Compile Include="src\RateChartForm.Designer.cs">
       <DependentUpon>RateChartForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\LPDailyMilkBillReport.rdlc" />
     <EmbeddedResource Include="src\BillReportForm.resx">
       <DependentUpon>BillReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +209,24 @@
     <EmbeddedResource Include="src\RateChartForm.resx">
       <DependentUpon>RateChartForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\CustomerMilkDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CustomerMilkDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CUSTOMER_MILK_DataSet.xsc">
+      <DependentUpon>CUSTOMER_MILK_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CUSTOMER_MILK_DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CUSTOMER_MILK_DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CUSTOMER_MILK_DataSet.xss">
+      <DependentUpon>CUSTOMER_MILK_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\CustomerMilkDataModel.edmx.diagram">
+      <DependentUpon>CustomerMilkDataModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,6 +268,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model\CustomerMilkDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomerMilkDataModel.edmx</DependentUpon>
+      <LastGenOutput>CustomerMilkDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\CustomerMilkDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomerMilkDataModel.edmx</DependentUpon>
+      <LastGenOutput>CustomerMilkDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Resources\ganpati.jpg" />
     <Content Include="Resources\VinayakaLandScape.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -232,6 +296,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

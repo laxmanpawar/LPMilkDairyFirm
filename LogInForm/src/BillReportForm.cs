@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data.SqlClient;
+using LogInForm.src;
 
 namespace LogInForm
 {
@@ -22,6 +23,8 @@ namespace LogInForm
         private void BillReportForm_Load(object sender, EventArgs e)
         {
             this.m_pBranchComboBox.SelectedIndex = 0;
+
+            this.m_pBillReportFromDate.Value = DateTime.Today.AddDays(-10);
 
             this.m_pDairyNameLabel.Text = LPGlobalVariables.m_sDairyName;
 
@@ -109,7 +112,22 @@ namespace LogInForm
 
         private void m_pGenerateReportButton_Click(object sender, EventArgs e)
         {
+            List<int> custIdList = new List<int>();
+            foreach(DataGridViewRow row in m_pReportCustDGV.Rows)
+            {
+                custIdList.Add(Convert.ToInt32(row.Cells[0].Value));
+            }
 
+            m_pBillReportFromDate.CustomFormat = "dd-MM-yyyy";
+            m_pBillReportToDate.CustomFormat = "dd-MM-yyyy";
+
+            LPBillReportViewerForm billReport = new LPBillReportViewerForm(custIdList, m_pBillReportFromDate.Value.Date, m_pBillReportToDate.Value.Date);
+            billReport.Show();
+        }
+
+        private void m_pCloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
