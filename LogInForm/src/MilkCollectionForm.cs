@@ -265,6 +265,7 @@ namespace LogInForm
                     {
                         BindDataGridView();
                         ResetAllCustMilkDataFields();
+                        sqlConnection.Close();
                         // Update Total MilkData
                         UpdateTotalMilkDetailsTable();
                         MessageBox.Show("Milk added successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -832,98 +833,127 @@ namespace LogInForm
         {
             if (LPSQLTableUtils.IsTableExists(this.m_sCustMilkDataTableName) == 0) return 0;
             // For Cow
-            int iCowMilkCount = 0;
-            float fCowTotalMilkWeight = 0;
-            float fCowAvgMilkFat = 0;
-            float fCowAvgMilkSNF = 0;
-            float fCowAvgMilkDegree = 0;
-            float fCowAvgMilkRate = 0;
-            float fCowTotalMilkAmount = 0;
-
-            // For Buffalo
-            int iBuffMilkCount = 0;
-            float fBuffTotalMilkWeight = 0;
-            float fBuffAvgMilkFat = 0;
-            float fBuffAvgMilkSNF = 0;
-            float fBuffAvgMilkDegree = 0;
-            float fBuffAvgMilkRate = 0;
-            float fBuffTotalMilkAmount = 0;
+            int iMilkCount = 0;
+            float fTotalMilkWeight = 0;
+            float fAvgMilkFat = 0;
+            float fAvgMilkSNF = 0;
+            float fAvgMilkDegree = 0;
+            float fAvgMilkRate = 0;
+            float fTotalMilkAmount = 0;
 
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-            string query = "SELECT [MILK_TYPE], [MILK_WEIGHT], [MILK_FAT], [MILK_SNF], [MILK_DEGREE], [MILK_RATE], [MILK_AMOUNT] FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime";
-            SqlCommand cmd = new SqlCommand(query, con);
+
+            string cowNumCustQuery = "SELECT COUNT(CUST_CODE) as CowNumCusts FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+            string cowTotWeightQuery = "SELECT SUM(MILK_WEIGHT) as CowMilkWeight FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+            string cowAvgFatQuery = "SELECT AVG(MILK_FAT) as CowMilkFat FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+            string cowAvgSNFQuery = "SELECT AVG(MILK_SNF) as CowMilkSNF FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+            string cowAvgDegreeQuery = "SELECT AVG(MILK_DEGREE) as CowMilkDegree FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+            string cowAvgRateQuery = "SELECT AVG(MILK_RATE) as CowMilkRate FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+            string cowTotAmountQuery = "SELECT SUM(MILK_AMOUNT) as CowTotalAmount FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 0";
+
+            string buffNumCustQuery = "SELECT COUNT(CUST_CODE) as BuffNumCusts FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            string buffTotWeightQuery = "SELECT SUM(MILK_WEIGHT) as BuffMilkWeight FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            string buffAvgFatQuery = "SELECT AVG(MILK_FAT) as BuffMilkFat FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            string buffAvgSNFQuery = "SELECT AVG(MILK_SNF) as BuffMilkSNF FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            string buffAvgDegreeQuery = "SELECT AVG(MILK_DEGREE) as BuffMilkDegree FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            string buffAvgRateQuery = "SELECT AVG(MILK_RATE) as BuffMilkRate FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            string buffTotAmountQuery = "SELECT SUM(MILK_AMOUNT) as BuffTotalAmount FROM " + this.m_sCustMilkDataTableName + " WHERE MILK_DATE = @milkDate AND MILK_TIME = @milkTime AND MILK_TYPE = 1";
+            SqlCommand cmd = new SqlCommand(cowTotAmountQuery, con);
             cmd.Parameters.AddWithValue("@milkDate", this.m_pMilkDate.Value.Date);
             cmd.Parameters.AddWithValue("@milkTime", this.m_iMilkTime);
-
             con.Open();
-            try
-            {
-                int cowCounter = 0;
-                int buffCounter = 0;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    int milkType = int.Parse(dr.GetValue(0).ToString());
-                    if (milkType == 0)
-                    {
-                        ++iCowMilkCount;
-                        fCowTotalMilkWeight += dr.GetFloat(1);
-                        if (cowCounter == 0) fCowAvgMilkFat = dr.GetFloat(2);
-                        else fCowAvgMilkFat = (fCowAvgMilkFat + dr.GetFloat(2)) / 2;
-                        if (cowCounter == 0) fCowAvgMilkSNF = dr.GetFloat(3);
-                        else fCowAvgMilkSNF = (fCowAvgMilkSNF + dr.GetFloat(3) / 2);
-                        if (cowCounter == 0) fCowAvgMilkDegree = dr.GetFloat(4);
-                        else fCowAvgMilkDegree = (fCowAvgMilkDegree + dr.GetFloat(4) / 2);
-                        if (cowCounter == 0) fCowAvgMilkRate = dr.GetFloat(5);
-                        else fCowAvgMilkRate = (fCowAvgMilkRate + dr.GetFloat(5) / 2);
-                        fCowTotalMilkAmount += dr.GetFloat(6);
-                        ++cowCounter;
-                    }
-                    else if (milkType == 1)
-                    {
-                        ++iBuffMilkCount;
-                        fBuffTotalMilkWeight += dr.GetFloat(1);
-                        if (buffCounter == 0) fBuffAvgMilkFat = dr.GetFloat(2);
-                        else fBuffAvgMilkFat = (fBuffAvgMilkFat + dr.GetFloat(2)) / 2;
-                        if (buffCounter == 0) fBuffAvgMilkSNF = dr.GetFloat(3);
-                        else fBuffAvgMilkSNF = (fBuffAvgMilkSNF + dr.GetFloat(3) / 2);
-                        if (buffCounter == 0) fBuffAvgMilkDegree = dr.GetFloat(4);
-                        else fBuffAvgMilkDegree = (fBuffAvgMilkDegree + dr.GetFloat(4) / 2);
-                        if (buffCounter == 0) fBuffAvgMilkRate = dr.GetFloat(5);
-                        else fBuffAvgMilkRate = (fBuffAvgMilkRate + dr.GetFloat(5) / 2);
-                        fBuffTotalMilkAmount += dr.GetFloat(6);
-                        ++buffCounter;
-                    }
-                }
-                con.Close();
 
-                // Set data for ***COW***
-                this.CowNumCustTextBox.Text = iCowMilkCount.ToString();
-                this.CowTotMilkTextBox.Text = Math.Round(fCowTotalMilkWeight, 1).ToString();
-                this.CowAverageFatTextBox.Text = Math.Round(fCowAvgMilkFat, 1).ToString();
-                this.CowAverageSNFTextBox.Text = Math.Round(fCowAvgMilkSNF, 1).ToString();
-                this.CowAverageDegreeTextBox.Text = Math.Round(fCowAvgMilkDegree, 1).ToString();
-                this.m_pCowAvgMilkRate.Text = Math.Round(fCowAvgMilkRate, 1).ToString();
-                this.m_pCowTotAmountTextBox.Text = Math.Round(fCowTotalMilkAmount, 1).ToString();
-                // Set data for ***BUFFALLO***
-                this.BuffNumCustTextBox.Text = iBuffMilkCount.ToString();
-                this.BuffTotMilkTextBox.Text = Math.Round(fBuffTotalMilkWeight, 1).ToString();
-                this.BuffAverageFatTextBox.Text = Math.Round(fBuffAvgMilkFat, 1).ToString();
-                this.BuffAverageSNFTextBox.Text = Math.Round(fBuffAvgMilkSNF, 1).ToString();
-                this.BuffAverageDegreeTextBox.Text = Math.Round(fBuffAvgMilkDegree, 1).ToString();
-                this.m_pBuffAvgMilkRate.Text = Math.Round(fBuffAvgMilkRate, 1).ToString();
-                this.m_pBuffTotAmountTextBox.Text = Math.Round(fBuffTotalMilkAmount, 1).ToString();
+            // Cow Number of Customers milk TextBox
+            cmd.CommandText = cowNumCustQuery;
+            var res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) iMilkCount = int.Parse(res);
+            this.CowNumCustTextBox.Text = iMilkCount.ToString();
 
-                this.m_pTotalMilkTB.Text = (fCowTotalMilkWeight + fBuffTotalMilkWeight).ToString();
-                this.m_pTotalMilkAmountTB.Text = (fCowTotalMilkAmount + fBuffTotalMilkAmount).ToString();
-            }
+            // Cow Total Milk TextBox
+            cmd.CommandText = cowTotWeightQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fTotalMilkWeight = float.Parse(res);
+            this.CowTotMilkTextBox.Text = Math.Round(fTotalMilkWeight, 1).ToString();
 
-            catch (Exception ex)
-            {
-                con.Close();
-                MessageBox.Show("LPError : " + ex.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
-            }
+            // Cow Average FAT TextBox
+            cmd.CommandText = cowAvgFatQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkFat = float.Parse(res);
+            this.CowAverageFatTextBox.Text = Math.Round(fAvgMilkFat, 1).ToString();
+
+            // Cow Average SNF TextBox
+            cmd.CommandText = cowAvgSNFQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkSNF = float.Parse(res);
+            this.CowAverageSNFTextBox.Text = Math.Round(fAvgMilkSNF, 1).ToString();
+
+            // Cow Average Degree TextBox
+            cmd.CommandText = cowAvgDegreeQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkDegree = float.Parse(res);
+            this.CowAverageDegreeTextBox.Text = Math.Round(fAvgMilkDegree, 1).ToString();
+
+            // Cow Average Milk Rate TextBox
+            cmd.CommandText = cowAvgRateQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkRate = float.Parse(res);
+            this.m_pCowAvgMilkRate.Text = Math.Round(fAvgMilkRate, 1).ToString();
+
+            // Cow Total milk TextBox
+            cmd.CommandText = cowTotAmountQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fTotalMilkAmount = float.Parse(res);
+            this.m_pCowTotAmountTextBox.Text = Math.Round(fTotalMilkAmount).ToString();
+
+            //
+            // Buffalo
+            //
+            // Buffalo Number of Customers milk TextBox
+            cmd.CommandText = buffNumCustQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) iMilkCount = int.Parse(res);
+            this.BuffNumCustTextBox.Text = iMilkCount.ToString();
+
+            // Buffalo Total Milk TextBox
+            cmd.CommandText = buffTotWeightQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fTotalMilkWeight = int.Parse(res);
+            this.BuffTotMilkTextBox.Text = Math.Round(fTotalMilkWeight, 1).ToString();
+
+            // Buffalo Average FAT TextBox
+            cmd.CommandText = buffAvgFatQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkFat = float.Parse(res);
+            this.BuffAverageFatTextBox.Text = Math.Round(fAvgMilkFat, 1).ToString();
+
+            // Buffalo Average SNF TextBox
+            cmd.CommandText = buffAvgSNFQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkSNF = float.Parse(res);
+            this.BuffAverageSNFTextBox.Text = Math.Round(fAvgMilkSNF, 1).ToString();
+
+            // Buffalo Average Degree TextBox
+            cmd.CommandText = buffAvgDegreeQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkDegree = float.Parse(res);
+            this.BuffAverageDegreeTextBox.Text = Math.Round(fAvgMilkDegree, 1).ToString();
+
+            // Buffalo Average Milk Rate TextBox
+            cmd.CommandText = buffAvgRateQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fAvgMilkRate = float.Parse(res);
+            this.m_pBuffAvgMilkRate.Text = Math.Round(fAvgMilkRate, 1).ToString();
+
+            // Buffalo Total milk
+            cmd.CommandText = buffTotAmountQuery;
+            res = cmd.ExecuteScalar().ToString();
+            if (!String.IsNullOrEmpty(res)) fTotalMilkAmount = float.Parse(res);
+            this.m_pBuffTotAmountTextBox.Text = Math.Round(fTotalMilkAmount).ToString();
+            con.Close();
+
+            this.m_pTotalMilkTB.Text = (fTotalMilkWeight + fTotalMilkWeight).ToString();
+            this.m_pTotalMilkAmountTB.Text = (fTotalMilkAmount + fTotalMilkAmount).ToString();
+
             return 0;
         }
     }
