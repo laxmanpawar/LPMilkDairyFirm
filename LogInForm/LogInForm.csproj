@@ -153,6 +153,12 @@
     <Compile Include="src\LPMainWindow.Designer.cs">
       <DependentUpon>LPMainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\LPMilkCustListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\LPMilkCustListForm.Designer.cs">
+      <DependentUpon>LPMilkCustListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\LPSQLTableUtils.cs" />
     <Compile Include="src\LPTypes.cs" />
     <Compile Include="src\LPUtils.cs" />
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\LPMainWindow.resx">
       <DependentUpon>LPMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\LPMilkCustListForm.resx">
+      <DependentUpon>LPMilkCustListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MilkCollectionForm.resx">
       <DependentUpon>MilkCollectionForm.cs</DependentUpon>
