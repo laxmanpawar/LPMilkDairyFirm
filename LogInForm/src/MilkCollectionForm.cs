@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Data.Entity.Migrations;
+using LogInForm.src;
 
 namespace LogInForm
 {
@@ -58,7 +59,7 @@ namespace LogInForm
 
             SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
-            string isCustExistsQuery = "Select * from " + LPGlobalVariables.m_sCustomerDataTable + " Where CUST_ID = @custid";
+            string isCustExistsQuery = "Select * from " + LPGlobalVariables.m_sCustomerDataTable + " Where CUST_CODE = @custid";
             SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
             isCustExistsCmd.Parameters.AddWithValue("@custid", CustCodeTextBox.Text);
 
@@ -873,37 +874,37 @@ namespace LogInForm
             cmd.CommandText = cowTotWeightQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fTotalMilkWeight = float.Parse(res);
-            this.CowTotMilkTextBox.Text = Math.Round(fTotalMilkWeight, 1).ToString();
+            this.CowTotMilkTextBox.Text = Math.Round(fTotalMilkWeight, 2).ToString();
 
             // Cow Average FAT TextBox
             cmd.CommandText = cowAvgFatQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkFat = float.Parse(res);
-            this.CowAverageFatTextBox.Text = Math.Round(fAvgMilkFat, 1).ToString();
+            this.CowAverageFatTextBox.Text = Math.Round(fAvgMilkFat, 2).ToString();
 
             // Cow Average SNF TextBox
             cmd.CommandText = cowAvgSNFQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkSNF = float.Parse(res);
-            this.CowAverageSNFTextBox.Text = Math.Round(fAvgMilkSNF, 1).ToString();
+            this.CowAverageSNFTextBox.Text = Math.Round(fAvgMilkSNF, 2).ToString();
 
             // Cow Average Degree TextBox
             cmd.CommandText = cowAvgDegreeQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkDegree = float.Parse(res);
-            this.CowAverageDegreeTextBox.Text = Math.Round(fAvgMilkDegree, 1).ToString();
+            this.CowAverageDegreeTextBox.Text = Math.Round(fAvgMilkDegree, 2).ToString();
 
             // Cow Average Milk Rate TextBox
             cmd.CommandText = cowAvgRateQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkRate = float.Parse(res);
-            this.m_pCowAvgMilkRate.Text = Math.Round(fAvgMilkRate, 1).ToString();
+            this.m_pCowAvgMilkRate.Text = Math.Round(fAvgMilkRate, 2).ToString();
 
             // Cow Total milk TextBox
             cmd.CommandText = cowTotAmountQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fTotalMilkAmount = float.Parse(res);
-            this.m_pCowTotAmountTextBox.Text = Math.Round(fTotalMilkAmount).ToString();
+            this.m_pCowTotAmountTextBox.Text = Math.Round(fTotalMilkAmount, 2).ToString();
 
             //
             // Buffalo
@@ -917,44 +918,62 @@ namespace LogInForm
             // Buffalo Total Milk TextBox
             cmd.CommandText = buffTotWeightQuery;
             res = cmd.ExecuteScalar().ToString();
-            if (!String.IsNullOrEmpty(res)) fTotalMilkWeight = int.Parse(res);
-            this.BuffTotMilkTextBox.Text = Math.Round(fTotalMilkWeight, 1).ToString();
+            if (!String.IsNullOrEmpty(res)) fTotalMilkWeight = float.Parse(res);
+            this.BuffTotMilkTextBox.Text = Math.Round(fTotalMilkWeight, 2).ToString();
 
             // Buffalo Average FAT TextBox
             cmd.CommandText = buffAvgFatQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkFat = float.Parse(res);
-            this.BuffAverageFatTextBox.Text = Math.Round(fAvgMilkFat, 1).ToString();
+            this.BuffAverageFatTextBox.Text = Math.Round(fAvgMilkFat, 2).ToString();
 
             // Buffalo Average SNF TextBox
             cmd.CommandText = buffAvgSNFQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkSNF = float.Parse(res);
-            this.BuffAverageSNFTextBox.Text = Math.Round(fAvgMilkSNF, 1).ToString();
+            this.BuffAverageSNFTextBox.Text = Math.Round(fAvgMilkSNF, 2).ToString();
 
             // Buffalo Average Degree TextBox
             cmd.CommandText = buffAvgDegreeQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkDegree = float.Parse(res);
-            this.BuffAverageDegreeTextBox.Text = Math.Round(fAvgMilkDegree, 1).ToString();
+            this.BuffAverageDegreeTextBox.Text = Math.Round(fAvgMilkDegree, 2).ToString();
 
             // Buffalo Average Milk Rate TextBox
             cmd.CommandText = buffAvgRateQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fAvgMilkRate = float.Parse(res);
-            this.m_pBuffAvgMilkRate.Text = Math.Round(fAvgMilkRate, 1).ToString();
+            this.m_pBuffAvgMilkRate.Text = Math.Round(fAvgMilkRate, 2).ToString();
 
             // Buffalo Total milk
             cmd.CommandText = buffTotAmountQuery;
             res = cmd.ExecuteScalar().ToString();
             if (!String.IsNullOrEmpty(res)) fTotalMilkAmount = float.Parse(res);
-            this.m_pBuffTotAmountTextBox.Text = Math.Round(fTotalMilkAmount).ToString();
+            this.m_pBuffTotAmountTextBox.Text = Math.Round(fTotalMilkAmount, 2).ToString();
             con.Close();
 
             this.m_pTotalMilkTB.Text = (fTotalMilkWeight + fTotalMilkWeight).ToString();
             this.m_pTotalMilkAmountTB.Text = (fTotalMilkAmount + fTotalMilkAmount).ToString();
 
             return 0;
+        }
+
+        private void m_pMilkRemainingCustListButton_Click(object sender, EventArgs e)
+        {
+            LPMilkCustListForm remainingCustListForm = new LPMilkCustListForm("RemainingCustList", m_pMilkDate.Value.Date, m_iMilkTime);
+            remainingCustListForm.Show();
+        }
+
+        private void m_pMilkCollectedCustListButton_Click(object sender, EventArgs e)
+        {
+            LPMilkCustListForm remainingCustListForm = new LPMilkCustListForm("MilkCollectedCustList", m_pMilkDate.Value.Date, m_iMilkTime);
+            remainingCustListForm.Show();
+        }
+
+        private void m_pProducerList_Click_1(object sender, EventArgs e)
+        {
+            LPMilkCustListForm remainingCustListForm = new LPMilkCustListForm("MilkProducerList", m_pMilkDate.Value.Date, m_iMilkTime);
+            remainingCustListForm.Show();
         }
     }
 }

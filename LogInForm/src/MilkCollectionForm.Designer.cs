@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainLabel = new System.Windows.Forms.Label();
             this.BranchLabel = new System.Windows.Forms.Label();
             this.BranchNamesComboBox = new System.Windows.Forms.ComboBox();
@@ -96,6 +96,9 @@
             this.CustMilkDataGridView = new System.Windows.Forms.DataGridView();
             this.UpdateDailyCustMilkDataButton = new System.Windows.Forms.Button();
             this.DeleteDailyCustMilkDataButton = new System.Windows.Forms.Button();
+            this.m_pMilkRemainingCustListButton = new System.Windows.Forms.Button();
+            this.m_pMilkCollectedCustListButton = new System.Windows.Forms.Button();
+            this.m_pProducerList = new System.Windows.Forms.Button();
             this.CustomerMilkDataTabel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.m_pTotalMilkDetailsTableLayoutPanel.SuspendLayout();
@@ -544,9 +547,9 @@
             this.m_pTotalMilkDetailsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalMilkDetailsTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.m_pTotalMilkDetailsTableLayoutPanel.ColumnCount = 3;
-            this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.09539F));
-            this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.4523F));
-            this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.4523F));
+            this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.48566F));
+            this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.75717F));
+            this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.75717F));
             this.m_pTotalMilkDetailsTableLayoutPanel.Controls.Add(this.CowNumCustTextBox, 0, 0);
             this.m_pTotalMilkDetailsTableLayoutPanel.Controls.Add(this.TotAmountLabel, 0, 5);
             this.m_pTotalMilkDetailsTableLayoutPanel.Controls.Add(this.AverageDegreeLabel, 0, 4);
@@ -568,7 +571,7 @@
             this.m_pTotalMilkDetailsTableLayoutPanel.Controls.Add(this.m_pCowTotAmountTextBox, 1, 6);
             this.m_pTotalMilkDetailsTableLayoutPanel.Controls.Add(this.m_pBuffTotAmountTextBox, 2, 6);
             this.m_pTotalMilkDetailsTableLayoutPanel.Controls.Add(this.m_pCowTotMilkAmountLabel, 0, 6);
-            this.m_pTotalMilkDetailsTableLayoutPanel.Location = new System.Drawing.Point(981, 41);
+            this.m_pTotalMilkDetailsTableLayoutPanel.Location = new System.Drawing.Point(929, 41);
             this.m_pTotalMilkDetailsTableLayoutPanel.Name = "m_pTotalMilkDetailsTableLayoutPanel";
             this.m_pTotalMilkDetailsTableLayoutPanel.RowCount = 7;
             this.m_pTotalMilkDetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -578,16 +581,16 @@
             this.m_pTotalMilkDetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.m_pTotalMilkDetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.m_pTotalMilkDetailsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.m_pTotalMilkDetailsTableLayoutPanel.Size = new System.Drawing.Size(283, 294);
+            this.m_pTotalMilkDetailsTableLayoutPanel.Size = new System.Drawing.Size(335, 294);
             this.m_pTotalMilkDetailsTableLayoutPanel.TabIndex = 14;
             // 
             // CowNumCustTextBox
             // 
             this.CowNumCustTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CowNumCustTextBox.Location = new System.Drawing.Point(131, 6);
+            this.CowNumCustTextBox.Location = new System.Drawing.Point(133, 6);
             this.CowNumCustTextBox.Name = "CowNumCustTextBox";
             this.CowNumCustTextBox.ReadOnly = true;
-            this.CowNumCustTextBox.Size = new System.Drawing.Size(68, 35);
+            this.CowNumCustTextBox.Size = new System.Drawing.Size(93, 35);
             this.CowNumCustTextBox.TabIndex = 12;
             this.CowNumCustTextBox.TabStop = false;
             // 
@@ -598,7 +601,7 @@
             this.TotAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.TotAmountLabel.Location = new System.Drawing.Point(6, 208);
             this.TotAmountLabel.Name = "TotAmountLabel";
-            this.TotAmountLabel.Size = new System.Drawing.Size(116, 38);
+            this.TotAmountLabel.Size = new System.Drawing.Size(118, 38);
             this.TotAmountLabel.TabIndex = 11;
             this.TotAmountLabel.Text = "स. दर";
             this.TotAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -610,7 +613,7 @@
             this.AverageDegreeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AverageDegreeLabel.Location = new System.Drawing.Point(6, 167);
             this.AverageDegreeLabel.Name = "AverageDegreeLabel";
-            this.AverageDegreeLabel.Size = new System.Drawing.Size(116, 38);
+            this.AverageDegreeLabel.Size = new System.Drawing.Size(118, 38);
             this.AverageDegreeLabel.TabIndex = 9;
             this.AverageDegreeLabel.Text = "स. डिग्री";
             this.AverageDegreeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -622,7 +625,7 @@
             this.AverageSNFLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AverageSNFLabel.Location = new System.Drawing.Point(6, 126);
             this.AverageSNFLabel.Name = "AverageSNFLabel";
-            this.AverageSNFLabel.Size = new System.Drawing.Size(116, 38);
+            this.AverageSNFLabel.Size = new System.Drawing.Size(118, 38);
             this.AverageSNFLabel.TabIndex = 7;
             this.AverageSNFLabel.Text = "स. SNF";
             this.AverageSNFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -634,7 +637,7 @@
             this.AverageFatLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AverageFatLabel.Location = new System.Drawing.Point(6, 85);
             this.AverageFatLabel.Name = "AverageFatLabel";
-            this.AverageFatLabel.Size = new System.Drawing.Size(116, 38);
+            this.AverageFatLabel.Size = new System.Drawing.Size(118, 38);
             this.AverageFatLabel.TabIndex = 5;
             this.AverageFatLabel.Text = "स. फॅट";
             this.AverageFatLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -646,7 +649,7 @@
             this.TotalMilkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.TotalMilkLabel.Location = new System.Drawing.Point(6, 44);
             this.TotalMilkLabel.Name = "TotalMilkLabel";
-            this.TotalMilkLabel.Size = new System.Drawing.Size(116, 38);
+            this.TotalMilkLabel.Size = new System.Drawing.Size(118, 38);
             this.TotalMilkLabel.TabIndex = 3;
             this.TotalMilkLabel.Text = "दुध";
             this.TotalMilkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -658,7 +661,7 @@
             this.NumCustomersLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.NumCustomersLabel.Location = new System.Drawing.Point(6, 3);
             this.NumCustomersLabel.Name = "NumCustomersLabel";
-            this.NumCustomersLabel.Size = new System.Drawing.Size(116, 38);
+            this.NumCustomersLabel.Size = new System.Drawing.Size(118, 38);
             this.NumCustomersLabel.TabIndex = 1;
             this.NumCustomersLabel.Text = "ग्राहकांची संख्या";
             this.NumCustomersLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -666,129 +669,129 @@
             // CowTotMilkTextBox
             // 
             this.CowTotMilkTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CowTotMilkTextBox.Location = new System.Drawing.Point(131, 47);
+            this.CowTotMilkTextBox.Location = new System.Drawing.Point(133, 47);
             this.CowTotMilkTextBox.Name = "CowTotMilkTextBox";
             this.CowTotMilkTextBox.ReadOnly = true;
-            this.CowTotMilkTextBox.Size = new System.Drawing.Size(68, 35);
+            this.CowTotMilkTextBox.Size = new System.Drawing.Size(93, 35);
             this.CowTotMilkTextBox.TabIndex = 13;
             this.CowTotMilkTextBox.TabStop = false;
             // 
             // CowAverageFatTextBox
             // 
             this.CowAverageFatTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CowAverageFatTextBox.Location = new System.Drawing.Point(131, 88);
+            this.CowAverageFatTextBox.Location = new System.Drawing.Point(133, 88);
             this.CowAverageFatTextBox.Name = "CowAverageFatTextBox";
             this.CowAverageFatTextBox.ReadOnly = true;
-            this.CowAverageFatTextBox.Size = new System.Drawing.Size(68, 35);
+            this.CowAverageFatTextBox.Size = new System.Drawing.Size(93, 35);
             this.CowAverageFatTextBox.TabIndex = 14;
             this.CowAverageFatTextBox.TabStop = false;
             // 
             // CowAverageSNFTextBox
             // 
             this.CowAverageSNFTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CowAverageSNFTextBox.Location = new System.Drawing.Point(131, 129);
+            this.CowAverageSNFTextBox.Location = new System.Drawing.Point(133, 129);
             this.CowAverageSNFTextBox.Name = "CowAverageSNFTextBox";
             this.CowAverageSNFTextBox.ReadOnly = true;
-            this.CowAverageSNFTextBox.Size = new System.Drawing.Size(68, 35);
+            this.CowAverageSNFTextBox.Size = new System.Drawing.Size(93, 35);
             this.CowAverageSNFTextBox.TabIndex = 15;
             this.CowAverageSNFTextBox.TabStop = false;
             // 
             // CowAverageDegreeTextBox
             // 
             this.CowAverageDegreeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CowAverageDegreeTextBox.Location = new System.Drawing.Point(131, 170);
+            this.CowAverageDegreeTextBox.Location = new System.Drawing.Point(133, 170);
             this.CowAverageDegreeTextBox.Name = "CowAverageDegreeTextBox";
             this.CowAverageDegreeTextBox.ReadOnly = true;
-            this.CowAverageDegreeTextBox.Size = new System.Drawing.Size(68, 35);
+            this.CowAverageDegreeTextBox.Size = new System.Drawing.Size(93, 35);
             this.CowAverageDegreeTextBox.TabIndex = 16;
             this.CowAverageDegreeTextBox.TabStop = false;
             // 
             // m_pCowAvgMilkRate
             // 
             this.m_pCowAvgMilkRate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pCowAvgMilkRate.Location = new System.Drawing.Point(131, 211);
+            this.m_pCowAvgMilkRate.Location = new System.Drawing.Point(133, 211);
             this.m_pCowAvgMilkRate.Name = "m_pCowAvgMilkRate";
             this.m_pCowAvgMilkRate.ReadOnly = true;
-            this.m_pCowAvgMilkRate.Size = new System.Drawing.Size(68, 35);
+            this.m_pCowAvgMilkRate.Size = new System.Drawing.Size(93, 35);
             this.m_pCowAvgMilkRate.TabIndex = 17;
             this.m_pCowAvgMilkRate.TabStop = false;
             // 
             // BuffNumCustTextBox
             // 
             this.BuffNumCustTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BuffNumCustTextBox.Location = new System.Drawing.Point(208, 6);
+            this.BuffNumCustTextBox.Location = new System.Drawing.Point(235, 6);
             this.BuffNumCustTextBox.Name = "BuffNumCustTextBox";
             this.BuffNumCustTextBox.ReadOnly = true;
-            this.BuffNumCustTextBox.Size = new System.Drawing.Size(69, 35);
+            this.BuffNumCustTextBox.Size = new System.Drawing.Size(94, 35);
             this.BuffNumCustTextBox.TabIndex = 18;
             this.BuffNumCustTextBox.TabStop = false;
             // 
             // BuffTotMilkTextBox
             // 
             this.BuffTotMilkTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BuffTotMilkTextBox.Location = new System.Drawing.Point(208, 47);
+            this.BuffTotMilkTextBox.Location = new System.Drawing.Point(235, 47);
             this.BuffTotMilkTextBox.Name = "BuffTotMilkTextBox";
             this.BuffTotMilkTextBox.ReadOnly = true;
-            this.BuffTotMilkTextBox.Size = new System.Drawing.Size(69, 35);
+            this.BuffTotMilkTextBox.Size = new System.Drawing.Size(94, 35);
             this.BuffTotMilkTextBox.TabIndex = 19;
             this.BuffTotMilkTextBox.TabStop = false;
             // 
             // BuffAverageFatTextBox
             // 
             this.BuffAverageFatTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BuffAverageFatTextBox.Location = new System.Drawing.Point(208, 88);
+            this.BuffAverageFatTextBox.Location = new System.Drawing.Point(235, 88);
             this.BuffAverageFatTextBox.Name = "BuffAverageFatTextBox";
             this.BuffAverageFatTextBox.ReadOnly = true;
-            this.BuffAverageFatTextBox.Size = new System.Drawing.Size(69, 35);
+            this.BuffAverageFatTextBox.Size = new System.Drawing.Size(94, 35);
             this.BuffAverageFatTextBox.TabIndex = 20;
             this.BuffAverageFatTextBox.TabStop = false;
             // 
             // BuffAverageSNFTextBox
             // 
             this.BuffAverageSNFTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BuffAverageSNFTextBox.Location = new System.Drawing.Point(208, 129);
+            this.BuffAverageSNFTextBox.Location = new System.Drawing.Point(235, 129);
             this.BuffAverageSNFTextBox.Name = "BuffAverageSNFTextBox";
             this.BuffAverageSNFTextBox.ReadOnly = true;
-            this.BuffAverageSNFTextBox.Size = new System.Drawing.Size(69, 35);
+            this.BuffAverageSNFTextBox.Size = new System.Drawing.Size(94, 35);
             this.BuffAverageSNFTextBox.TabIndex = 21;
             this.BuffAverageSNFTextBox.TabStop = false;
             // 
             // BuffAverageDegreeTextBox
             // 
             this.BuffAverageDegreeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BuffAverageDegreeTextBox.Location = new System.Drawing.Point(208, 170);
+            this.BuffAverageDegreeTextBox.Location = new System.Drawing.Point(235, 170);
             this.BuffAverageDegreeTextBox.Name = "BuffAverageDegreeTextBox";
             this.BuffAverageDegreeTextBox.ReadOnly = true;
-            this.BuffAverageDegreeTextBox.Size = new System.Drawing.Size(69, 35);
+            this.BuffAverageDegreeTextBox.Size = new System.Drawing.Size(94, 35);
             this.BuffAverageDegreeTextBox.TabIndex = 22;
             this.BuffAverageDegreeTextBox.TabStop = false;
             // 
             // m_pBuffAvgMilkRate
             // 
             this.m_pBuffAvgMilkRate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pBuffAvgMilkRate.Location = new System.Drawing.Point(208, 211);
+            this.m_pBuffAvgMilkRate.Location = new System.Drawing.Point(235, 211);
             this.m_pBuffAvgMilkRate.Name = "m_pBuffAvgMilkRate";
             this.m_pBuffAvgMilkRate.ReadOnly = true;
-            this.m_pBuffAvgMilkRate.Size = new System.Drawing.Size(69, 35);
+            this.m_pBuffAvgMilkRate.Size = new System.Drawing.Size(94, 35);
             this.m_pBuffAvgMilkRate.TabIndex = 23;
             this.m_pBuffAvgMilkRate.TabStop = false;
             // 
             // m_pCowTotAmountTextBox
             // 
             this.m_pCowTotAmountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pCowTotAmountTextBox.Location = new System.Drawing.Point(131, 252);
+            this.m_pCowTotAmountTextBox.Location = new System.Drawing.Point(133, 252);
             this.m_pCowTotAmountTextBox.Name = "m_pCowTotAmountTextBox";
             this.m_pCowTotAmountTextBox.ReadOnly = true;
-            this.m_pCowTotAmountTextBox.Size = new System.Drawing.Size(68, 35);
+            this.m_pCowTotAmountTextBox.Size = new System.Drawing.Size(93, 35);
             this.m_pCowTotAmountTextBox.TabIndex = 24;
             // 
             // m_pBuffTotAmountTextBox
             // 
             this.m_pBuffTotAmountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pBuffTotAmountTextBox.Location = new System.Drawing.Point(208, 252);
+            this.m_pBuffTotAmountTextBox.Location = new System.Drawing.Point(235, 252);
             this.m_pBuffTotAmountTextBox.Name = "m_pBuffTotAmountTextBox";
             this.m_pBuffTotAmountTextBox.ReadOnly = true;
-            this.m_pBuffTotAmountTextBox.Size = new System.Drawing.Size(69, 35);
+            this.m_pBuffTotAmountTextBox.Size = new System.Drawing.Size(94, 35);
             this.m_pBuffTotAmountTextBox.TabIndex = 25;
             // 
             // m_pCowTotMilkAmountLabel
@@ -796,7 +799,7 @@
             this.m_pCowTotMilkAmountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.m_pCowTotMilkAmountLabel.AutoSize = true;
             this.m_pCowTotMilkAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.m_pCowTotMilkAmountLabel.Location = new System.Drawing.Point(30, 249);
+            this.m_pCowTotMilkAmountLabel.Location = new System.Drawing.Point(31, 249);
             this.m_pCowTotMilkAmountLabel.Name = "m_pCowTotMilkAmountLabel";
             this.m_pCowTotMilkAmountLabel.Size = new System.Drawing.Size(68, 42);
             this.m_pCowTotMilkAmountLabel.TabIndex = 26;
@@ -853,22 +856,22 @@
             this.m_pTotalMilkTableLayoutPanel.Controls.Add(this.m_pTotMilkAmountLabel, 0, 1);
             this.m_pTotalMilkTableLayoutPanel.Controls.Add(this.m_pTotalMilkLabel, 0, 0);
             this.m_pTotalMilkTableLayoutPanel.Controls.Add(this.m_pTotalMilkTB, 1, 0);
-            this.m_pTotalMilkTableLayoutPanel.Location = new System.Drawing.Point(977, 360);
+            this.m_pTotalMilkTableLayoutPanel.Location = new System.Drawing.Point(929, 360);
             this.m_pTotalMilkTableLayoutPanel.Name = "m_pTotalMilkTableLayoutPanel";
             this.m_pTotalMilkTableLayoutPanel.RowCount = 2;
             this.m_pTotalMilkTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.m_pTotalMilkTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.m_pTotalMilkTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.m_pTotalMilkTableLayoutPanel.Size = new System.Drawing.Size(288, 82);
+            this.m_pTotalMilkTableLayoutPanel.Size = new System.Drawing.Size(336, 82);
             this.m_pTotalMilkTableLayoutPanel.TabIndex = 19;
             // 
             // m_pTotalMilkAmountTB
             // 
             this.m_pTotalMilkAmountTB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pTotalMilkAmountTB.Location = new System.Drawing.Point(147, 44);
+            this.m_pTotalMilkAmountTB.Location = new System.Drawing.Point(171, 44);
             this.m_pTotalMilkAmountTB.Name = "m_pTotalMilkAmountTB";
             this.m_pTotalMilkAmountTB.ReadOnly = true;
-            this.m_pTotalMilkAmountTB.Size = new System.Drawing.Size(138, 35);
+            this.m_pTotalMilkAmountTB.Size = new System.Drawing.Size(162, 35);
             this.m_pTotalMilkAmountTB.TabIndex = 18;
             // 
             // m_pTotMilkAmountLabel
@@ -878,7 +881,7 @@
             this.m_pTotMilkAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.m_pTotMilkAmountLabel.Location = new System.Drawing.Point(3, 41);
             this.m_pTotMilkAmountLabel.Name = "m_pTotMilkAmountLabel";
-            this.m_pTotMilkAmountLabel.Size = new System.Drawing.Size(138, 41);
+            this.m_pTotMilkAmountLabel.Size = new System.Drawing.Size(162, 41);
             this.m_pTotMilkAmountLabel.TabIndex = 16;
             this.m_pTotMilkAmountLabel.Text = "एकूण रक्कम";
             this.m_pTotMilkAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -890,7 +893,7 @@
             this.m_pTotalMilkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.m_pTotalMilkLabel.Location = new System.Drawing.Point(3, 0);
             this.m_pTotalMilkLabel.Name = "m_pTotalMilkLabel";
-            this.m_pTotalMilkLabel.Size = new System.Drawing.Size(138, 41);
+            this.m_pTotalMilkLabel.Size = new System.Drawing.Size(162, 41);
             this.m_pTotalMilkLabel.TabIndex = 14;
             this.m_pTotalMilkLabel.Text = "एकूण दुध";
             this.m_pTotalMilkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -898,10 +901,10 @@
             // m_pTotalMilkTB
             // 
             this.m_pTotalMilkTB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_pTotalMilkTB.Location = new System.Drawing.Point(147, 3);
+            this.m_pTotalMilkTB.Location = new System.Drawing.Point(171, 3);
             this.m_pTotalMilkTB.Name = "m_pTotalMilkTB";
             this.m_pTotalMilkTB.ReadOnly = true;
-            this.m_pTotalMilkTB.Size = new System.Drawing.Size(138, 35);
+            this.m_pTotalMilkTB.Size = new System.Drawing.Size(162, 35);
             this.m_pTotalMilkTB.TabIndex = 17;
             // 
             // CustMilkDataGridView
@@ -912,14 +915,14 @@
             this.CustMilkDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CustMilkDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustMilkDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CustMilkDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CustMilkDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.CustMilkDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustMilkDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.CustMilkDataGridView.Location = new System.Drawing.Point(26, 458);
@@ -955,11 +958,44 @@
             this.DeleteDailyCustMilkDataButton.UseVisualStyleBackColor = true;
             this.DeleteDailyCustMilkDataButton.Click += new System.EventHandler(this.DeleteDailyCustMilkDataButton_Click);
             // 
+            // m_pMilkRemainingCustListButton
+            // 
+            this.m_pMilkRemainingCustListButton.Location = new System.Drawing.Point(798, 74);
+            this.m_pMilkRemainingCustListButton.Name = "m_pMilkRemainingCustListButton";
+            this.m_pMilkRemainingCustListButton.Size = new System.Drawing.Size(125, 52);
+            this.m_pMilkRemainingCustListButton.TabIndex = 23;
+            this.m_pMilkRemainingCustListButton.Text = "दूध येणे";
+            this.m_pMilkRemainingCustListButton.UseVisualStyleBackColor = true;
+            this.m_pMilkRemainingCustListButton.Click += new System.EventHandler(this.m_pMilkRemainingCustListButton_Click);
+            // 
+            // m_pMilkCollectedCustListButton
+            // 
+            this.m_pMilkCollectedCustListButton.Location = new System.Drawing.Point(798, 132);
+            this.m_pMilkCollectedCustListButton.Name = "m_pMilkCollectedCustListButton";
+            this.m_pMilkCollectedCustListButton.Size = new System.Drawing.Size(125, 49);
+            this.m_pMilkCollectedCustListButton.TabIndex = 24;
+            this.m_pMilkCollectedCustListButton.Text = "संकलन यादी";
+            this.m_pMilkCollectedCustListButton.UseVisualStyleBackColor = true;
+            this.m_pMilkCollectedCustListButton.Click += new System.EventHandler(this.m_pMilkCollectedCustListButton_Click);
+            // 
+            // m_pProducerList
+            // 
+            this.m_pProducerList.Location = new System.Drawing.Point(798, 187);
+            this.m_pProducerList.Name = "m_pProducerList";
+            this.m_pProducerList.Size = new System.Drawing.Size(125, 50);
+            this.m_pProducerList.TabIndex = 25;
+            this.m_pProducerList.Text = "उत्पादक यादी";
+            this.m_pProducerList.UseVisualStyleBackColor = true;
+            this.m_pProducerList.Click += new System.EventHandler(this.m_pProducerList_Click_1);
+            // 
             // MilkCollectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 760);
+            this.Controls.Add(this.m_pProducerList);
+            this.Controls.Add(this.m_pMilkCollectedCustListButton);
+            this.Controls.Add(this.m_pMilkRemainingCustListButton);
             this.Controls.Add(this.DeleteDailyCustMilkDataButton);
             this.Controls.Add(this.UpdateDailyCustMilkDataButton);
             this.Controls.Add(this.CustMilkDataGridView);
@@ -1065,5 +1101,8 @@
         private System.Windows.Forms.TextBox m_pCowTotAmountTextBox;
         private System.Windows.Forms.TextBox m_pBuffTotAmountTextBox;
         private System.Windows.Forms.Label m_pCowTotMilkAmountLabel;
+        private System.Windows.Forms.Button m_pMilkRemainingCustListButton;
+        private System.Windows.Forms.Button m_pMilkCollectedCustListButton;
+        private System.Windows.Forms.Button m_pProducerList;
     }
 }
