@@ -1077,7 +1077,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LPDairyMilkFirm"
         "ProductCode" = "8:{4E4FBC7D-FE5C-4002-ACB9-1E0FACE1A751}"
-        "PackageCode" = "8:{01625D1E-5A09-497A-8F4B-C9BA9310EB60}"
+        "PackageCode" = "8:{47629180-E944-4BA1-978A-3E4EE878C295}"
         "UpgradeCode" = "8:{5236559A-782A-4067-8EA5-1F3B49910028}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
