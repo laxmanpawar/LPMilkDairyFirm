@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LogInForm.src;
+using Microsoft.Reporting.WinForms.Internal.Soap.ReportingServices2005.Execution;
+using Microsoft.ReportingServices.RdlExpressions.ExpressionHostObjectModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -12,7 +15,7 @@ using System.Windows.Forms;
 
 namespace LogInForm
 {
-    public partial class AddCustDataForm : Form
+    public partial class AddCustDataForm : LPForm
     {
         public AddCustDataForm()
         {
@@ -21,11 +24,7 @@ namespace LogInForm
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            this.CustNameTextBox.Clear();
-            this.CustIdTextBox.Clear();
-            this.CustMilkTypeComboBox.SelectedItem = null;
-            this.CustMobTextBox.Clear();
-            this.CustNameTextBox.Focus();
+            ResetAllControls();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -35,33 +34,28 @@ namespace LogInForm
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(CustMobTextBox.Text))
+            if (string.IsNullOrEmpty(CustNameTextBox.Text))
             {
-                CustNameErrorProvider.SetError(CustMobTextBox, "Please provide Customer Mob number");
+                CustNameTextBox.Focus();
+                CustNameErrorProvider.SetError(CustNameTextBox, "Please provide Customer Name");
             }
             else if (string.IsNullOrEmpty(CustIdTextBox.Text))
             {
                 CustIdTextBox.Focus();
-                CustIdErrorProvider.SetError(CustIdTextBox, "Please provide Customer Id");
+                CustIdErrorProvider.SetError(CustIdTextBox, "Please provide Customer Code");
             }
             else if (CustMilkTypeComboBox.SelectedItem == null)
             {
                 CustMilkTypeComboBox.Focus();
                 CustMilkTypeErrorProvider.SetError(CustMilkTypeComboBox, "Please provide Customer Name");
             }
-            else if (string.IsNullOrEmpty(CustMobTextBox.Text))
-            {
-                CustMobErrorProvider.SetError(CustMobTextBox, "Please provide Customer Mob number");
-            }
             else
             {
-                string strConnectionString = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+                SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
-                SqlConnection sqlCon = new SqlConnection(strConnectionString);
-
-                string isCustExistsQuery = "select * from " + LPGlobalVariables.m_sCustomerDataTable + " where CUST_ID = @custid";
+                string isCustExistsQuery = "SELECT * FROM " + LPGlobalVariables.m_sCustomerDataTable + " WHERE CUST_CODE = @custcode";
                 SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
-                isCustExistsCmd.Parameters.AddWithValue("@custid", CustIdTextBox.Text);
+                isCustExistsCmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
 
                 sqlCon.Open();
                 SqlDataReader sqlDataReader = isCustExistsCmd.ExecuteReader();
@@ -69,19 +63,20 @@ namespace LogInForm
                 if (sqlDataReader.HasRows)
                 {
                     CustIdTextBox.Focus();
-                    MessageBox.Show("Customer id already present.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Customer code already present.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     sqlCon.Close();
                 }
                 else
                 {
                     sqlCon.Close();
-                    string query = "insert into " + LPGlobalVariables.m_sCustomerDataTable + " values(@custid, @custname, @custmilktype, @custmob)";
+                    string query = "insert into " + LPGlobalVariables.m_sCustomerDataTable + " values(@custcode, @custname, @custmilktype, @custmob, @custaccno)";
 
                     SqlCommand cmd = new SqlCommand(query, sqlCon);
-                    cmd.Parameters.AddWithValue("@custid", CustIdTextBox.Text);
+                    cmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
                     cmd.Parameters.AddWithValue("@custname", CustNameTextBox.Text);
-                    cmd.Parameters.AddWithValue("@custmilktype", CustMilkTypeComboBox.SelectedItem);
+                    cmd.Parameters.AddWithValue("@custmilktype", CustMilkTypeComboBox.SelectedIndex);
                     cmd.Parameters.AddWithValue("@custmob", CustMobTextBox.Text);
+                    cmd.Parameters.AddWithValue("@custaccno", CustAccNoTextBox.Text);
 
                     // Open Sql Connection
                     sqlCon.Open();
@@ -94,11 +89,7 @@ namespace LogInForm
                     if (isSuccess > 0)
                     {
                         MessageBox.Show("Customer Data has been added.", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CustIdTextBox.Focus();
-                        CustIdTextBox.Clear();
-                        CustNameTextBox.Clear();
-                        CustMilkTypeComboBox.SelectedText = "";
-                        CustMobTextBox.Clear();
+                        ResetAllControls();
                     }
                     else
                     {
@@ -110,29 +101,54 @@ namespace LogInForm
             }
         }
 
+        private int ResetAllControls()
+        {
+            this.CustNameTextBox.Clear();
+            this.CustIdTextBox.Clear();
+            this.CustMobTextBox.Clear();
+            this.CustAccNoTextBox.Clear();
+            this.CustIdTextBox.Focus();
+            return 0;
+        }
+
         private void CustNameTextBox_Leave(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(CustNameTextBox.Text))
-            {
-                CustNameTextBox.Focus();
-                CustNameErrorProvider.SetError(CustNameTextBox, "Please provide Customer Name");
-            }
-            else
-            {
-                CustNameErrorProvider.Clear();
-            }
+            
         }
 
         private void CustIdTextBox_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(CustIdTextBox.Text))
+            try
             {
-                CustIdTextBox.Focus();
-                CustIdErrorProvider.SetError(CustIdTextBox, "Please provide Customer Id");
+                if (string.IsNullOrEmpty(CustIdTextBox.Text))
+                {
+                    CustIdTextBox.Focus();
+                    CustIdErrorProvider.SetError(CustIdTextBox, "Please provide Customer Id");
+                }
+                else
+                {
+                    CustIdErrorProvider.Clear();
+                    CustNameErrorProvider.Clear();
+
+                    SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                    string query = "SELECT * FROM " + LPGlobalVariables.m_sCustomerDataTable + " WHERE CUST_CODE = @custcode";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        CustNameTextBox.Text = dr.GetFieldValue<string>(1);
+                        CustMilkTypeComboBox.SelectedIndex = dr.GetFieldValue<int>(2);
+                        CustMobTextBox.Text = dr.GetFieldValue<Int64>(3).ToString();
+                        CustAccNoTextBox.Text = dr.GetFieldValue<Int64> (4).ToString();
+                    }
+                    con.Close();
+                }
             }
-            else
+            catch(Exception exc)
             {
-                CustIdErrorProvider.Clear();
+                MessageBox.Show(exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -149,42 +165,65 @@ namespace LogInForm
             }
         }
 
-        private void CustMobTextBox_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(CustMobTextBox.Text))
-            {
-                CustMobErrorProvider.SetError(CustMobTextBox, "Please provide Customer Mob number");
-            }
-            else
-            {
-                CustMobErrorProvider.Clear();
-            }
-        }
-
         private void CustIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            LPUtils.AllowNumbersInTextBox(sender, e);
         }
 
         private void CustMobTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            LPUtils.AllowNumbersInTextBox(sender, e);
         }
 
         private void AddCustDataForm_Load(object sender, EventArgs e)
         {
-
+            CustMilkTypeComboBox.SelectedIndex = 0;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void m_pLoadXMLButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                CustIdErrorProvider.Clear();
+                CustNameErrorProvider.Clear();
+                LPLoadMultiCustListForm custListForm = new LPLoadMultiCustListForm();
+                custListForm.Show();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void m_pUpdateButton_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+            try 
+            {
+                string query = "UPDATE " + LPGlobalVariables.m_sCustomerDataTable + " SET CUST_NAME = @cname, MILK_TYPE = @milktype, CUST_MOB = @custmob, CUST_ACC_NO = @custaccno WHERE CUST_CODE = @custcode";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
+                cmd.Parameters.AddWithValue("@cname", CustNameTextBox.Text);
+                cmd.Parameters.AddWithValue("@milktype", CustMilkTypeComboBox.SelectedIndex);
+                cmd.Parameters.AddWithValue("@custmob", CustMobTextBox.Text);
+                cmd.Parameters.AddWithValue("@custaccno", CustAccNoTextBox.Text);
+                con.Open();
+                int isUpdated = cmd.ExecuteNonQuery();
+                if (isUpdated > 0)
+                {
+                    ResetAllControls();
+                    MessageBox.Show("Custmer Data Updated Successfully", "LPInfo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                con.Close();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

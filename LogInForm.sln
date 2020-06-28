@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogInForm", "LogInForm\LogInForm.csproj", "{6CDDC423-12B9-46EC-A87B-FBB0A23E8848}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LPDairyMilkFirm", "LPDairyMilkFirm\LPDairyMilkFirm.vdproj", "{1B92D551-8626-409D-9416-C7D8DAE325D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,13 @@ Global
 		{6CDDC423-12B9-46EC-A87B-FBB0A23E8848}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CDDC423-12B9-46EC-A87B-FBB0A23E8848}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CDDC423-12B9-46EC-A87B-FBB0A23E8848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B92D551-8626-409D-9416-C7D8DAE325D9}.Debug|Any CPU.ActiveCfg = Debug
+		{1B92D551-8626-409D-9416-C7D8DAE325D9}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D1F1F8E-B7BF-4B26-B026-4A0355BC5AE8}
 	EndGlobalSection
 EndGlobal

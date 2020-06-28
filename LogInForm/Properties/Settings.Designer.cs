@@ -50,8 +50,8 @@ namespace LogInForm.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-81FOA3J\\SQLEXPRESS;Initial Catalog=LOGIN_DB;Integrated Securi" +
-            "ty=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-81FOA3J\\SQLEXPRESS;Initial Catalog=LPMILK_DAIRY_FIRM_DB;Integ" +
+            "rated Security=True")]
         public string LOGIN_DBConnectionString {
             get {
                 return ((string)(this["LOGIN_DBConnectionString"]));

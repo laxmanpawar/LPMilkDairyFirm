@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace LogInForm
 {
-    public partial class LogInForm : Form
+    public partial class LogInForm : src.LPForm
     {
         public LogInForm()
         {

@@ -279,6 +279,7 @@
             // 
             // BillReportForm
             // 
+            this.AcceptButton = this.m_pGenerateReportButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 821);

@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 
 namespace LogInForm
 {
-    public partial class RateChartForm : Form
+    public partial class RateChartForm : src.LPForm
     {
         public RateChartForm()
         {

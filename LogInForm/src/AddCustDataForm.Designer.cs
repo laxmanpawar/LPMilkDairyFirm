@@ -30,14 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.CustDataGroupBox = new System.Windows.Forms.GroupBox();
-            this.ViewEditButton = new System.Windows.Forms.Button();
+            this.m_pUpdateButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.CustAccNoTextBox = new System.Windows.Forms.TextBox();
             this.CustMobTextBox = new System.Windows.Forms.TextBox();
             this.CustMilkTypeComboBox = new System.Windows.Forms.ComboBox();
             this.CustIdTextBox = new System.Windows.Forms.TextBox();
             this.CustIdLabel = new System.Windows.Forms.Label();
+            this.CustAccNoLabel = new System.Windows.Forms.Label();
             this.MilkTypeLabel = new System.Windows.Forms.Label();
             this.CustMobLabel = new System.Windows.Forms.Label();
             this.CustNameTextBox = new System.Windows.Forms.TextBox();
@@ -45,24 +47,29 @@
             this.CustNameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.CustIdErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.CustMilkTypeErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.CustMobErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.m_pLoadXMLButton = new System.Windows.Forms.Button();
             this.CustDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustNameErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustIdErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustMilkTypeErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CustMobErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // CustDataGroupBox
             // 
-            this.CustDataGroupBox.Controls.Add(this.ViewEditButton);
+            this.CustDataGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustDataGroupBox.Controls.Add(this.m_pLoadXMLButton);
+            this.CustDataGroupBox.Controls.Add(this.m_pUpdateButton);
             this.CustDataGroupBox.Controls.Add(this.CancelButton);
             this.CustDataGroupBox.Controls.Add(this.ResetButton);
             this.CustDataGroupBox.Controls.Add(this.AddButton);
+            this.CustDataGroupBox.Controls.Add(this.CustAccNoTextBox);
             this.CustDataGroupBox.Controls.Add(this.CustMobTextBox);
             this.CustDataGroupBox.Controls.Add(this.CustMilkTypeComboBox);
             this.CustDataGroupBox.Controls.Add(this.CustIdTextBox);
             this.CustDataGroupBox.Controls.Add(this.CustIdLabel);
+            this.CustDataGroupBox.Controls.Add(this.CustAccNoLabel);
             this.CustDataGroupBox.Controls.Add(this.MilkTypeLabel);
             this.CustDataGroupBox.Controls.Add(this.CustMobLabel);
             this.CustDataGroupBox.Controls.Add(this.CustNameTextBox);
@@ -72,23 +79,24 @@
             this.CustDataGroupBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustDataGroupBox.Name = "CustDataGroupBox";
             this.CustDataGroupBox.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.CustDataGroupBox.Size = new System.Drawing.Size(646, 302);
+            this.CustDataGroupBox.Size = new System.Drawing.Size(646, 377);
             this.CustDataGroupBox.TabIndex = 2;
             this.CustDataGroupBox.TabStop = false;
             this.CustDataGroupBox.Text = "ग्राहक माहिती";
             // 
-            // ViewEditButton
+            // m_pUpdateButton
             // 
-            this.ViewEditButton.Location = new System.Drawing.Point(315, 249);
-            this.ViewEditButton.Name = "ViewEditButton";
-            this.ViewEditButton.Size = new System.Drawing.Size(85, 44);
-            this.ViewEditButton.TabIndex = 14;
-            this.ViewEditButton.Text = "View/Edit";
-            this.ViewEditButton.UseVisualStyleBackColor = true;
+            this.m_pUpdateButton.Location = new System.Drawing.Point(312, 299);
+            this.m_pUpdateButton.Name = "m_pUpdateButton";
+            this.m_pUpdateButton.Size = new System.Drawing.Size(85, 44);
+            this.m_pUpdateButton.TabIndex = 14;
+            this.m_pUpdateButton.Text = "Update";
+            this.m_pUpdateButton.UseVisualStyleBackColor = true;
+            this.m_pUpdateButton.Click += new System.EventHandler(this.m_pUpdateButton_Click);
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(406, 249);
+            this.CancelButton.Location = new System.Drawing.Point(526, 299);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(85, 44);
             this.CancelButton.TabIndex = 13;
@@ -98,7 +106,7 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(224, 249);
+            this.ResetButton.Location = new System.Drawing.Point(420, 299);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(85, 44);
             this.ResetButton.TabIndex = 12;
@@ -108,13 +116,22 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(125, 249);
+            this.AddButton.Location = new System.Drawing.Point(199, 299);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(93, 44);
-            this.AddButton.TabIndex = 11;
+            this.AddButton.TabIndex = 4;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // CustAccNoTextBox
+            // 
+            this.CustAccNoTextBox.Location = new System.Drawing.Point(199, 225);
+            this.CustAccNoTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.CustAccNoTextBox.Name = "CustAccNoTextBox";
+            this.CustAccNoTextBox.Size = new System.Drawing.Size(412, 35);
+            this.CustAccNoTextBox.TabIndex = 4;
+            this.CustAccNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustMobTextBox_KeyPress);
             // 
             // CustMobTextBox
             // 
@@ -122,9 +139,8 @@
             this.CustMobTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustMobTextBox.Name = "CustMobTextBox";
             this.CustMobTextBox.Size = new System.Drawing.Size(412, 35);
-            this.CustMobTextBox.TabIndex = 10;
+            this.CustMobTextBox.TabIndex = 2;
             this.CustMobTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustMobTextBox_KeyPress);
-            this.CustMobTextBox.Leave += new System.EventHandler(this.CustMobTextBox_Leave);
             // 
             // CustMilkTypeComboBox
             // 
@@ -160,6 +176,17 @@
             this.CustIdLabel.TabIndex = 6;
             this.CustIdLabel.Text = "कोड";
             // 
+            // CustAccNoLabel
+            // 
+            this.CustAccNoLabel.AutoSize = true;
+            this.CustAccNoLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.CustAccNoLabel.Location = new System.Drawing.Point(23, 231);
+            this.CustAccNoLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.CustAccNoLabel.Name = "CustAccNoLabel";
+            this.CustAccNoLabel.Size = new System.Drawing.Size(132, 29);
+            this.CustAccNoLabel.TabIndex = 2;
+            this.CustAccNoLabel.Text = "Acc Number";
+            // 
             // MilkTypeLabel
             // 
             this.MilkTypeLabel.AutoSize = true;
@@ -184,10 +211,11 @@
             // 
             // CustNameTextBox
             // 
+            this.CustNameTextBox.Font = new System.Drawing.Font("Shivaji01", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustNameTextBox.Location = new System.Drawing.Point(199, 82);
             this.CustNameTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustNameTextBox.Name = "CustNameTextBox";
-            this.CustNameTextBox.Size = new System.Drawing.Size(412, 35);
+            this.CustNameTextBox.Size = new System.Drawing.Size(412, 41);
             this.CustNameTextBox.TabIndex = 1;
             this.CustNameTextBox.Leave += new System.EventHandler(this.CustNameTextBox_Leave);
             // 
@@ -214,15 +242,22 @@
             // 
             this.CustMilkTypeErrorProvider.ContainerControl = this;
             // 
-            // CustMobErrorProvider
+            // m_pLoadXMLButton
             // 
-            this.CustMobErrorProvider.ContainerControl = this;
+            this.m_pLoadXMLButton.Location = new System.Drawing.Point(83, 299);
+            this.m_pLoadXMLButton.Name = "m_pLoadXMLButton";
+            this.m_pLoadXMLButton.Size = new System.Drawing.Size(91, 44);
+            this.m_pLoadXMLButton.TabIndex = 15;
+            this.m_pLoadXMLButton.Text = "Load";
+            this.m_pLoadXMLButton.UseVisualStyleBackColor = true;
+            this.m_pLoadXMLButton.Click += new System.EventHandler(this.m_pLoadXMLButton_Click);
             // 
             // AddCustDataForm
             // 
+            this.AcceptButton = this.AddButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 409);
+            this.ClientSize = new System.Drawing.Size(765, 484);
             this.Controls.Add(this.CustDataGroupBox);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -235,7 +270,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CustNameErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustIdErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustMilkTypeErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CustMobErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,7 +291,9 @@
         private System.Windows.Forms.ErrorProvider CustNameErrorProvider;
         private System.Windows.Forms.ErrorProvider CustIdErrorProvider;
         private System.Windows.Forms.ErrorProvider CustMilkTypeErrorProvider;
-        private System.Windows.Forms.ErrorProvider CustMobErrorProvider;
-        private System.Windows.Forms.Button ViewEditButton;
+        private System.Windows.Forms.Button m_pUpdateButton;
+        private System.Windows.Forms.TextBox CustAccNoTextBox;
+        private System.Windows.Forms.Label CustAccNoLabel;
+        private System.Windows.Forms.Button m_pLoadXMLButton;
     }
 }

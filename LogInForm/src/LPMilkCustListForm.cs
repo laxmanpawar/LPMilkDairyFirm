@@ -46,7 +46,7 @@ namespace LogInForm.src
                 }
                 else if (m_sListType == "MilkProducerList")
                 {
-                    cmd.CommandText = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustomerDataTable;
+                    cmd.CommandText = "SELECT CUST_CODE, CUST_NAME, CUST_MOB FROM " + LPGlobalVariables.m_sCustomerDataTable;
                 }
                 cmd.Parameters.AddWithValue("@milktime", m_iMilkTime);
                 cmd.Parameters.AddWithValue("@milkdate", m_pDateTime.Date);
@@ -59,6 +59,10 @@ namespace LogInForm.src
                 m_pMilkCustListDataGridView.Columns["CUST_CODE"].Width = 100;
                 m_pMilkCustListDataGridView.Columns["CUST_CODE"].HeaderText = "कोड";
                 m_pMilkCustListDataGridView.Columns["CUST_NAME"].HeaderText = "नाव";
+                if (m_sListType == "MilkProducerList") m_pMilkCustListDataGridView.Columns["CUST_MOB"].HeaderText = "Mob. Number";
+
+                // Show Cust Name in Marathi
+                m_pMilkCustListDataGridView.Columns["CUST_NAME"].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
             }
             catch (Exception exc)
             {

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LogInForm.src
 {
-    public partial class LPBillReportViewerForm : Form
+    public partial class LPBillReportViewerForm : LPForm
     {
         List<int> m_lCustIdList;
         DateTime m_pReportStartDate;

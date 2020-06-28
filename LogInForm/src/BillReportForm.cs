@@ -13,7 +13,7 @@ using LogInForm.src;
 
 namespace LogInForm
 {
-    public partial class BillReportForm : Form
+    public partial class BillReportForm : LPForm
     {
         public BillReportForm()
         {
@@ -29,15 +29,25 @@ namespace LogInForm
             this.m_pDairyNameLabel.Text = LPGlobalVariables.m_sDairyName;
 
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-            string query = "SELECT CUST_ID, CUST_NAME FROM " + LPGlobalVariables.m_sCustomerDataTable;
+            string query = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustomerDataTable;
             SqlCommand cmd = new SqlCommand(query, con);
+
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+            /* TODO : Check Why not working SDA
+             * DataTable dt = new DataTable();
+            sda.Fill(dt);
+            this.m_pTotalCustDGV.DataSource = dt;*/
+
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 this.m_pTotalCustDGV.Rows.Add(dr.GetValue(0), dr.GetValue(1));
             }
-            con.Close();
+            // Show Cust Name in Marathi
+            this.m_pTotalCustDGV.Columns[1].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
+            //con.Close();
         }
 
         private void m_pReportMoveAllButton_Click(object sender, EventArgs e)
@@ -49,6 +59,7 @@ namespace LogInForm
                     this.m_pReportCustDGV.Rows.Add(dgvRow.Cells[0].Value, dgvRow.Cells[1].Value);
                 }
                 this.m_pTotalCustDGV.Rows.Clear();
+                this.m_pReportCustDGV.Columns[1].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
             }
             catch(Exception exc)
             {
@@ -84,6 +95,7 @@ namespace LogInForm
                 {
                     this.m_pTotalCustDGV.Rows.Remove(dgvRow);
                 }
+                this.m_pReportCustDGV.Columns[1].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
             }
             catch (Exception exc)
             {

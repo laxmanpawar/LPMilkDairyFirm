@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainLabel = new System.Windows.Forms.Label();
             this.BranchLabel = new System.Windows.Forms.Label();
             this.BranchNamesComboBox = new System.Windows.Forms.ComboBox();
@@ -467,7 +467,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(522, 137);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(522, 149);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // MilkTypeComboBox
@@ -477,7 +477,7 @@
             this.MilkTypeComboBox.Items.AddRange(new object[] {
             "गाय",
             "म्हैस"});
-            this.MilkTypeComboBox.Location = new System.Drawing.Point(122, 95);
+            this.MilkTypeComboBox.Location = new System.Drawing.Point(122, 103);
             this.MilkTypeComboBox.Name = "MilkTypeComboBox";
             this.MilkTypeComboBox.Size = new System.Drawing.Size(83, 37);
             this.MilkTypeComboBox.TabIndex = 12;
@@ -493,15 +493,17 @@
             "Walha",
             "Walwad"});
             this.CustNameTextBox.Enabled = false;
-            this.CustNameTextBox.Location = new System.Drawing.Point(122, 50);
+            this.CustNameTextBox.Font = new System.Drawing.Font("Shivaji01", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustNameTextBox.ForeColor = System.Drawing.Color.Black;
+            this.CustNameTextBox.Location = new System.Drawing.Point(122, 54);
             this.CustNameTextBox.Name = "CustNameTextBox";
-            this.CustNameTextBox.Size = new System.Drawing.Size(395, 35);
+            this.CustNameTextBox.Size = new System.Drawing.Size(395, 41);
             this.CustNameTextBox.TabIndex = 11;
             // 
             // CustCodeTextBox
             // 
             this.CustCodeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CustCodeTextBox.Location = new System.Drawing.Point(122, 6);
+            this.CustCodeTextBox.Location = new System.Drawing.Point(122, 8);
             this.CustCodeTextBox.Name = "CustCodeTextBox";
             this.CustCodeTextBox.Size = new System.Drawing.Size(44, 35);
             this.CustCodeTextBox.TabIndex = 0;
@@ -514,7 +516,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 99);
+            this.label3.Location = new System.Drawing.Point(5, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 29);
             this.label3.TabIndex = 9;
@@ -525,7 +527,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 54);
+            this.label2.Location = new System.Drawing.Point(5, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 29);
             this.label2.TabIndex = 4;
@@ -536,7 +538,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 9);
+            this.label1.Location = new System.Drawing.Point(5, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 29);
             this.label1.TabIndex = 1;
@@ -915,14 +917,14 @@
             this.CustMilkDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CustMilkDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustMilkDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CustMilkDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CustMilkDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CustMilkDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustMilkDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.CustMilkDataGridView.Location = new System.Drawing.Point(26, 458);
