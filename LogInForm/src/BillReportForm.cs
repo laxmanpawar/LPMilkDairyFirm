@@ -13,7 +13,7 @@ using LogInForm.src;
 
 namespace LogInForm
 {
-    public partial class BillReportForm : LPForm
+    public partial class BillReportForm : Form
     {
         public BillReportForm()
         {
@@ -29,15 +29,8 @@ namespace LogInForm
             this.m_pDairyNameLabel.Text = LPGlobalVariables.m_sDairyName;
 
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-            string query = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustomerDataTable;
+            string query = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCollectionCustomerDataTable;
             SqlCommand cmd = new SqlCommand(query, con);
-
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-            /* TODO : Check Why not working SDA
-             * DataTable dt = new DataTable();
-            sda.Fill(dt);
-            this.m_pTotalCustDGV.DataSource = dt;*/
 
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -47,7 +40,7 @@ namespace LogInForm
             }
             // Show Cust Name in Marathi
             this.m_pTotalCustDGV.Columns[1].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
-            //con.Close();
+            con.Close();
         }
 
         private void m_pReportMoveAllButton_Click(object sender, EventArgs e)
@@ -58,8 +51,8 @@ namespace LogInForm
                 {
                     this.m_pReportCustDGV.Rows.Add(dgvRow.Cells[0].Value, dgvRow.Cells[1].Value);
                 }
-                this.m_pTotalCustDGV.Rows.Clear();
                 this.m_pReportCustDGV.Columns[1].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
+                this.m_pTotalCustDGV.Rows.Clear();
             }
             catch(Exception exc)
             {

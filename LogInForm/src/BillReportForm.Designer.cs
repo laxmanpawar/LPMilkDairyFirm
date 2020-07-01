@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillReportForm));
             this.m_pBranchComboBox = new System.Windows.Forms.ComboBox();
             this.m_pBranchLabel = new System.Windows.Forms.Label();
             this.m_pBillRoprtFromLabel = new System.Windows.Forms.Label();
@@ -207,6 +208,7 @@
             // 
             this.m_pTotalCustDGV.AllowUserToAddRows = false;
             this.m_pTotalCustDGV.AllowUserToDeleteRows = false;
+            this.m_pTotalCustDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.m_pTotalCustDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.m_pTotalCustDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustCodeColumn,
@@ -227,7 +229,6 @@
             this.CustCodeColumn.MinimumWidth = 6;
             this.CustCodeColumn.Name = "CustCodeColumn";
             this.CustCodeColumn.ReadOnly = true;
-            this.CustCodeColumn.Width = 60;
             // 
             // CustNameColumn
             // 
@@ -235,7 +236,6 @@
             this.CustNameColumn.MinimumWidth = 6;
             this.CustNameColumn.Name = "CustNameColumn";
             this.CustNameColumn.ReadOnly = true;
-            this.CustNameColumn.Width = 450;
             // 
             // m_pDairyNameLabel
             // 
@@ -303,6 +303,7 @@
             this.Controls.Add(this.m_pBranchComboBox);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BillReportForm";
             this.Text = "BillReportForm";
@@ -331,8 +332,8 @@
         private System.Windows.Forms.Button m_pReportMoveSelectedButton;
         private System.Windows.Forms.Button m_pSkipReportMoveSelectedButton;
         private System.Windows.Forms.DataGridView m_pTotalCustDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Label m_pDairyNameLabel;
         private System.Windows.Forms.Button m_pGenerateReportButton;
         private System.Windows.Forms.Button m_pResetCustDataButton;
