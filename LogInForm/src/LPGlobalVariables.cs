@@ -12,7 +12,8 @@ namespace LogInForm
         public static string m_sDairyName = "शिवराजे दूध संकलन वाल्हा";
 
         // Customer data 
-        public static string m_sCustomerDataTable = "CUSTOMER_DATA_TABLE";
+        public static string m_sTotalCustomerDataTable = "TOTAL_CUSTOMER_DATA_TABLE";
+        public static string m_sCollectionCustomerDataTable = "TOTAL_CUSTOMER_DATA_TABLE";  // TODO : Support Active Cust List "CUSTOMER_DATA_TABLE";
         public static string m_sCustDailyMilkDataTable = "CUSTOMER_MILK_DATA";
 
 
