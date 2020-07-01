@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 
 namespace LogInForm
 {
-    public partial class RateChartForm : src.LPForm
+    public partial class RateChartForm : Form
     {
         public RateChartForm()
         {
@@ -178,8 +178,15 @@ namespace LogInForm
 
         private void m_pResetButton_Click(object sender, EventArgs e)
         {
-            this.RateChartDataGridView.Rows.Clear();
-            this.RateChartDataGridView.Columns.Clear();
+            try
+            {
+                this.RateChartDataGridView.Rows.Clear();
+                this.RateChartDataGridView.Columns.Clear();
+            }
+            catch(Exception)
+            {
+                ((DataTable)RateChartDataGridView.DataSource).Rows.Clear();
+            }
             
         }
 
@@ -205,11 +212,11 @@ namespace LogInForm
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

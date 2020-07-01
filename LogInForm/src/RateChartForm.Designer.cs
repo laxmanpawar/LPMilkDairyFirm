@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RateChartForm));
             this.BranchGroupBox = new System.Windows.Forms.GroupBox();
             this.BranchCheckBox1 = new System.Windows.Forms.CheckBox();
             this.MilkTypeGroupBox = new System.Windows.Forms.GroupBox();
@@ -45,7 +46,7 @@
             this.RateChartDataGridView = new System.Windows.Forms.DataGridView();
             this.m_pSaveButton = new System.Windows.Forms.Button();
             this.m_pResetButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.m_pCancelButton = new System.Windows.Forms.Button();
             this.m_pLoadExistingButton = new System.Windows.Forms.Button();
             this.m_pPasteButton = new System.Windows.Forms.Button();
             this.BranchGroupBox.SuspendLayout();
@@ -60,8 +61,10 @@
             this.BranchGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BranchGroupBox.Controls.Add(this.BranchCheckBox1);
             this.BranchGroupBox.ForeColor = System.Drawing.Color.Maroon;
-            this.BranchGroupBox.Location = new System.Drawing.Point(3, 12);
+            this.BranchGroupBox.Location = new System.Drawing.Point(3, 13);
+            this.BranchGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BranchGroupBox.Name = "BranchGroupBox";
+            this.BranchGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BranchGroupBox.Size = new System.Drawing.Size(298, 76);
             this.BranchGroupBox.TabIndex = 1;
             this.BranchGroupBox.TabStop = false;
@@ -70,7 +73,8 @@
             // BranchCheckBox1
             // 
             this.BranchCheckBox1.AutoSize = true;
-            this.BranchCheckBox1.Location = new System.Drawing.Point(7, 35);
+            this.BranchCheckBox1.Location = new System.Drawing.Point(8, 34);
+            this.BranchCheckBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BranchCheckBox1.Name = "BranchCheckBox1";
             this.BranchCheckBox1.Size = new System.Drawing.Size(82, 33);
             this.BranchCheckBox1.TabIndex = 0;
@@ -83,8 +87,10 @@
             this.MilkTypeGroupBox.Controls.Add(this.BuffMilkTypeCheckBox);
             this.MilkTypeGroupBox.Controls.Add(this.m_pCowMilkTypeCheckBox);
             this.MilkTypeGroupBox.ForeColor = System.Drawing.Color.Maroon;
-            this.MilkTypeGroupBox.Location = new System.Drawing.Point(308, 12);
+            this.MilkTypeGroupBox.Location = new System.Drawing.Point(308, 13);
+            this.MilkTypeGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MilkTypeGroupBox.Name = "MilkTypeGroupBox";
+            this.MilkTypeGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MilkTypeGroupBox.Size = new System.Drawing.Size(168, 76);
             this.MilkTypeGroupBox.TabIndex = 3;
             this.MilkTypeGroupBox.TabStop = false;
@@ -94,6 +100,7 @@
             // 
             this.BuffMilkTypeCheckBox.AutoSize = true;
             this.BuffMilkTypeCheckBox.Location = new System.Drawing.Point(92, 29);
+            this.BuffMilkTypeCheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BuffMilkTypeCheckBox.Name = "BuffMilkTypeCheckBox";
             this.BuffMilkTypeCheckBox.Size = new System.Drawing.Size(71, 33);
             this.BuffMilkTypeCheckBox.TabIndex = 1;
@@ -104,6 +111,7 @@
             // 
             this.m_pCowMilkTypeCheckBox.AutoSize = true;
             this.m_pCowMilkTypeCheckBox.Location = new System.Drawing.Point(18, 29);
+            this.m_pCowMilkTypeCheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.m_pCowMilkTypeCheckBox.Name = "m_pCowMilkTypeCheckBox";
             this.m_pCowMilkTypeCheckBox.Size = new System.Drawing.Size(68, 33);
             this.m_pCowMilkTypeCheckBox.TabIndex = 0;
@@ -118,8 +126,10 @@
             this.FatGroupBox.Controls.Add(this.FatFromTextBox);
             this.FatGroupBox.ForeColor = System.Drawing.Color.Maroon;
             this.FatGroupBox.Location = new System.Drawing.Point(498, 13);
+            this.FatGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FatGroupBox.Name = "FatGroupBox";
-            this.FatGroupBox.Size = new System.Drawing.Size(186, 75);
+            this.FatGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FatGroupBox.Size = new System.Drawing.Size(186, 74);
             this.FatGroupBox.TabIndex = 4;
             this.FatGroupBox.TabStop = false;
             this.FatGroupBox.Text = "फॅट";
@@ -135,7 +145,8 @@
             // 
             // FatToTextBox
             // 
-            this.FatToTextBox.Location = new System.Drawing.Point(112, 26);
+            this.FatToTextBox.Location = new System.Drawing.Point(112, 25);
+            this.FatToTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FatToTextBox.Name = "FatToTextBox";
             this.FatToTextBox.Size = new System.Drawing.Size(68, 35);
             this.FatToTextBox.TabIndex = 1;
@@ -143,7 +154,8 @@
             // 
             // FatFromTextBox
             // 
-            this.FatFromTextBox.Location = new System.Drawing.Point(6, 26);
+            this.FatFromTextBox.Location = new System.Drawing.Point(6, 25);
+            this.FatFromTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FatFromTextBox.Name = "FatFromTextBox";
             this.FatFromTextBox.Size = new System.Drawing.Size(68, 35);
             this.FatFromTextBox.TabIndex = 0;
@@ -156,9 +168,11 @@
             this.SNFGroupBox.Controls.Add(this.SNFToTextBox);
             this.SNFGroupBox.Controls.Add(this.SNFFromTextBox);
             this.SNFGroupBox.ForeColor = System.Drawing.Color.Maroon;
-            this.SNFGroupBox.Location = new System.Drawing.Point(709, 13);
+            this.SNFGroupBox.Location = new System.Drawing.Point(710, 13);
+            this.SNFGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SNFGroupBox.Name = "SNFGroupBox";
-            this.SNFGroupBox.Size = new System.Drawing.Size(186, 75);
+            this.SNFGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SNFGroupBox.Size = new System.Drawing.Size(186, 74);
             this.SNFGroupBox.TabIndex = 5;
             this.SNFGroupBox.TabStop = false;
             this.SNFGroupBox.Text = "SNF";
@@ -174,7 +188,8 @@
             // 
             // SNFToTextBox
             // 
-            this.SNFToTextBox.Location = new System.Drawing.Point(112, 26);
+            this.SNFToTextBox.Location = new System.Drawing.Point(112, 25);
+            this.SNFToTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SNFToTextBox.Name = "SNFToTextBox";
             this.SNFToTextBox.Size = new System.Drawing.Size(68, 35);
             this.SNFToTextBox.TabIndex = 1;
@@ -182,7 +197,8 @@
             // 
             // SNFFromTextBox
             // 
-            this.SNFFromTextBox.Location = new System.Drawing.Point(6, 26);
+            this.SNFFromTextBox.Location = new System.Drawing.Point(6, 25);
+            this.SNFFromTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SNFFromTextBox.Name = "SNFFromTextBox";
             this.SNFFromTextBox.Size = new System.Drawing.Size(68, 35);
             this.SNFFromTextBox.TabIndex = 0;
@@ -192,8 +208,9 @@
             // 
             this.GenerateButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.GenerateButton.Location = new System.Drawing.Point(902, 49);
+            this.GenerateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(133, 39);
+            this.GenerateButton.Size = new System.Drawing.Size(134, 40);
             this.GenerateButton.TabIndex = 7;
             this.GenerateButton.Text = "Generate";
             this.GenerateButton.UseVisualStyleBackColor = true;
@@ -206,12 +223,13 @@
             this.RateChartDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.RateChartDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.RateChartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RateChartDataGridView.Location = new System.Drawing.Point(49, 159);
+            this.RateChartDataGridView.Location = new System.Drawing.Point(50, 160);
+            this.RateChartDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RateChartDataGridView.Name = "RateChartDataGridView";
             this.RateChartDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.RateChartDataGridView.RowTemplate.Height = 24;
             this.RateChartDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.RateChartDataGridView.Size = new System.Drawing.Size(1085, 531);
+            this.RateChartDataGridView.Size = new System.Drawing.Size(1084, 531);
             this.RateChartDataGridView.TabIndex = 8;
             this.RateChartDataGridView.Tag = "";
             // 
@@ -219,6 +237,7 @@
             // 
             this.m_pSaveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.m_pSaveButton.Location = new System.Drawing.Point(326, 696);
+            this.m_pSaveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.m_pSaveButton.Name = "m_pSaveButton";
             this.m_pSaveButton.Size = new System.Drawing.Size(102, 45);
             this.m_pSaveButton.TabIndex = 9;
@@ -229,7 +248,8 @@
             // m_pResetButton
             // 
             this.m_pResetButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.m_pResetButton.Location = new System.Drawing.Point(557, 696);
+            this.m_pResetButton.Location = new System.Drawing.Point(556, 696);
+            this.m_pResetButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.m_pResetButton.Name = "m_pResetButton";
             this.m_pResetButton.Size = new System.Drawing.Size(102, 45);
             this.m_pResetButton.TabIndex = 10;
@@ -237,21 +257,23 @@
             this.m_pResetButton.UseVisualStyleBackColor = true;
             this.m_pResetButton.Click += new System.EventHandler(this.m_pResetButton_Click);
             // 
-            // CancelButton
+            // m_pCancelButton
             // 
-            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.CancelButton.Location = new System.Drawing.Point(665, 696);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(102, 45);
-            this.CancelButton.TabIndex = 10;
-            this.CancelButton.Text = "रद्द करा";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.m_pCancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.m_pCancelButton.Location = new System.Drawing.Point(664, 696);
+            this.m_pCancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.m_pCancelButton.Name = "m_pCancelButton";
+            this.m_pCancelButton.Size = new System.Drawing.Size(102, 45);
+            this.m_pCancelButton.TabIndex = 10;
+            this.m_pCancelButton.Text = "रद्द करा";
+            this.m_pCancelButton.UseVisualStyleBackColor = true;
+            this.m_pCancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // m_pLoadExistingButton
             // 
             this.m_pLoadExistingButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.m_pLoadExistingButton.Location = new System.Drawing.Point(434, 696);
+            this.m_pLoadExistingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.m_pLoadExistingButton.Name = "m_pLoadExistingButton";
             this.m_pLoadExistingButton.Size = new System.Drawing.Size(117, 45);
             this.m_pLoadExistingButton.TabIndex = 11;
@@ -261,7 +283,8 @@
             // 
             // m_pPasteButton
             // 
-            this.m_pPasteButton.Location = new System.Drawing.Point(1042, 50);
+            this.m_pPasteButton.Location = new System.Drawing.Point(1042, 51);
+            this.m_pPasteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.m_pPasteButton.Name = "m_pPasteButton";
             this.m_pPasteButton.Size = new System.Drawing.Size(92, 38);
             this.m_pPasteButton.TabIndex = 12;
@@ -273,10 +296,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 753);
+            this.ClientSize = new System.Drawing.Size(1182, 752);
             this.Controls.Add(this.m_pPasteButton);
             this.Controls.Add(this.m_pLoadExistingButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.m_pCancelButton);
             this.Controls.Add(this.m_pResetButton);
             this.Controls.Add(this.m_pSaveButton);
             this.Controls.Add(this.RateChartDataGridView);
@@ -286,7 +309,8 @@
             this.Controls.Add(this.MilkTypeGroupBox);
             this.Controls.Add(this.BranchGroupBox);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RateChartForm";
             this.Text = "RateChartForm";
             this.Load += new System.EventHandler(this.RateChartForm_Load);
@@ -321,7 +345,7 @@
         private System.Windows.Forms.DataGridView RateChartDataGridView;
         private System.Windows.Forms.Button m_pSaveButton;
         private System.Windows.Forms.Button m_pResetButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button m_pCancelButton;
         private System.Windows.Forms.Button m_pLoadExistingButton;
         private System.Windows.Forms.Button m_pPasteButton;
     }

@@ -31,6 +31,7 @@ namespace LogInForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LPMainWindow));
             this.CollectionGroupBox = new System.Windows.Forms.GroupBox();
             this.NightCollectionButton = new System.Windows.Forms.Button();
             this.MorningCollectionButton = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@ namespace LogInForm
             this.AddCustDataButton = new System.Windows.Forms.Button();
             this.RateChartFeedButton = new System.Windows.Forms.Button();
             this.m_pBillReportButton = new System.Windows.Forms.Button();
+            this.m_pEditCustListButton = new System.Windows.Forms.Button();
             this.CollectionGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LordPictureBox)).BeginInit();
             this.MenuBar.SuspendLayout();
@@ -61,11 +63,11 @@ namespace LogInForm
             this.CollectionGroupBox.Controls.Add(this.NightCollectionButton);
             this.CollectionGroupBox.Controls.Add(this.MorningCollectionButton);
             this.CollectionGroupBox.ForeColor = System.Drawing.Color.Red;
-            this.CollectionGroupBox.Location = new System.Drawing.Point(619, 59);
-            this.CollectionGroupBox.Margin = new System.Windows.Forms.Padding(5);
+            this.CollectionGroupBox.Location = new System.Drawing.Point(620, 60);
+            this.CollectionGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CollectionGroupBox.Name = "CollectionGroupBox";
-            this.CollectionGroupBox.Padding = new System.Windows.Forms.Padding(5);
-            this.CollectionGroupBox.Size = new System.Drawing.Size(201, 400);
+            this.CollectionGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CollectionGroupBox.Size = new System.Drawing.Size(201, 401);
             this.CollectionGroupBox.TabIndex = 0;
             this.CollectionGroupBox.TabStop = false;
             this.CollectionGroupBox.Text = "Collections";
@@ -73,7 +75,8 @@ namespace LogInForm
             // NightCollectionButton
             // 
             this.NightCollectionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.NightCollectionButton.Location = new System.Drawing.Point(17, 115);
+            this.NightCollectionButton.Location = new System.Drawing.Point(16, 114);
+            this.NightCollectionButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NightCollectionButton.Name = "NightCollectionButton";
             this.NightCollectionButton.Size = new System.Drawing.Size(176, 47);
             this.NightCollectionButton.TabIndex = 1;
@@ -84,9 +87,10 @@ namespace LogInForm
             // MorningCollectionButton
             // 
             this.MorningCollectionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.MorningCollectionButton.Location = new System.Drawing.Point(17, 44);
+            this.MorningCollectionButton.Location = new System.Drawing.Point(16, 44);
+            this.MorningCollectionButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MorningCollectionButton.Name = "MorningCollectionButton";
-            this.MorningCollectionButton.Size = new System.Drawing.Size(176, 48);
+            this.MorningCollectionButton.Size = new System.Drawing.Size(176, 47);
             this.MorningCollectionButton.TabIndex = 0;
             this.MorningCollectionButton.Text = "सकाळ संकलन";
             this.MorningCollectionButton.UseVisualStyleBackColor = true;
@@ -99,9 +103,10 @@ namespace LogInForm
             this.LordPictureBox.BackgroundImage = global::LogInForm.Properties.Resources.VinayakaLandScape;
             this.LordPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.LordPictureBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.LordPictureBox.Location = new System.Drawing.Point(127, 59);
+            this.LordPictureBox.Location = new System.Drawing.Point(128, 60);
+            this.LordPictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LordPictureBox.Name = "LordPictureBox";
-            this.LordPictureBox.Size = new System.Drawing.Size(484, 409);
+            this.LordPictureBox.Size = new System.Drawing.Size(484, 410);
             this.LordPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LordPictureBox.TabIndex = 1;
             this.LordPictureBox.TabStop = false;
@@ -119,6 +124,7 @@ namespace LogInForm
             this.helpToolStripMenuItem});
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
+            this.MenuBar.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.MenuBar.Size = new System.Drawing.Size(834, 37);
             this.MenuBar.TabIndex = 2;
             this.MenuBar.Text = "MenuBar";
@@ -192,9 +198,10 @@ namespace LogInForm
             // 
             this.AddCustDataButton.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddCustDataButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.AddCustDataButton.Location = new System.Drawing.Point(13, 59);
+            this.AddCustDataButton.Location = new System.Drawing.Point(14, 60);
+            this.AddCustDataButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AddCustDataButton.Name = "AddCustDataButton";
-            this.AddCustDataButton.Size = new System.Drawing.Size(108, 43);
+            this.AddCustDataButton.Size = new System.Drawing.Size(108, 44);
             this.AddCustDataButton.TabIndex = 3;
             this.AddCustDataButton.Text = "नवीन ग्राहक जोडा";
             this.AddCustDataButton.UseVisualStyleBackColor = true;
@@ -204,7 +211,8 @@ namespace LogInForm
             // 
             this.RateChartFeedButton.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RateChartFeedButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.RateChartFeedButton.Location = new System.Drawing.Point(13, 109);
+            this.RateChartFeedButton.Location = new System.Drawing.Point(14, 109);
+            this.RateChartFeedButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RateChartFeedButton.Name = "RateChartFeedButton";
             this.RateChartFeedButton.Size = new System.Drawing.Size(108, 42);
             this.RateChartFeedButton.TabIndex = 4;
@@ -216,7 +224,8 @@ namespace LogInForm
             // 
             this.m_pBillReportButton.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_pBillReportButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.m_pBillReportButton.Location = new System.Drawing.Point(13, 158);
+            this.m_pBillReportButton.Location = new System.Drawing.Point(14, 158);
+            this.m_pBillReportButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.m_pBillReportButton.Name = "m_pBillReportButton";
             this.m_pBillReportButton.Size = new System.Drawing.Size(108, 44);
             this.m_pBillReportButton.TabIndex = 5;
@@ -224,11 +233,25 @@ namespace LogInForm
             this.m_pBillReportButton.UseVisualStyleBackColor = true;
             this.m_pBillReportButton.Click += new System.EventHandler(this.m_pBillReportButton_Click);
             // 
+            // m_pEditCustListButton
+            // 
+            this.m_pEditCustListButton.Font = new System.Drawing.Font("Shivaji01", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m_pEditCustListButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.m_pEditCustListButton.Location = new System.Drawing.Point(14, 208);
+            this.m_pEditCustListButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.m_pEditCustListButton.Name = "m_pEditCustListButton";
+            this.m_pEditCustListButton.Size = new System.Drawing.Size(108, 65);
+            this.m_pEditCustListButton.TabIndex = 5;
+            this.m_pEditCustListButton.Text = "ApDoT saMklana yaadI";
+            this.m_pEditCustListButton.UseVisualStyleBackColor = true;
+            this.m_pEditCustListButton.Click += new System.EventHandler(this.m_pEditCustList_Click);
+            // 
             // LPMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 611);
+            this.Controls.Add(this.m_pEditCustListButton);
             this.Controls.Add(this.m_pBillReportButton);
             this.Controls.Add(this.RateChartFeedButton);
             this.Controls.Add(this.AddCustDataButton);
@@ -236,10 +259,12 @@ namespace LogInForm
             this.Controls.Add(this.CollectionGroupBox);
             this.Controls.Add(this.MenuBar);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LPMainWindow";
             this.Text = "LPMainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LPMainWindow_FormClosing);
+            this.Load += new System.EventHandler(this.LPMainWindow_Load);
             this.CollectionGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LordPictureBox)).EndInit();
             this.MenuBar.ResumeLayout(false);
@@ -269,5 +294,6 @@ namespace LogInForm
         private Button AddCustDataButton;
         private Button RateChartFeedButton;
         private Button m_pBillReportButton;
+        private Button m_pEditCustListButton;
     }
 }

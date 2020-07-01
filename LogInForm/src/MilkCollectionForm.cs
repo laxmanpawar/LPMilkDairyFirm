@@ -17,7 +17,7 @@ using LogInForm.src;
 
 namespace LogInForm
 {
-    public partial class MilkCollectionForm : LPForm
+    public partial class MilkCollectionForm : Form
     {
 
         Model.CUSTOMER_MILK_DATA model = new Model.CUSTOMER_MILK_DATA();
@@ -59,7 +59,7 @@ namespace LogInForm
 
             SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
-            string isCustExistsQuery = "Select * from " + LPGlobalVariables.m_sCustomerDataTable + " Where CUST_CODE = @custid";
+            string isCustExistsQuery = "Select * from " + LPGlobalVariables.m_sCollectionCustomerDataTable + " Where CUST_CODE = @custid";
             SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
             isCustExistsCmd.Parameters.AddWithValue("@custid", CustCodeTextBox.Text);
 
@@ -111,6 +111,8 @@ namespace LogInForm
 
             //m_sCustMilkDataTableName = m_sEngMilkCollTime + "_" + m_pMilkDate.Value.ToString("dd_MM_yyyy");
             MainLabel.Text = m_sMilkCollTime + " दूध संकलन";
+
+            BindDataGridView();
 
             // Update Total MilkData
             UpdateTotalMilkDetailsTable();
@@ -269,7 +271,7 @@ namespace LogInForm
                         sqlConnection.Close();
                         // Update Total MilkData
                         UpdateTotalMilkDetailsTable();
-                        MessageBox.Show("Milk added successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Milk added successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -979,7 +981,7 @@ namespace LogInForm
 
         private void m_pMilkCollectedCustListButton_Click(object sender, EventArgs e)
         {
-            LPMilkCustListForm remainingCustListForm = new LPMilkCustListForm("MilkCollectedCustList", m_pMilkDate.Value.Date, m_iMilkTime);
+            LPMilkCustListForm remainingCustListForm = new LPMilkCustListForm("MilkCollectionCustList", m_pMilkDate.Value.Date, m_iMilkTime);
             remainingCustListForm.Show();
         }
 

@@ -49,7 +49,7 @@ namespace LogInForm.src
                 columnNames.Add("CUST_ACC_NO");
 
                 StringBuilder query = new StringBuilder();
-                query.Append("INSERT INTO " + LPGlobalVariables.m_sCustomerDataTable + " VALUES");
+                query.Append("INSERT INTO " + LPGlobalVariables.m_sCollectionCustomerDataTable + " VALUES");
 
                 int rowCounter = 0;
                 foreach (DataGridViewRow dgvr in m_pCustListDataGridView.Rows)

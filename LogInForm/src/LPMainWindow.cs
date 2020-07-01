@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LogInForm
 {
-    public partial class LPMainWindow : LPForm
+    public partial class LPMainWindow : Form
     {
         public LPMainWindow()
         {
@@ -52,6 +52,22 @@ namespace LogInForm
         {
             BillReportForm billReport = new BillReportForm();
             billReport.Show();
+        }
+
+        private void m_pEditCustList_Click(object sender, EventArgs e)
+        {
+            LPEditMilkCollectionCustListForm collectionCustListForm = new LPEditMilkCollectionCustListForm();
+            collectionCustListForm.Show();
+        }
+
+        private void LPMainWindow_Load(object sender, EventArgs e)
+        {
+            /*
+              ******************** TODO : SUPPORT ACTIVE CUSTOMER LIST BUTTON. *****************
+              ******************** TIll HIDE EDIT ACTIVE CUSTOMER LIST BUTTON. *****************
+             */
+            m_pEditCustListButton.Hide();
+
         }
     }
 }

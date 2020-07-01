@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LPMilkCustListForm));
             this.m_pMilkCustListDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.m_pMilkCustListDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(798, 592);
             this.Controls.Add(this.m_pMilkCustListDataGridView);
             this.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.Name = "LPMilkCustListForm";
             this.Text = "LPMilkCustListForm";

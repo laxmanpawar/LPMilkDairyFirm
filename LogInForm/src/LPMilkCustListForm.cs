@@ -34,19 +34,19 @@ namespace LogInForm.src
             try
             {
                 SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                string remaingCustListQuery = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustomerDataTable + " EXCEPT SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustDailyMilkDataTable + " WHERE MILK_TIME = @milktime AND MILK_DATE = @milkdate";
+                string remaingCustListQuery = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCollectionCustomerDataTable + " EXCEPT SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustDailyMilkDataTable + " WHERE MILK_TIME = @milktime AND MILK_DATE = @milkdate";
                 SqlCommand cmd = new SqlCommand(remaingCustListQuery, con);
                 if (m_sListType == "RemainingCustList")
                 {
                     cmd.CommandText = remaingCustListQuery;
                 }
-                else if (m_sListType == "MilkCollectedCustList")
+                else if (m_sListType == "MilkCollectionCustList")
                 {
                     cmd.CommandText = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustDailyMilkDataTable + " WHERE MILK_TIME = @milktime AND MILK_DATE = @milkdate";
                 }
                 else if (m_sListType == "MilkProducerList")
                 {
-                    cmd.CommandText = "SELECT CUST_CODE, CUST_NAME, CUST_MOB FROM " + LPGlobalVariables.m_sCustomerDataTable;
+                    cmd.CommandText = "SELECT CUST_CODE, CUST_NAME, CUST_MOB FROM " + LPGlobalVariables.m_sTotalCustomerDataTable;
                 }
                 cmd.Parameters.AddWithValue("@milktime", m_iMilkTime);
                 cmd.Parameters.AddWithValue("@milkdate", m_pDateTime.Date);
