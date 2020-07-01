@@ -30,15 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LPBillReportViewerForm));
+            this.CUSTOMER_MILK_DATABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cUSTOMER_MILK_DataSet = new CUSTOMER_MILK_DataSet();
             this.m_pBillReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.cUSTOMERMILKDATABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cUSTOMER_MILK_DataSet = new CUSTOMER_MILK_DataSet();
             this.cUSTOMER_MILK_DATATableAdapter = new CUSTOMER_MILK_DataSetTableAdapters.CUSTOMER_MILK_DATATableAdapter();
-            this.CUSTOMER_MILK_DATABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERMILKDATABindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMER_MILK_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CUSTOMER_MILK_DATABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMER_MILK_DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERMILKDATABindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // CUSTOMER_MILK_DATABindingSource
+            // 
+            this.CUSTOMER_MILK_DATABindingSource.DataMember = "CUSTOMER_MILK_DATA";
+            this.CUSTOMER_MILK_DATABindingSource.DataSource = this.cUSTOMER_MILK_DataSet;
+            // 
+            // cUSTOMER_MILK_DataSet
+            // 
+            this.cUSTOMER_MILK_DataSet.DataSetName = "CUSTOMER_MILK_DataSet";
+            this.cUSTOMER_MILK_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // m_pBillReportViewer
             // 
@@ -61,19 +72,9 @@
             this.cUSTOMERMILKDATABindingSource.DataMember = "CUSTOMER_MILK_DATA";
             this.cUSTOMERMILKDATABindingSource.DataSource = this.cUSTOMER_MILK_DataSet;
             // 
-            // cUSTOMER_MILK_DataSet
-            // 
-            this.cUSTOMER_MILK_DataSet.DataSetName = "CUSTOMER_MILK_DataSet";
-            this.cUSTOMER_MILK_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // cUSTOMER_MILK_DATATableAdapter
             // 
             this.cUSTOMER_MILK_DATATableAdapter.ClearBeforeFill = true;
-            // 
-            // CUSTOMER_MILK_DATABindingSource
-            // 
-            this.CUSTOMER_MILK_DATABindingSource.DataMember = "CUSTOMER_MILK_DATA";
-            this.CUSTOMER_MILK_DATABindingSource.DataSource = this.cUSTOMER_MILK_DataSet;
             // 
             // LPBillReportViewerForm
             // 
@@ -82,14 +83,15 @@
             this.ClientSize = new System.Drawing.Size(912, 653);
             this.Controls.Add(this.m_pBillReportViewer);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LPBillReportViewerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LPBillReportViewerForm";
             this.Load += new System.EventHandler(this.LPBillReportViewerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERMILKDATABindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMER_MILK_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CUSTOMER_MILK_DATABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMER_MILK_DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERMILKDATABindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
