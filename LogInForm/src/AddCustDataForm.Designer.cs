@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCustDataForm));
             this.CustDataGroupBox = new System.Windows.Forms.GroupBox();
+            this.m_pLoadXMLButton = new System.Windows.Forms.Button();
             this.m_pUpdateButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.m_pCancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.CustAccNoTextBox = new System.Windows.Forms.TextBox();
@@ -47,7 +49,6 @@
             this.CustNameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.CustIdErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.CustMilkTypeErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.m_pLoadXMLButton = new System.Windows.Forms.Button();
             this.CustDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustNameErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustIdErrorProvider)).BeginInit();
@@ -61,7 +62,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustDataGroupBox.Controls.Add(this.m_pLoadXMLButton);
             this.CustDataGroupBox.Controls.Add(this.m_pUpdateButton);
-            this.CustDataGroupBox.Controls.Add(this.CancelButton);
+            this.CustDataGroupBox.Controls.Add(this.m_pCancelButton);
             this.CustDataGroupBox.Controls.Add(this.ResetButton);
             this.CustDataGroupBox.Controls.Add(this.AddButton);
             this.CustDataGroupBox.Controls.Add(this.CustAccNoTextBox);
@@ -79,46 +80,71 @@
             this.CustDataGroupBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustDataGroupBox.Name = "CustDataGroupBox";
             this.CustDataGroupBox.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.CustDataGroupBox.Size = new System.Drawing.Size(646, 377);
+            this.CustDataGroupBox.Size = new System.Drawing.Size(858, 515);
             this.CustDataGroupBox.TabIndex = 2;
             this.CustDataGroupBox.TabStop = false;
             this.CustDataGroupBox.Text = "ग्राहक माहिती";
             // 
+            // m_pLoadXMLButton
+            // 
+            this.m_pLoadXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_pLoadXMLButton.Location = new System.Drawing.Point(83, 299);
+            this.m_pLoadXMLButton.Name = "m_pLoadXMLButton";
+            this.m_pLoadXMLButton.Size = new System.Drawing.Size(104, 54);
+            this.m_pLoadXMLButton.TabIndex = 8;
+            this.m_pLoadXMLButton.Text = "Load";
+            this.m_pLoadXMLButton.UseVisualStyleBackColor = true;
+            this.m_pLoadXMLButton.Click += new System.EventHandler(this.m_pLoadXMLButton_Click);
+            // 
             // m_pUpdateButton
             // 
+            this.m_pUpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pUpdateButton.Location = new System.Drawing.Point(312, 299);
             this.m_pUpdateButton.Name = "m_pUpdateButton";
-            this.m_pUpdateButton.Size = new System.Drawing.Size(85, 44);
-            this.m_pUpdateButton.TabIndex = 14;
+            this.m_pUpdateButton.Size = new System.Drawing.Size(98, 54);
+            this.m_pUpdateButton.TabIndex = 5;
             this.m_pUpdateButton.Text = "Update";
             this.m_pUpdateButton.UseVisualStyleBackColor = true;
             this.m_pUpdateButton.Click += new System.EventHandler(this.m_pUpdateButton_Click);
             // 
-            // CancelButton
+            // m_pCancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(526, 299);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(85, 44);
-            this.CancelButton.TabIndex = 13;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.m_pCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_pCancelButton.Location = new System.Drawing.Point(526, 299);
+            this.m_pCancelButton.Name = "m_pCancelButton";
+            this.m_pCancelButton.Size = new System.Drawing.Size(98, 54);
+            this.m_pCancelButton.TabIndex = 7;
+            this.m_pCancelButton.Text = "Cancel";
+            this.m_pCancelButton.UseVisualStyleBackColor = true;
+            this.m_pCancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ResetButton
             // 
+            this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ResetButton.Location = new System.Drawing.Point(420, 299);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(85, 44);
-            this.ResetButton.TabIndex = 12;
+            this.ResetButton.Size = new System.Drawing.Size(98, 54);
+            this.ResetButton.TabIndex = 6;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // AddButton
             // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AddButton.Location = new System.Drawing.Point(199, 299);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(93, 44);
+            this.AddButton.Size = new System.Drawing.Size(106, 54);
             this.AddButton.TabIndex = 4;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -126,24 +152,33 @@
             // 
             // CustAccNoTextBox
             // 
+            this.CustAccNoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustAccNoTextBox.Location = new System.Drawing.Point(199, 225);
             this.CustAccNoTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustAccNoTextBox.Name = "CustAccNoTextBox";
-            this.CustAccNoTextBox.Size = new System.Drawing.Size(412, 35);
-            this.CustAccNoTextBox.TabIndex = 4;
+            this.CustAccNoTextBox.Size = new System.Drawing.Size(425, 35);
+            this.CustAccNoTextBox.TabIndex = 3;
             this.CustAccNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustMobTextBox_KeyPress);
             // 
             // CustMobTextBox
             // 
+            this.CustMobTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustMobTextBox.Location = new System.Drawing.Point(199, 178);
             this.CustMobTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustMobTextBox.Name = "CustMobTextBox";
-            this.CustMobTextBox.Size = new System.Drawing.Size(412, 35);
+            this.CustMobTextBox.Size = new System.Drawing.Size(425, 35);
             this.CustMobTextBox.TabIndex = 2;
             this.CustMobTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustMobTextBox_KeyPress);
             // 
             // CustMilkTypeComboBox
             // 
+            this.CustMilkTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustMilkTypeComboBox.FormattingEnabled = true;
             this.CustMilkTypeComboBox.Items.AddRange(new object[] {
             "गाय",
@@ -151,22 +186,28 @@
             this.CustMilkTypeComboBox.Location = new System.Drawing.Point(199, 129);
             this.CustMilkTypeComboBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustMilkTypeComboBox.Name = "CustMilkTypeComboBox";
-            this.CustMilkTypeComboBox.Size = new System.Drawing.Size(179, 37);
+            this.CustMilkTypeComboBox.Size = new System.Drawing.Size(192, 37);
             this.CustMilkTypeComboBox.TabIndex = 9;
             this.CustMilkTypeComboBox.Leave += new System.EventHandler(this.MilkTypeComboBox_Leave);
             // 
             // CustIdTextBox
             // 
+            this.CustIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustIdTextBox.Location = new System.Drawing.Point(199, 36);
             this.CustIdTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustIdTextBox.Name = "CustIdTextBox";
-            this.CustIdTextBox.Size = new System.Drawing.Size(412, 35);
+            this.CustIdTextBox.Size = new System.Drawing.Size(425, 35);
             this.CustIdTextBox.TabIndex = 0;
             this.CustIdTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustIdTextBox_KeyPress);
             this.CustIdTextBox.Leave += new System.EventHandler(this.CustIdTextBox_Leave);
             // 
             // CustIdLabel
             // 
+            this.CustIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustIdLabel.AutoSize = true;
             this.CustIdLabel.ForeColor = System.Drawing.Color.Maroon;
             this.CustIdLabel.Location = new System.Drawing.Point(23, 42);
@@ -178,6 +219,9 @@
             // 
             // CustAccNoLabel
             // 
+            this.CustAccNoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustAccNoLabel.AutoSize = true;
             this.CustAccNoLabel.ForeColor = System.Drawing.Color.Maroon;
             this.CustAccNoLabel.Location = new System.Drawing.Point(23, 231);
@@ -189,6 +233,9 @@
             // 
             // MilkTypeLabel
             // 
+            this.MilkTypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MilkTypeLabel.AutoSize = true;
             this.MilkTypeLabel.ForeColor = System.Drawing.Color.Maroon;
             this.MilkTypeLabel.Location = new System.Drawing.Point(23, 132);
@@ -200,6 +247,9 @@
             // 
             // CustMobLabel
             // 
+            this.CustMobLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustMobLabel.AutoSize = true;
             this.CustMobLabel.ForeColor = System.Drawing.Color.Maroon;
             this.CustMobLabel.Location = new System.Drawing.Point(23, 184);
@@ -211,16 +261,22 @@
             // 
             // CustNameTextBox
             // 
+            this.CustNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustNameTextBox.Font = new System.Drawing.Font("Shivaji01", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustNameTextBox.Location = new System.Drawing.Point(199, 82);
             this.CustNameTextBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CustNameTextBox.Name = "CustNameTextBox";
-            this.CustNameTextBox.Size = new System.Drawing.Size(412, 41);
+            this.CustNameTextBox.Size = new System.Drawing.Size(425, 41);
             this.CustNameTextBox.TabIndex = 1;
             this.CustNameTextBox.Leave += new System.EventHandler(this.CustNameTextBox_Leave);
             // 
             // CustNameLabel
             // 
+            this.CustNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustNameLabel.AutoSize = true;
             this.CustNameLabel.ForeColor = System.Drawing.Color.Maroon;
             this.CustNameLabel.Location = new System.Drawing.Point(23, 82);
@@ -242,25 +298,16 @@
             // 
             this.CustMilkTypeErrorProvider.ContainerControl = this;
             // 
-            // m_pLoadXMLButton
-            // 
-            this.m_pLoadXMLButton.Location = new System.Drawing.Point(83, 299);
-            this.m_pLoadXMLButton.Name = "m_pLoadXMLButton";
-            this.m_pLoadXMLButton.Size = new System.Drawing.Size(91, 44);
-            this.m_pLoadXMLButton.TabIndex = 15;
-            this.m_pLoadXMLButton.Text = "Load";
-            this.m_pLoadXMLButton.UseVisualStyleBackColor = true;
-            this.m_pLoadXMLButton.Click += new System.EventHandler(this.m_pLoadXMLButton_Click);
-            // 
             // AddCustDataForm
             // 
             this.AcceptButton = this.AddButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 484);
+            this.ClientSize = new System.Drawing.Size(969, 597);
             this.Controls.Add(this.CustDataGroupBox);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "AddCustDataForm";
             this.Text = "AddCustDataForm";
@@ -285,7 +332,7 @@
         private System.Windows.Forms.Label CustMobLabel;
         private System.Windows.Forms.TextBox CustNameTextBox;
         private System.Windows.Forms.Label CustNameLabel;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button m_pCancelButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ErrorProvider CustNameErrorProvider;

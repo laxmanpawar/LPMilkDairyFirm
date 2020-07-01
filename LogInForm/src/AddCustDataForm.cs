@@ -1,21 +1,11 @@
 ﻿using LogInForm.src;
-using Microsoft.Reporting.WinForms.Internal.Soap.ReportingServices2005.Execution;
-using Microsoft.ReportingServices.RdlExpressions.ExpressionHostObjectModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LogInForm
 {
-    public partial class AddCustDataForm : LPForm
+    public partial class AddCustDataForm : Form
     {
         public AddCustDataForm()
         {
@@ -53,7 +43,7 @@ namespace LogInForm
             {
                 SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
-                string isCustExistsQuery = "SELECT * FROM " + LPGlobalVariables.m_sCustomerDataTable + " WHERE CUST_CODE = @custcode";
+                string isCustExistsQuery = "SELECT * FROM " + LPGlobalVariables.m_sCollectionCustomerDataTable + " WHERE CUST_CODE = @custcode";
                 SqlCommand isCustExistsCmd = new SqlCommand(isCustExistsQuery, sqlCon);
                 isCustExistsCmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
 
@@ -69,7 +59,7 @@ namespace LogInForm
                 else
                 {
                     sqlCon.Close();
-                    string query = "insert into " + LPGlobalVariables.m_sCustomerDataTable + " values(@custcode, @custname, @custmilktype, @custmob, @custaccno)";
+                    string query = "insert into " + LPGlobalVariables.m_sCollectionCustomerDataTable + " values(@custcode, @custname, @custmilktype, @custmob, @custaccno)";
 
                     SqlCommand cmd = new SqlCommand(query, sqlCon);
                     cmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
@@ -131,7 +121,7 @@ namespace LogInForm
                     CustNameErrorProvider.Clear();
 
                     SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                    string query = "SELECT * FROM " + LPGlobalVariables.m_sCustomerDataTable + " WHERE CUST_CODE = @custcode";
+                    string query = "SELECT * FROM " + LPGlobalVariables.m_sCollectionCustomerDataTable + " WHERE CUST_CODE = @custcode";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
                     con.Open();
@@ -200,7 +190,7 @@ namespace LogInForm
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
             try 
             {
-                string query = "UPDATE " + LPGlobalVariables.m_sCustomerDataTable + " SET CUST_NAME = @cname, MILK_TYPE = @milktype, CUST_MOB = @custmob, CUST_ACC_NO = @custaccno WHERE CUST_CODE = @custcode";
+                string query = "UPDATE " + LPGlobalVariables.m_sCollectionCustomerDataTable + " SET CUST_NAME = @cname, MILK_TYPE = @milktype, CUST_MOB = @custmob, CUST_ACC_NO = @custaccno WHERE CUST_CODE = @custcode";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@custcode", CustIdTextBox.Text);
                 cmd.Parameters.AddWithValue("@cname", CustNameTextBox.Text);
