@@ -46,6 +46,7 @@ namespace LogInForm
         private void LPMainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.m_pLogInForm.Close();
+            //Application.Exit();
         }
 
         private void m_pBillReportButton_Click(object sender, EventArgs e)

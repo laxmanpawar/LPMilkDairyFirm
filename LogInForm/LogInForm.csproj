@@ -304,7 +304,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LPMilk.ico" />
     <Content Include="LPMilk_3.ico" />
     <Content Include="Model\CustomerMilkDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

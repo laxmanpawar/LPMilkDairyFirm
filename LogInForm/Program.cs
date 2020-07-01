@@ -24,10 +24,10 @@ namespace LogInForm
 
             // Main Function 
             m_pLogInForm = new LogInForm();
-            //Application.Run(Program.m_pLogInForm);
+            Application.Run(Program.m_pLogInForm);
             
             // Temp Function.
-            Application.Run(new LPMainWindow());
+            //Application.Run(new LPMainWindow());
         }
     }
 }
