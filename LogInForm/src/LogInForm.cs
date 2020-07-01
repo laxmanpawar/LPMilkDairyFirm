@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace LogInForm
 {
-    public partial class LogInForm : src.LPForm
+    public partial class LogInForm : Form
     {
         public LogInForm()
         {
@@ -22,43 +22,50 @@ namespace LogInForm
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            if (UserNameTextBox.Text != "" && PasswordTextBox.Text != "")
+            try
             {
-                SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                string query = "Select * from LOGIN_TABLE where username = @user and pass = @pass";
-                SqlCommand cmd = new SqlCommand(query, sqlCon);
-                cmd.Parameters.AddWithValue("@user", UserNameTextBox.Text);
-                cmd.Parameters.AddWithValue("@pass", PasswordTextBox.Text);
-
-                // Open SqlConnection
-                sqlCon.Open();
-
-                // Execute sql command
-                SqlDataReader sqlDataReader = cmd.ExecuteReader();
-                if (sqlDataReader.HasRows)
+                if (UserNameTextBox.Text != "" && PasswordTextBox.Text != "")
                 {
-                    SaveCredentials();
-                    this.Hide();
-                    LPMainWindow mainWindow = new LPMainWindow();
-                    mainWindow.ShowDialog();
+                    SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                    string query = "Select * from LOGIN_TABLE where username = @user and pass = @pass";
+                    SqlCommand cmd = new SqlCommand(query, sqlCon);
+                    cmd.Parameters.AddWithValue("@user", UserNameTextBox.Text);
+                    cmd.Parameters.AddWithValue("@pass", PasswordTextBox.Text);
+
+                    // Open SqlConnection
+                    sqlCon.Open();
+
+                    // Execute sql command
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    if (sqlDataReader.HasRows)
+                    {
+                        SaveCredentials();
+                        this.Hide();
+                        LPMainWindow mainWindow = new LPMainWindow();
+                        mainWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        this.UserNameTextBox.Focus();
+                        MessageBox.Show("ERROR : LogIn failed !!", "FAILURE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    sqlCon.Close();
+
+                    this.UserNameTextBox.Clear();
+                    this.PasswordTextBox.Clear();
+                    this.UserNameTextBox.Focus();
                 }
                 else
                 {
-                    this.UserNameTextBox.Focus();
-                    MessageBox.Show("ERROR : LogIn failed !!", "FAILURE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("INFO : Please fill both the fields.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                sqlCon.Close();
-
-                this.UserNameTextBox.Clear();
-                this.PasswordTextBox.Clear();
                 this.UserNameTextBox.Focus();
             }
-            else
+            catch(Exception exc)
             {
-                MessageBox.Show("INFO : Please fill both the fields.", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.UserNameTextBox.Focus();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
