@@ -149,6 +149,12 @@
     <Compile Include="src\LPBillReportViewerForm.Designer.cs">
       <DependentUpon>LPBillReportViewerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\LPEditMilkCollectionCustListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\LPEditMilkCollectionCustListForm.Designer.cs">
+      <DependentUpon>LPEditMilkCollectionCustListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\LPForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\LPBillReportViewerForm.resx">
       <DependentUpon>LPBillReportViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\LPEditMilkCollectionCustListForm.resx">
+      <DependentUpon>LPEditMilkCollectionCustListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\LPForm.resx">
       <DependentUpon>LPForm.cs</DependentUpon>
