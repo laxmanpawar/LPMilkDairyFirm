@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 using LogInForm.src;
+using LogInForm.Utils;
 
 namespace LogInForm
 {

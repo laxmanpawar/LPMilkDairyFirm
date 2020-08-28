@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace LogInForm
+namespace LogInForm.Utils
 {
     class LPSQLTableUtils
     {
