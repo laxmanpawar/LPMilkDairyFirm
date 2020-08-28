@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace LogInForm.src
 {
-    public partial class LPEditMilkCollectionCustListForm : src.LPForm
+    public partial class LPEditMilkCollectionCustListForm : LPForm
     {
         List<int> m_pActiveCustList = new List<int>();
         List<int> m_pOrigActiveCustList = new List<int>();
