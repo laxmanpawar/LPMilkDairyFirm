@@ -27,6 +27,15 @@ namespace LogInForm
                 if (UserNameTextBox.Text != "" && PasswordTextBox.Text != "")
                 {
                     SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                    // Check if dataBase is exists or not 
+                    bool isDataBaseExists = LPSQLTableUtils.CheckDatabaseExists(LPSQLTableUtils.m_sDataBaseName);
+
+                    if(!isDataBaseExists)
+                    {
+                        int res = LPSQLTableUtils.CreateDataBase(LPSQLTableUtils.m_sDataBaseName);
+                        if (res <= 0) return;
+                    }
+
                     string query = "Select * from LOGIN_TABLE where username = @user and pass = @pass";
                     SqlCommand cmd = new SqlCommand(query, sqlCon);
                     cmd.Parameters.AddWithValue("@user", UserNameTextBox.Text);
