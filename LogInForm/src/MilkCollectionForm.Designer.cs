@@ -109,7 +109,9 @@
             // 
             // MainLabel
             // 
-            this.MainLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MainLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainLabel.AutoSize = true;
             this.MainLabel.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.MainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -121,6 +123,9 @@
             // 
             // BranchLabel
             // 
+            this.BranchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BranchLabel.AutoSize = true;
             this.BranchLabel.Location = new System.Drawing.Point(27, 76);
             this.BranchLabel.Name = "BranchLabel";
@@ -130,6 +135,9 @@
             // 
             // BranchNamesComboBox
             // 
+            this.BranchNamesComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BranchNamesComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BranchNamesComboBox.FormattingEnabled = true;
             this.BranchNamesComboBox.Items.AddRange(new object[] {
@@ -142,6 +150,9 @@
             // 
             // DateLabel
             // 
+            this.DateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DateLabel.AutoSize = true;
             this.DateLabel.Location = new System.Drawing.Point(219, 76);
             this.DateLabel.Name = "DateLabel";
@@ -151,6 +162,9 @@
             // 
             // m_pMilkDate
             // 
+            this.m_pMilkDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMilkDate.CustomFormat = "dd-MM-yyyy";
             this.m_pMilkDate.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Bold);
             this.m_pMilkDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -165,6 +179,9 @@
             // 
             // CustomerMilkDataTabel
             // 
+            this.CustomerMilkDataTabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomerMilkDataTabel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.CustomerMilkDataTabel.ColumnCount = 7;
             this.CustomerMilkDataTabel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.59324F));
@@ -208,7 +225,9 @@
             // 
             // BuffMilkRateTextBox
             // 
-            this.BuffMilkRateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuffMilkRateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffMilkRateTextBox.Location = new System.Drawing.Point(467, 85);
             this.BuffMilkRateTextBox.Name = "BuffMilkRateTextBox";
             this.BuffMilkRateTextBox.ReadOnly = true;
@@ -284,8 +303,10 @@
             // 
             // BuffaloLabel
             // 
+            this.BuffaloLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffaloLabel.AutoSize = true;
-            this.BuffaloLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BuffaloLabel.Location = new System.Drawing.Point(5, 82);
             this.BuffaloLabel.Name = "BuffaloLabel";
             this.BuffaloLabel.Size = new System.Drawing.Size(67, 40);
@@ -295,7 +316,9 @@
             // 
             // CowAmountTextBox
             // 
-            this.CowAmountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CowAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowAmountTextBox.Location = new System.Drawing.Point(560, 45);
             this.CowAmountTextBox.Name = "CowAmountTextBox";
             this.CowAmountTextBox.ReadOnly = true;
@@ -358,8 +381,10 @@
             // 
             // WeightLabel
             // 
+            this.WeightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WeightLabel.AutoSize = true;
-            this.WeightLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeightLabel.Location = new System.Drawing.Point(80, 2);
             this.WeightLabel.Name = "WeightLabel";
             this.WeightLabel.Size = new System.Drawing.Size(100, 38);
@@ -369,8 +394,10 @@
             // 
             // FatLabel
             // 
+            this.FatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FatLabel.AutoSize = true;
-            this.FatLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FatLabel.Location = new System.Drawing.Point(188, 2);
             this.FatLabel.Name = "FatLabel";
             this.FatLabel.Size = new System.Drawing.Size(85, 38);
@@ -380,8 +407,10 @@
             // 
             // SNFLabel
             // 
+            this.SNFLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SNFLabel.AutoSize = true;
-            this.SNFLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SNFLabel.Location = new System.Drawing.Point(281, 2);
             this.SNFLabel.Name = "SNFLabel";
             this.SNFLabel.Size = new System.Drawing.Size(85, 38);
@@ -391,8 +420,10 @@
             // 
             // DegreeLabel
             // 
+            this.DegreeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DegreeLabel.AutoSize = true;
-            this.DegreeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DegreeLabel.Location = new System.Drawing.Point(374, 2);
             this.DegreeLabel.Name = "DegreeLabel";
             this.DegreeLabel.Size = new System.Drawing.Size(85, 38);
@@ -402,8 +433,10 @@
             // 
             // MilkRateLabel
             // 
+            this.MilkRateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MilkRateLabel.AutoSize = true;
-            this.MilkRateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MilkRateLabel.Location = new System.Drawing.Point(467, 2);
             this.MilkRateLabel.Name = "MilkRateLabel";
             this.MilkRateLabel.Size = new System.Drawing.Size(85, 38);
@@ -413,8 +446,10 @@
             // 
             // AmountLabel
             // 
+            this.AmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AmountLabel.Location = new System.Drawing.Point(560, 2);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(87, 38);
@@ -424,8 +459,10 @@
             // 
             // CowLabel
             // 
+            this.CowLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowLabel.AutoSize = true;
-            this.CowLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CowLabel.Location = new System.Drawing.Point(5, 42);
             this.CowLabel.Name = "CowLabel";
             this.CowLabel.Size = new System.Drawing.Size(67, 38);
@@ -448,6 +485,9 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -468,11 +508,14 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(522, 149);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 149);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // MilkTypeComboBox
             // 
+            this.MilkTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MilkTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MilkTypeComboBox.FormattingEnabled = true;
             this.MilkTypeComboBox.Items.AddRange(new object[] {
@@ -480,7 +523,7 @@
             "म्हैस"});
             this.MilkTypeComboBox.Location = new System.Drawing.Point(122, 103);
             this.MilkTypeComboBox.Name = "MilkTypeComboBox";
-            this.MilkTypeComboBox.Size = new System.Drawing.Size(83, 37);
+            this.MilkTypeComboBox.Size = new System.Drawing.Size(393, 37);
             this.MilkTypeComboBox.TabIndex = 12;
             this.MilkTypeComboBox.TabStop = false;
             this.MilkTypeComboBox.TextChanged += new System.EventHandler(this.MilkTypeComboBox_TextChanged);
@@ -498,15 +541,17 @@
             this.CustNameTextBox.ForeColor = System.Drawing.Color.Black;
             this.CustNameTextBox.Location = new System.Drawing.Point(122, 54);
             this.CustNameTextBox.Name = "CustNameTextBox";
-            this.CustNameTextBox.Size = new System.Drawing.Size(395, 41);
+            this.CustNameTextBox.Size = new System.Drawing.Size(393, 41);
             this.CustNameTextBox.TabIndex = 11;
             // 
             // CustCodeTextBox
             // 
-            this.CustCodeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CustCodeTextBox.Location = new System.Drawing.Point(122, 8);
+            this.CustCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustCodeTextBox.Location = new System.Drawing.Point(122, 5);
             this.CustCodeTextBox.Name = "CustCodeTextBox";
-            this.CustCodeTextBox.Size = new System.Drawing.Size(44, 35);
+            this.CustCodeTextBox.Size = new System.Drawing.Size(393, 35);
             this.CustCodeTextBox.TabIndex = 0;
             this.CustCodeTextBox.Enter += new System.EventHandler(this.CustCodeTextBox_Enter);
             this.CustCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustCodeTextBox_KeyPress);
@@ -514,40 +559,48 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 109);
+            this.label3.Location = new System.Drawing.Point(5, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 29);
+            this.label3.Size = new System.Drawing.Size(109, 47);
             this.label3.TabIndex = 9;
             this.label3.Text = "दुध प्रकार";
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 60);
+            this.label2.Location = new System.Drawing.Point(5, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 29);
+            this.label2.Size = new System.Drawing.Size(109, 47);
             this.label2.TabIndex = 4;
             this.label2.Text = "नाव";
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 11);
+            this.label1.Location = new System.Drawing.Point(5, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 29);
+            this.label1.Size = new System.Drawing.Size(109, 47);
             this.label1.TabIndex = 1;
             this.label1.Text = "कोड";
             // 
             // m_pTotalMilkDetailsTableLayoutPanel
             // 
-            this.m_pTotalMilkDetailsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_pTotalMilkDetailsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalMilkDetailsTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.m_pTotalMilkDetailsTableLayoutPanel.ColumnCount = 3;
             this.m_pTotalMilkDetailsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.48566F));
@@ -589,7 +642,9 @@
             // 
             // CowNumCustTextBox
             // 
-            this.CowNumCustTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CowNumCustTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowNumCustTextBox.Location = new System.Drawing.Point(133, 6);
             this.CowNumCustTextBox.Name = "CowNumCustTextBox";
             this.CowNumCustTextBox.ReadOnly = true;
@@ -599,8 +654,10 @@
             // 
             // TotAmountLabel
             // 
+            this.TotAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TotAmountLabel.AutoSize = true;
-            this.TotAmountLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TotAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.TotAmountLabel.Location = new System.Drawing.Point(6, 208);
             this.TotAmountLabel.Name = "TotAmountLabel";
@@ -611,8 +668,10 @@
             // 
             // AverageDegreeLabel
             // 
+            this.AverageDegreeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AverageDegreeLabel.AutoSize = true;
-            this.AverageDegreeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AverageDegreeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AverageDegreeLabel.Location = new System.Drawing.Point(6, 167);
             this.AverageDegreeLabel.Name = "AverageDegreeLabel";
@@ -623,8 +682,10 @@
             // 
             // AverageSNFLabel
             // 
+            this.AverageSNFLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AverageSNFLabel.AutoSize = true;
-            this.AverageSNFLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AverageSNFLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AverageSNFLabel.Location = new System.Drawing.Point(6, 126);
             this.AverageSNFLabel.Name = "AverageSNFLabel";
@@ -635,8 +696,10 @@
             // 
             // AverageFatLabel
             // 
+            this.AverageFatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AverageFatLabel.AutoSize = true;
-            this.AverageFatLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AverageFatLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AverageFatLabel.Location = new System.Drawing.Point(6, 85);
             this.AverageFatLabel.Name = "AverageFatLabel";
@@ -647,8 +710,10 @@
             // 
             // TotalMilkLabel
             // 
+            this.TotalMilkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalMilkLabel.AutoSize = true;
-            this.TotalMilkLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TotalMilkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.TotalMilkLabel.Location = new System.Drawing.Point(6, 44);
             this.TotalMilkLabel.Name = "TotalMilkLabel";
@@ -659,8 +724,10 @@
             // 
             // NumCustomersLabel
             // 
+            this.NumCustomersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NumCustomersLabel.AutoSize = true;
-            this.NumCustomersLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NumCustomersLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.NumCustomersLabel.Location = new System.Drawing.Point(6, 3);
             this.NumCustomersLabel.Name = "NumCustomersLabel";
@@ -671,7 +738,9 @@
             // 
             // CowTotMilkTextBox
             // 
-            this.CowTotMilkTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CowTotMilkTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowTotMilkTextBox.Location = new System.Drawing.Point(133, 47);
             this.CowTotMilkTextBox.Name = "CowTotMilkTextBox";
             this.CowTotMilkTextBox.ReadOnly = true;
@@ -681,7 +750,9 @@
             // 
             // CowAverageFatTextBox
             // 
-            this.CowAverageFatTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CowAverageFatTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowAverageFatTextBox.Location = new System.Drawing.Point(133, 88);
             this.CowAverageFatTextBox.Name = "CowAverageFatTextBox";
             this.CowAverageFatTextBox.ReadOnly = true;
@@ -691,7 +762,9 @@
             // 
             // CowAverageSNFTextBox
             // 
-            this.CowAverageSNFTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CowAverageSNFTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowAverageSNFTextBox.Location = new System.Drawing.Point(133, 129);
             this.CowAverageSNFTextBox.Name = "CowAverageSNFTextBox";
             this.CowAverageSNFTextBox.ReadOnly = true;
@@ -701,7 +774,9 @@
             // 
             // CowAverageDegreeTextBox
             // 
-            this.CowAverageDegreeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CowAverageDegreeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CowAverageDegreeTextBox.Location = new System.Drawing.Point(133, 170);
             this.CowAverageDegreeTextBox.Name = "CowAverageDegreeTextBox";
             this.CowAverageDegreeTextBox.ReadOnly = true;
@@ -711,7 +786,9 @@
             // 
             // m_pCowAvgMilkRate
             // 
-            this.m_pCowAvgMilkRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_pCowAvgMilkRate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pCowAvgMilkRate.Location = new System.Drawing.Point(133, 211);
             this.m_pCowAvgMilkRate.Name = "m_pCowAvgMilkRate";
             this.m_pCowAvgMilkRate.ReadOnly = true;
@@ -721,7 +798,9 @@
             // 
             // BuffNumCustTextBox
             // 
-            this.BuffNumCustTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuffNumCustTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffNumCustTextBox.Location = new System.Drawing.Point(235, 6);
             this.BuffNumCustTextBox.Name = "BuffNumCustTextBox";
             this.BuffNumCustTextBox.ReadOnly = true;
@@ -731,7 +810,9 @@
             // 
             // BuffTotMilkTextBox
             // 
-            this.BuffTotMilkTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuffTotMilkTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffTotMilkTextBox.Location = new System.Drawing.Point(235, 47);
             this.BuffTotMilkTextBox.Name = "BuffTotMilkTextBox";
             this.BuffTotMilkTextBox.ReadOnly = true;
@@ -741,7 +822,9 @@
             // 
             // BuffAverageFatTextBox
             // 
-            this.BuffAverageFatTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuffAverageFatTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffAverageFatTextBox.Location = new System.Drawing.Point(235, 88);
             this.BuffAverageFatTextBox.Name = "BuffAverageFatTextBox";
             this.BuffAverageFatTextBox.ReadOnly = true;
@@ -751,7 +834,9 @@
             // 
             // BuffAverageSNFTextBox
             // 
-            this.BuffAverageSNFTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuffAverageSNFTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffAverageSNFTextBox.Location = new System.Drawing.Point(235, 129);
             this.BuffAverageSNFTextBox.Name = "BuffAverageSNFTextBox";
             this.BuffAverageSNFTextBox.ReadOnly = true;
@@ -761,7 +846,9 @@
             // 
             // BuffAverageDegreeTextBox
             // 
-            this.BuffAverageDegreeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BuffAverageDegreeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BuffAverageDegreeTextBox.Location = new System.Drawing.Point(235, 170);
             this.BuffAverageDegreeTextBox.Name = "BuffAverageDegreeTextBox";
             this.BuffAverageDegreeTextBox.ReadOnly = true;
@@ -771,7 +858,9 @@
             // 
             // m_pBuffAvgMilkRate
             // 
-            this.m_pBuffAvgMilkRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_pBuffAvgMilkRate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pBuffAvgMilkRate.Location = new System.Drawing.Point(235, 211);
             this.m_pBuffAvgMilkRate.Name = "m_pBuffAvgMilkRate";
             this.m_pBuffAvgMilkRate.ReadOnly = true;
@@ -781,7 +870,9 @@
             // 
             // m_pCowTotAmountTextBox
             // 
-            this.m_pCowTotAmountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_pCowTotAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pCowTotAmountTextBox.Location = new System.Drawing.Point(133, 252);
             this.m_pCowTotAmountTextBox.Name = "m_pCowTotAmountTextBox";
             this.m_pCowTotAmountTextBox.ReadOnly = true;
@@ -790,7 +881,9 @@
             // 
             // m_pBuffTotAmountTextBox
             // 
-            this.m_pBuffTotAmountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_pBuffTotAmountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pBuffTotAmountTextBox.Location = new System.Drawing.Point(235, 252);
             this.m_pBuffTotAmountTextBox.Name = "m_pBuffTotAmountTextBox";
             this.m_pBuffTotAmountTextBox.ReadOnly = true;
@@ -799,18 +892,23 @@
             // 
             // m_pCowTotMilkAmountLabel
             // 
-            this.m_pCowTotMilkAmountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.m_pCowTotMilkAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pCowTotMilkAmountLabel.AutoSize = true;
             this.m_pCowTotMilkAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.m_pCowTotMilkAmountLabel.Location = new System.Drawing.Point(31, 249);
+            this.m_pCowTotMilkAmountLabel.Location = new System.Drawing.Point(6, 249);
             this.m_pCowTotMilkAmountLabel.Name = "m_pCowTotMilkAmountLabel";
-            this.m_pCowTotMilkAmountLabel.Size = new System.Drawing.Size(68, 42);
+            this.m_pCowTotMilkAmountLabel.Size = new System.Drawing.Size(118, 42);
             this.m_pCowTotMilkAmountLabel.TabIndex = 26;
             this.m_pCowTotMilkAmountLabel.Text = "एकूण रक्कम";
             this.m_pCowTotMilkAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TotalCowMilkInfoLabel
             // 
+            this.TotalCowMilkInfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalCowMilkInfoLabel.AutoSize = true;
             this.TotalCowMilkInfoLabel.Location = new System.Drawing.Point(1150, 12);
             this.TotalCowMilkInfoLabel.Name = "TotalCowMilkInfoLabel";
@@ -820,6 +918,9 @@
             // 
             // TotalBuffMilkInfoLabel
             // 
+            this.TotalBuffMilkInfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalBuffMilkInfoLabel.AutoSize = true;
             this.TotalBuffMilkInfoLabel.Location = new System.Drawing.Point(1204, 9);
             this.TotalBuffMilkInfoLabel.Name = "TotalBuffMilkInfoLabel";
@@ -829,6 +930,9 @@
             // 
             // SaveDailyCustMilkDataButton
             // 
+            this.SaveDailyCustMilkDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveDailyCustMilkDataButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveDailyCustMilkDataButton.Location = new System.Drawing.Point(202, 408);
             this.SaveDailyCustMilkDataButton.Name = "SaveDailyCustMilkDataButton";
@@ -840,6 +944,9 @@
             // 
             // ViewDailyCustMilkDataButton
             // 
+            this.ViewDailyCustMilkDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ViewDailyCustMilkDataButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewDailyCustMilkDataButton.Location = new System.Drawing.Point(340, 408);
             this.ViewDailyCustMilkDataButton.Name = "ViewDailyCustMilkDataButton";
@@ -851,6 +958,9 @@
             // 
             // m_pTotalMilkTableLayoutPanel
             // 
+            this.m_pTotalMilkTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalMilkTableLayoutPanel.AutoSize = true;
             this.m_pTotalMilkTableLayoutPanel.ColumnCount = 2;
             this.m_pTotalMilkTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -870,7 +980,9 @@
             // 
             // m_pTotalMilkAmountTB
             // 
-            this.m_pTotalMilkAmountTB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_pTotalMilkAmountTB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalMilkAmountTB.Location = new System.Drawing.Point(171, 44);
             this.m_pTotalMilkAmountTB.Name = "m_pTotalMilkAmountTB";
             this.m_pTotalMilkAmountTB.ReadOnly = true;
@@ -879,8 +991,10 @@
             // 
             // m_pTotMilkAmountLabel
             // 
+            this.m_pTotMilkAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotMilkAmountLabel.AutoSize = true;
-            this.m_pTotMilkAmountLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_pTotMilkAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.m_pTotMilkAmountLabel.Location = new System.Drawing.Point(3, 41);
             this.m_pTotMilkAmountLabel.Name = "m_pTotMilkAmountLabel";
@@ -891,8 +1005,10 @@
             // 
             // m_pTotalMilkLabel
             // 
+            this.m_pTotalMilkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalMilkLabel.AutoSize = true;
-            this.m_pTotalMilkLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_pTotalMilkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.m_pTotalMilkLabel.Location = new System.Drawing.Point(3, 0);
             this.m_pTotalMilkLabel.Name = "m_pTotalMilkLabel";
@@ -903,7 +1019,9 @@
             // 
             // m_pTotalMilkTB
             // 
-            this.m_pTotalMilkTB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_pTotalMilkTB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalMilkTB.Location = new System.Drawing.Point(171, 3);
             this.m_pTotalMilkTB.Name = "m_pTotalMilkTB";
             this.m_pTotalMilkTB.ReadOnly = true;
@@ -915,7 +1033,9 @@
             this.CustMilkDataGridView.AllowUserToAddRows = false;
             this.CustMilkDataGridView.AllowUserToDeleteRows = false;
             this.CustMilkDataGridView.AllowUserToResizeRows = false;
-            this.CustMilkDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CustMilkDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustMilkDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustMilkDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -941,6 +1061,9 @@
             // 
             // UpdateDailyCustMilkDataButton
             // 
+            this.UpdateDailyCustMilkDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UpdateDailyCustMilkDataButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDailyCustMilkDataButton.Location = new System.Drawing.Point(448, 407);
             this.UpdateDailyCustMilkDataButton.Name = "UpdateDailyCustMilkDataButton";
@@ -952,6 +1075,9 @@
             // 
             // DeleteDailyCustMilkDataButton
             // 
+            this.DeleteDailyCustMilkDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteDailyCustMilkDataButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteDailyCustMilkDataButton.Location = new System.Drawing.Point(556, 408);
             this.DeleteDailyCustMilkDataButton.Name = "DeleteDailyCustMilkDataButton";
@@ -963,6 +1089,9 @@
             // 
             // m_pMilkRemainingCustListButton
             // 
+            this.m_pMilkRemainingCustListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMilkRemainingCustListButton.Location = new System.Drawing.Point(798, 74);
             this.m_pMilkRemainingCustListButton.Name = "m_pMilkRemainingCustListButton";
             this.m_pMilkRemainingCustListButton.Size = new System.Drawing.Size(125, 52);
@@ -973,6 +1102,9 @@
             // 
             // m_pMilkCollectedCustListButton
             // 
+            this.m_pMilkCollectedCustListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMilkCollectedCustListButton.Location = new System.Drawing.Point(798, 132);
             this.m_pMilkCollectedCustListButton.Name = "m_pMilkCollectedCustListButton";
             this.m_pMilkCollectedCustListButton.Size = new System.Drawing.Size(125, 49);
@@ -983,6 +1115,9 @@
             // 
             // m_pProducerList
             // 
+            this.m_pProducerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pProducerList.Location = new System.Drawing.Point(798, 187);
             this.m_pProducerList.Name = "m_pProducerList";
             this.m_pProducerList.Size = new System.Drawing.Size(125, 50);
@@ -993,8 +1128,9 @@
             // 
             // MilkCollectionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 29F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1276, 760);
             this.Controls.Add(this.m_pProducerList);
             this.Controls.Add(this.m_pMilkCollectedCustListButton);
@@ -1021,6 +1157,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "MilkCollectionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "दूध संकलन";
             this.Load += new System.EventHandler(this.MilkCollectionForm_Load);
             this.CustomerMilkDataTabel.ResumeLayout(false);

@@ -124,7 +124,6 @@ namespace LogInForm
             this.helpToolStripMenuItem});
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
-            this.MenuBar.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.MenuBar.Size = new System.Drawing.Size(834, 37);
             this.MenuBar.TabIndex = 2;
             this.MenuBar.Text = "MenuBar";
@@ -262,6 +261,7 @@ namespace LogInForm
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LPMainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LPMainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LPMainWindow_FormClosing);
             this.Load += new System.EventHandler(this.LPMainWindow_Load);

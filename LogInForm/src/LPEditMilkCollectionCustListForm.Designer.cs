@@ -45,6 +45,9 @@
             // 
             // m_pCloseButton
             // 
+            this.m_pCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pCloseButton.Location = new System.Drawing.Point(705, 723);
             this.m_pCloseButton.Name = "m_pCloseButton";
             this.m_pCloseButton.Size = new System.Drawing.Size(125, 47);
@@ -55,6 +58,9 @@
             // 
             // m_pResetButton
             // 
+            this.m_pResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pResetButton.Location = new System.Drawing.Point(551, 723);
             this.m_pResetButton.Name = "m_pResetButton";
             this.m_pResetButton.Size = new System.Drawing.Size(125, 47);
@@ -65,6 +71,9 @@
             // 
             // m_pSaveButton
             // 
+            this.m_pSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pSaveButton.Location = new System.Drawing.Point(399, 723);
             this.m_pSaveButton.Name = "m_pSaveButton";
             this.m_pSaveButton.Size = new System.Drawing.Size(125, 47);
@@ -75,6 +84,9 @@
             // 
             // m_pActiveCustListLabel
             // 
+            this.m_pActiveCustListLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pActiveCustListLabel.Font = new System.Drawing.Font("Shivaji01", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_pActiveCustListLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.m_pActiveCustListLabel.Location = new System.Drawing.Point(834, 56);
@@ -85,6 +97,9 @@
             // 
             // m_pTotalCustListLabel
             // 
+            this.m_pTotalCustListLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalCustListLabel.Font = new System.Drawing.Font("Shivaji01", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_pTotalCustListLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.m_pTotalCustListLabel.Location = new System.Drawing.Point(186, 56);
@@ -98,6 +113,9 @@
             this.m_pTotalCustListDGV.AllowUserToAddRows = false;
             this.m_pTotalCustListDGV.AllowUserToDeleteRows = false;
             this.m_pTotalCustListDGV.AllowUserToResizeRows = false;
+            this.m_pTotalCustListDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pTotalCustListDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.m_pTotalCustListDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.m_pTotalCustListDGV.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -112,6 +130,9 @@
             // 
             // m_pMoveSelectedToLeftButton
             // 
+            this.m_pMoveSelectedToLeftButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMoveSelectedToLeftButton.Location = new System.Drawing.Point(583, 413);
             this.m_pMoveSelectedToLeftButton.Name = "m_pMoveSelectedToLeftButton";
             this.m_pMoveSelectedToLeftButton.Size = new System.Drawing.Size(105, 35);
@@ -122,6 +143,9 @@
             // 
             // m_pMoveSelectedToRightButton
             // 
+            this.m_pMoveSelectedToRightButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMoveSelectedToRightButton.Location = new System.Drawing.Point(583, 369);
             this.m_pMoveSelectedToRightButton.Name = "m_pMoveSelectedToRightButton";
             this.m_pMoveSelectedToRightButton.Size = new System.Drawing.Size(105, 37);
@@ -132,6 +156,9 @@
             // 
             // m_pMoveAllToLeftButton
             // 
+            this.m_pMoveAllToLeftButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMoveAllToLeftButton.Location = new System.Drawing.Point(583, 322);
             this.m_pMoveAllToLeftButton.Name = "m_pMoveAllToLeftButton";
             this.m_pMoveAllToLeftButton.Size = new System.Drawing.Size(105, 40);
@@ -142,6 +169,9 @@
             // 
             // m_pMoveAllToRightButton
             // 
+            this.m_pMoveAllToRightButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pMoveAllToRightButton.Location = new System.Drawing.Point(582, 276);
             this.m_pMoveAllToRightButton.Name = "m_pMoveAllToRightButton";
             this.m_pMoveAllToRightButton.Size = new System.Drawing.Size(106, 39);
@@ -155,6 +185,9 @@
             this.m_pActiveCustListDGV.AllowUserToAddRows = false;
             this.m_pActiveCustListDGV.AllowUserToDeleteRows = false;
             this.m_pActiveCustListDGV.AllowUserToResizeRows = false;
+            this.m_pActiveCustListDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pActiveCustListDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.m_pActiveCustListDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.m_pActiveCustListDGV.Location = new System.Drawing.Point(694, 119);
@@ -183,6 +216,7 @@
             this.Controls.Add(this.m_pMoveAllToRightButton);
             this.Controls.Add(this.m_pActiveCustListDGV);
             this.Name = "LPEditMilkCollectionCustListForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LPEditMilkCollectionCustListForm";
             this.Load += new System.EventHandler(this.LPEditMilkCollectionCustListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.m_pTotalCustListDGV)).EndInit();

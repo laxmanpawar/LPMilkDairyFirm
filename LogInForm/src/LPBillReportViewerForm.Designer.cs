@@ -53,8 +53,10 @@
             // 
             // m_pBillReportViewer
             // 
+            this.m_pBillReportViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.m_pBillReportViewer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.m_pBillReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "LPDailyMilkDataSet";
             reportDataSource1.Value = this.CUSTOMER_MILK_DATABindingSource;
             this.m_pBillReportViewer.LocalReport.DataSources.Add(reportDataSource1);
