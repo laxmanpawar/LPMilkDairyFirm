@@ -13,6 +13,83 @@ namespace LogInForm
     class LPSQLTableUtils
     {
         public static string m_sSqlConnectionString = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+
+        public static string m_sDataBaseName = "LPMILK_DAIRY_FIRM_DB";
+
+        public static bool CheckDatabaseExists(string databaseName)
+        {
+            string sqlCreateDBQuery;
+            bool result = false;
+
+            try
+            {
+                SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+
+                sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
+
+                using (sqlCon)
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, sqlCon))
+                    {
+                        sqlCon.Open();
+
+                        object resultObj = sqlCmd.ExecuteScalar();
+
+                        int databaseID = 0;
+
+                        if (resultObj != null)
+                        {
+                            int.TryParse(resultObj.ToString(), out databaseID);
+                        }
+
+                        sqlCon.Close();
+
+                        result = (databaseID > 0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public static int CreateDataBase(string databaseName)
+        {
+            // Create a connection  
+            SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+            try
+            {
+                // Open the connection
+                sqlCon.Open();
+                string query = string.Format("CREATE DATABASE {0} ON PRIMARY"
+                + "(Name={0}, filename = 'D:\\LPSoftwares\\LPDairy\\{0}.mdf', size=3,"
+                + "maxsize=5, filegrowth=10%)log on"
+                + "(name={0}_log, filename='D:\\LPSoftwares\\LPDairy\\{0}.ldf',size=3,"
+                + "maxsize=20,filegrowth=1)", databaseName);
+
+                SqlCommand cmd = new SqlCommand(query, sqlCon);
+                int res = cmd.ExecuteNonQuery();
+                if(res > 0)
+                {
+                    MessageBox.Show("LPError : Failed to create database " + databaseName, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return res;
+                }
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show("LPError : " + exc.Message, "LPError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+            return 1;
+        }
+
         public static int IsTableExists(string tableName)
         {
             SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
