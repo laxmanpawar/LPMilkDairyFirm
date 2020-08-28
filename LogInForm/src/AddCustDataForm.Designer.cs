@@ -310,6 +310,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "AddCustDataForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCustDataForm";
             this.Load += new System.EventHandler(this.AddCustDataForm_Load);
             this.CustDataGroupBox.ResumeLayout(false);

@@ -53,6 +53,7 @@ namespace LogInForm
                 if (sqlDataReader.HasRows)
                 {
                     CustIdTextBox.Focus();
+                    ResetAllControls();
                     MessageBox.Show("Customer code already present.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     sqlCon.Close();
                 }
@@ -128,10 +129,10 @@ namespace LogInForm
                     SqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
-                        CustNameTextBox.Text = dr.GetFieldValue<string>(1);
-                        CustMilkTypeComboBox.SelectedIndex = dr.GetFieldValue<int>(2);
-                        CustMobTextBox.Text = dr.GetFieldValue<Int64>(3).ToString();
-                        CustAccNoTextBox.Text = dr.GetFieldValue<Int64> (4).ToString();
+                        CustNameTextBox.Text = dr.GetValue(1).ToString();
+                        CustMilkTypeComboBox.SelectedIndex = Convert.ToInt32(dr.GetValue(2));
+                        CustMobTextBox.Text = dr.GetValue(3).ToString();
+                        CustAccNoTextBox.Text = dr.GetValue(4).ToString();
                     }
                     con.Close();
                 }
