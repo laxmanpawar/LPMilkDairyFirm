@@ -18,6 +18,10 @@ namespace LogInForm
         int m_iMilkTime = 0;
         //string m_sEngMilkCollTime = "Morning";
         string m_sCustMilkDataTableName = LPGlobalVariables.m_sCustDailyMilkDataTable;
+
+        // For clearing focus if user uses mouse events
+        private bool m_bClearCustCodeTBFocus = false;
+
         public MilkCollectionForm()
         {
             InitializeComponent();
@@ -33,7 +37,7 @@ namespace LogInForm
         {
             if (string.IsNullOrEmpty(CustCodeTextBox.Text))
             {
-                CustCodeTextBox.Focus();
+                if(!m_bClearCustCodeTBFocus) CustCodeTextBox.Focus();
                 return;
             }
             if (db.CUSTOMER_MILK_DATA.Find(Convert.ToInt32(CustCodeTextBox.Text), m_pMilkDate.Value.Date, m_iMilkTime)  != null)
@@ -982,6 +986,11 @@ namespace LogInForm
         {
             LPMilkCustListForm remainingCustListForm = new LPMilkCustListForm("MilkProducerList", m_pMilkDate.Value.Date, m_iMilkTime);
             remainingCustListForm.Show();
+        }
+
+        private void m_pMilkDate_MouseEnter(object sender, EventArgs e)
+        {
+            m_bClearCustCodeTBFocus = true;
         }
     }
 }

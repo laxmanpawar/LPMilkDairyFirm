@@ -176,6 +176,7 @@
             this.m_pMilkDate.TabIndex = 7;
             this.m_pMilkDate.TabStop = false;
             this.m_pMilkDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
+            this.m_pMilkDate.MouseEnter += new System.EventHandler(this.m_pMilkDate_MouseEnter);
             // 
             // CustomerMilkDataTabel
             // 
@@ -508,7 +509,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(519, 149);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(518, 149);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // MilkTypeComboBox
@@ -521,7 +522,7 @@
             this.MilkTypeComboBox.Items.AddRange(new object[] {
             "गाय",
             "म्हैस"});
-            this.MilkTypeComboBox.Location = new System.Drawing.Point(122, 103);
+            this.MilkTypeComboBox.Location = new System.Drawing.Point(121, 103);
             this.MilkTypeComboBox.Name = "MilkTypeComboBox";
             this.MilkTypeComboBox.Size = new System.Drawing.Size(392, 37);
             this.MilkTypeComboBox.TabIndex = 12;
@@ -539,7 +540,7 @@
             this.CustNameTextBox.Enabled = false;
             this.CustNameTextBox.Font = new System.Drawing.Font("Shivaji01", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustNameTextBox.ForeColor = System.Drawing.Color.Black;
-            this.CustNameTextBox.Location = new System.Drawing.Point(122, 54);
+            this.CustNameTextBox.Location = new System.Drawing.Point(121, 54);
             this.CustNameTextBox.Name = "CustNameTextBox";
             this.CustNameTextBox.Size = new System.Drawing.Size(392, 41);
             this.CustNameTextBox.TabIndex = 11;
@@ -549,7 +550,7 @@
             this.CustCodeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustCodeTextBox.Location = new System.Drawing.Point(122, 5);
+            this.CustCodeTextBox.Location = new System.Drawing.Point(121, 5);
             this.CustCodeTextBox.Name = "CustCodeTextBox";
             this.CustCodeTextBox.Size = new System.Drawing.Size(392, 35);
             this.CustCodeTextBox.TabIndex = 0;
@@ -566,7 +567,7 @@
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(5, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 47);
+            this.label3.Size = new System.Drawing.Size(108, 47);
             this.label3.TabIndex = 9;
             this.label3.Text = "दुध प्रकार";
             // 
@@ -579,7 +580,7 @@
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(5, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 47);
+            this.label2.Size = new System.Drawing.Size(108, 47);
             this.label2.TabIndex = 4;
             this.label2.Text = "नाव";
             // 
@@ -592,7 +593,7 @@
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 47);
+            this.label1.Size = new System.Drawing.Size(108, 47);
             this.label1.TabIndex = 1;
             this.label1.Text = "कोड";
             // 
