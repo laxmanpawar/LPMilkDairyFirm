@@ -115,16 +115,18 @@ namespace LogInForm
             List<string> columnTypes = new List<string>();
             List<string> columnNames = new List<string>();
 
-            for (int i = 0; i < this.RateChartDataGridView.Columns.Count; ++i)
+            for (int i = -1; i < this.RateChartDataGridView.Columns.Count; ++i)
             {
-                if (i == 0)
+                if (i == -1)
                 {
                     columnNames.Add("FAT");
                     columnTypes.Add("FLOAT");
-                    continue;
                 }
-                columnNames.Add(RateChartDataGridView.Columns[i].HeaderText);
-                columnTypes.Add("FLOAT");
+                else
+                {
+                    columnNames.Add(RateChartDataGridView.Columns[i].HeaderText);
+                    columnTypes.Add("FLOAT");
+                }
             }
 
             // Create new SQL Table for RateChart
@@ -134,16 +136,22 @@ namespace LogInForm
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
             StringBuilder query = new StringBuilder();
-            query.Append("Insert into ");
-            query.Append("MILK_RATE_CHART values");
+            query.Append("INSERT INTO ");
+            query.Append(Utils.LPGlobalVariables.m_sMilkRateChartTable);
+            query.Append(" VALUES");
 
             int rowCounter = 0;
             foreach(DataGridViewRow dgvr in RateChartDataGridView.Rows)
             {
                 for (int i = 0; i < columnNames.Count; ++i)
                 {
-                    if (i%columnNames.Count == 0) query.Append("(" + this.RateChartDataGridView.Rows[rowCounter].HeaderCell.Value.ToString());
-                    else query.Append(", " + dgvr.Cells[i].Value.ToString());
+                    int columnCounter = i;
+                    if (columnCounter % columnNames.Count == 0)
+                    {
+                        query.Append("(" + this.RateChartDataGridView.Rows[rowCounter].HeaderCell.Value.ToString());
+                        
+                    }
+                    else query.Append(", " + dgvr.Cells[--columnCounter].Value.ToString());
                 }
                 ++rowCounter; 
                 if (rowCounter == RateChartDataGridView.Rows.Count) query.Append(")");
@@ -204,10 +212,13 @@ namespace LogInForm
                 foreach (string line in lines)
                 {
                     fields = line.Split('\t');
-                    foreach (string f in fields)
-                        RateChartDataGridView[column++, row].Value = f;
-                    row++;
-                    column = 0;
+                    if (fields.Length > 1)
+                    {
+                        foreach (string f in fields)
+                            RateChartDataGridView[column++, row].Value = f;
+                        row++;
+                        column = 0;
+                    }
                 }
             }
             catch (SqlException ex)

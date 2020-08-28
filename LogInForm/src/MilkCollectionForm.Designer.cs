@@ -508,7 +508,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(520, 149);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(519, 149);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // MilkTypeComboBox
@@ -523,7 +523,7 @@
             "म्हैस"});
             this.MilkTypeComboBox.Location = new System.Drawing.Point(122, 103);
             this.MilkTypeComboBox.Name = "MilkTypeComboBox";
-            this.MilkTypeComboBox.Size = new System.Drawing.Size(393, 37);
+            this.MilkTypeComboBox.Size = new System.Drawing.Size(392, 37);
             this.MilkTypeComboBox.TabIndex = 12;
             this.MilkTypeComboBox.TabStop = false;
             this.MilkTypeComboBox.TextChanged += new System.EventHandler(this.MilkTypeComboBox_TextChanged);
@@ -541,7 +541,7 @@
             this.CustNameTextBox.ForeColor = System.Drawing.Color.Black;
             this.CustNameTextBox.Location = new System.Drawing.Point(122, 54);
             this.CustNameTextBox.Name = "CustNameTextBox";
-            this.CustNameTextBox.Size = new System.Drawing.Size(393, 41);
+            this.CustNameTextBox.Size = new System.Drawing.Size(392, 41);
             this.CustNameTextBox.TabIndex = 11;
             // 
             // CustCodeTextBox
@@ -551,7 +551,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CustCodeTextBox.Location = new System.Drawing.Point(122, 5);
             this.CustCodeTextBox.Name = "CustCodeTextBox";
-            this.CustCodeTextBox.Size = new System.Drawing.Size(393, 35);
+            this.CustCodeTextBox.Size = new System.Drawing.Size(392, 35);
             this.CustCodeTextBox.TabIndex = 0;
             this.CustCodeTextBox.Enter += new System.EventHandler(this.CustCodeTextBox_Enter);
             this.CustCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustCodeTextBox_KeyPress);

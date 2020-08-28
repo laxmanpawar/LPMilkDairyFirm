@@ -599,7 +599,7 @@ namespace LogInForm
             SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
             try
             {
-                string query = "SELECT [" + snfVal + "] FROM MILK_RATE_CHART WHERE [FAT] = @cfat";
+                string query = "SELECT [" + snfVal + "] FROM " + Utils.LPGlobalVariables.m_sMilkRateChartTable + " WHERE [FAT] = @cfat";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@cfat", fatVal);
 
@@ -614,7 +614,7 @@ namespace LogInForm
                 else 
                 { 
                     con.Close();
-                    query = "SELECT [" + snfVal + "] FROM DEFAULT_MILK_RATE_CHART WHERE [FAT] = @cfat";
+                    query = "SELECT [" + snfVal + "] FROM " + Utils.LPGlobalVariables.m_sDefMilkRateChartTable + " WHERE [FAT] = @cfat";
                     SqlCommand cmd1 = new SqlCommand(query, con);
                     cmd1.Parameters.AddWithValue("@cfat", fatVal);
 
