@@ -35,7 +35,7 @@ namespace LogInForm.src
             try
             {
                 SqlConnection con = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                string remaingCustListQuery = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCollectionCustomerDataTable + " EXCEPT SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustDailyMilkDataTable + " WHERE MILK_TIME = @milktime AND MILK_DATE = @milkdate";
+                string remaingCustListQuery = "SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustDailyMilkDataTable + " WHERE MILK_TIME = @milktime AND MILK_DATE = @previousmilkdate EXCEPT SELECT CUST_CODE, CUST_NAME FROM " + LPGlobalVariables.m_sCustDailyMilkDataTable + " WHERE MILK_TIME = @milktime AND MILK_DATE = @milkdate";
                 SqlCommand cmd = new SqlCommand(remaingCustListQuery, con);
                 if (m_sListType == "RemainingCustList")
                 {
@@ -50,6 +50,7 @@ namespace LogInForm.src
                     cmd.CommandText = "SELECT CUST_CODE, CUST_NAME, CUST_MOB FROM " + LPGlobalVariables.m_sTotalCustomerDataTable;
                 }
                 cmd.Parameters.AddWithValue("@milktime", m_iMilkTime);
+                cmd.Parameters.AddWithValue("@previousmilkdate", m_pDateTime.AddDays(-1).Date);
                 cmd.Parameters.AddWithValue("@milkdate", m_pDateTime.Date);
 
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
