@@ -9,7 +9,7 @@
 
 namespace LogInForm.Model
 {
-    using System;
+    /*using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -26,5 +26,5 @@ namespace LogInForm.Model
         }
     
         public virtual DbSet<CUSTOMER_MILK_DATA> CUSTOMER_MILK_DATA { get; set; }
-    }
+    }*/
 }
