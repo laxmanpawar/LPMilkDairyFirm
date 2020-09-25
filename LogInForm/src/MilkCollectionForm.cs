@@ -23,7 +23,7 @@ namespace LogInForm
         string m_sCustMilkDataTableName = LPGlobalVariables.m_sCustDailyMilkDataTable;
 
         // For clearing focus if user uses mouse events
-        private bool m_bClearCustCodeTBFocus = false;
+        private bool m_bClearCustCodeTBFocus = true;
 
         public MilkCollectionForm()
         {
@@ -213,6 +213,11 @@ namespace LogInForm
             
             try
             {
+                if (string.IsNullOrEmpty(CustCodeTextBox.Text))
+                {
+                    return;
+                }
+
                 SqlConnection sqlCon = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
 
                 /*
@@ -333,6 +338,7 @@ namespace LogInForm
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
+                    CustCodeTextBox.Text = custCode;
                     CustNameTextBox.Text = dr.GetValue(dr.GetOrdinal("CUST_NAME")).ToString();
                     int milkType = int.Parse(dr.GetValue(dr.GetOrdinal("MILK_TYPE")).ToString());
                     MilkTypeComboBox.SelectedIndex = milkType;
@@ -418,7 +424,7 @@ namespace LogInForm
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
 
-                CustMilkDataGridView.DataSource = dataTable;
+                m_pCustMilkDataGridView.DataSource = dataTable;
 
                 //CustMilkDataGridView.Columns["CUST_CODE"].Width = 100;
                 //CustMilkDataGridView.Columns["MILK_WEIGHT"].Width = 100;
@@ -428,17 +434,17 @@ namespace LogInForm
                 //CustMilkDataGridView.Columns["MILK_RATE"].Width = 100;
                 //CustMilkDataGridView.Columns["MILK_AMOUNT"].Width = 100;
 
-                CustMilkDataGridView.Columns["CUST_CODE"].HeaderText = "कोड";
-                CustMilkDataGridView.Columns["CUST_NAME"].HeaderText = "नाव";
-                CustMilkDataGridView.Columns["MILK_WEIGHT"].HeaderText = "दूध";
-                CustMilkDataGridView.Columns["MILK_FAT"].HeaderText = "फॅट";
-                CustMilkDataGridView.Columns["MILK_SNF"].HeaderText = "SNF";
-                CustMilkDataGridView.Columns["MILK_DEGREE"].HeaderText = "डिग्री";
-                CustMilkDataGridView.Columns["MILK_RATE"].HeaderText = "दर";
-                CustMilkDataGridView.Columns["MILK_AMOUNT"].HeaderText = "रक्कम";
+                m_pCustMilkDataGridView.Columns["CUST_CODE"].HeaderText = "कोड";
+                m_pCustMilkDataGridView.Columns["CUST_NAME"].HeaderText = "नाव";
+                m_pCustMilkDataGridView.Columns["MILK_WEIGHT"].HeaderText = "दूध";
+                m_pCustMilkDataGridView.Columns["MILK_FAT"].HeaderText = "फॅट";
+                m_pCustMilkDataGridView.Columns["MILK_SNF"].HeaderText = "SNF";
+                m_pCustMilkDataGridView.Columns["MILK_DEGREE"].HeaderText = "डिग्री";
+                m_pCustMilkDataGridView.Columns["MILK_RATE"].HeaderText = "दर";
+                m_pCustMilkDataGridView.Columns["MILK_AMOUNT"].HeaderText = "रक्कम";
 
                 // Show Cust Name in Marathi
-                CustMilkDataGridView.Columns["CUST_NAME"].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
+                m_pCustMilkDataGridView.Columns["CUST_NAME"].DefaultCellStyle.Font = new System.Drawing.Font("Shivaji01", 18F, FontStyle.Bold);
             }
             catch (Exception exc)
             {
@@ -535,37 +541,42 @@ namespace LogInForm
 
             try
             {
-                    SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
-                    string query = "Update " + m_sCustMilkDataTableName + " set CUST_CODE = @ccode, CUST_NAME = @cname, MILK_DATE = @datetime, MILK_TYPE = @milkType, MILK_WEIGHT = @weight, MILK_FAT = @fat, MILK_SNF = @SNF, MILK_DEGREE = @degree, MILK_RATE = @milkRate, MILK_AMOUNT =  @amount Where CUST_CODE = @ccode";
-                    SqlCommand cmd = new SqlCommand(query, sqlConnection);
+                if (string.IsNullOrEmpty(CustCodeTextBox.Text))
+                {
+                    MessageBox.Show("Enter customer code to update", "LPInfo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return 0;
+                }
+                SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
+                string query = "Update " + m_sCustMilkDataTableName + " set CUST_CODE = @ccode, CUST_NAME = @cname, MILK_DATE = @datetime, MILK_TYPE = @milkType, MILK_WEIGHT = @weight, MILK_FAT = @fat, MILK_SNF = @SNF, MILK_DEGREE = @degree, MILK_RATE = @milkRate, MILK_AMOUNT =  @amount Where CUST_CODE = @ccode";
+                SqlCommand cmd = new SqlCommand(query, sqlConnection);
 
-                    // Add data
-                    cmd.Parameters.AddWithValue("@ccode", int.Parse(CustCodeTextBox.Text));
-                    cmd.Parameters.AddWithValue("@cname", CustNameTextBox.Text);
-                    cmd.Parameters.AddWithValue("@datetime", m_pMilkDate.Value);
-                    cmd.Parameters.AddWithValue("@milkType", MilkTypeComboBox.SelectedIndex);
-                    cmd.Parameters.AddWithValue("@weight", double.Parse(CowWeightTextBox.Text));
-                    cmd.Parameters.AddWithValue("@fat", double.Parse(CowFatTextBox.Text));
-                    cmd.Parameters.AddWithValue("@SNF", double.Parse(CowSNFTextBox.Text));
-                    cmd.Parameters.AddWithValue("@degree", double.Parse(CowDegreeTextBox.Text));
-                    cmd.Parameters.AddWithValue("@milkRate", double.Parse(CowMilkRateTextBox.Text));
-                    cmd.Parameters.AddWithValue("@amount", double.Parse(CowAmountTextBox.Text));
+                // Add data
+                cmd.Parameters.AddWithValue("@ccode", int.Parse(CustCodeTextBox.Text));
+                cmd.Parameters.AddWithValue("@cname", CustNameTextBox.Text);
+                cmd.Parameters.AddWithValue("@datetime", m_pMilkDate.Value);
+                cmd.Parameters.AddWithValue("@milkType", MilkTypeComboBox.SelectedIndex);
+                cmd.Parameters.AddWithValue("@weight", double.Parse(CowWeightTextBox.Text));
+                cmd.Parameters.AddWithValue("@fat", double.Parse(CowFatTextBox.Text));
+                cmd.Parameters.AddWithValue("@SNF", double.Parse(CowSNFTextBox.Text));
+                cmd.Parameters.AddWithValue("@degree", double.Parse(CowDegreeTextBox.Text));
+                cmd.Parameters.AddWithValue("@milkRate", double.Parse(CowMilkRateTextBox.Text));
+                cmd.Parameters.AddWithValue("@amount", double.Parse(CowAmountTextBox.Text));
 
-                    // Open Connection 
-                    sqlConnection.Open();
-                    // Execute query
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        BindDataGridView();
-                        ResetAllCustMilkDataFields();
-                        MessageBox.Show("Customer Milk Data Updated Successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to update Customer Milk data.", "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return 1;
-                    }
-                    sqlConnection.Close();
+                // Open Connection 
+                sqlConnection.Open();
+                // Execute query
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    BindDataGridView();
+                    ResetAllCustMilkDataFields();
+                    MessageBox.Show("Customer Milk Data Updated Successfully.", "LPSUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update Customer Milk data.", "LPERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+                sqlConnection.Close();
                 }
                 catch (Exception exc)
                 {
@@ -579,7 +590,8 @@ namespace LogInForm
         {
             try
             {
-                ShowSelectedUserData(CustCodeTextBox.Text);
+                string custId = m_pCustMilkDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                ShowSelectedUserData(custId);
             }
             catch (Exception exc)
             {
@@ -591,6 +603,12 @@ namespace LogInForm
         {
             try
             {
+                if(string.IsNullOrEmpty(CustCodeTextBox.Text))
+                {
+                    MessageBox.Show("Enter customer code to delete.", "LPInfo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 SqlConnection sqlConnection = new SqlConnection(LPSQLTableUtils.m_sSqlConnectionString);
                 string query = "DELETE FROM " + m_sCustMilkDataTableName + " WHERE CUST_CODE = @ccode";
                 SqlCommand cmd = new SqlCommand(query, sqlConnection);
